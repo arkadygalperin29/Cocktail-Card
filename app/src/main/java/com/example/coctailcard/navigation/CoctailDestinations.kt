@@ -11,7 +11,7 @@ object CoctailDestinations {
     const val AUTH_GRAPH = "auth_grapg"
     const val MAIN_GRAPH = "main_grabg"
 
-    const val HOME_ROUTE = "home"
+    const val MENU_ROUTE = "home"
     const val OFFERS_ROUTE: CoctailRoute = "offers/{page}"
     const val LOGIN_ROUTE = "login"
     const val FORGOT_PASSWORD_ROUTE = "forgotpassword"

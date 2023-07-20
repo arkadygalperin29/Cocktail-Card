@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CoctailCard</string>
+    <string name="label_return">Return</string>
 </resources>

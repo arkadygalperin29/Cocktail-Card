@@ -14,6 +14,8 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.example.coctailcard.data.di.configureKoin
+import org.koin.core.context.stopKoin
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -57,8 +59,10 @@ fun CoctailCardTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
+            window.statusBarColor = Black1.toArgb()
+            window.navigationBarColor = Black1.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            WindowCompat.getInsetsController(window, view).isAppearanceLightNavigationBars = darkTheme
         }
     }
 
@@ -67,4 +71,18 @@ fun CoctailCardTheme(
         typography = Typography,
         content = content
     )
+}
+
+@Composable
+fun EkotankThemePreview(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    // Dynamic color is available on Android 12+
+    dynamicColor: Boolean = true,
+    content: @Composable () -> Unit
+) {
+    stopKoin()
+    LocalContext.current.configureKoin()
+    CoctailCardTheme(darkTheme, dynamicColor) {
+        content()
+    }
 }
