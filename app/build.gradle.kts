@@ -1,3 +1,4 @@
+
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.androidApplication)
@@ -61,7 +62,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.logging.interceptor)
     implementation(libs.threetenabp)
-
+    implementation(libs.bundles.koin.all)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material)
     implementation(libs.material3)
@@ -71,7 +72,6 @@ dependencies {
     implementation(libs.bundles.room.all)
     implementation(libs.bundles.coil.all)
 
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)

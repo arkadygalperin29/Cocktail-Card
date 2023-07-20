@@ -3,7 +3,7 @@ accompanist-permissions = "0.31.2-alpha"
 coil = "2.1.0"
 material = "1.5.0-beta03"
 material3 = "1.1.1"
-logging-interceptor = "4.9.1"
+logging-interceptor = "4.11.0"
 navigation-compose = "2.6.0"
 agp = "8.2.0-alpha08"
 kotlin = "1.8.10"
@@ -15,7 +15,8 @@ lifecycle-runtime-ktx = "2.6.1"
 activity-compose = "1.7.2"
 compose-bom = "2023.06.01"
 retrofit = "2.9.0"
-okhttp = "3.14.9"
+okhttp = "4.11.0"
+koin = "3.4.0"
 ksp = "1.8.10-1.0.9"
 threetenabp = "1.4.6"
 room = "2.5.2"
@@ -43,6 +44,8 @@ coil-gif = { module = "io.coil-kt:coil-gif", version.ref = "coil" }
 coil-svg = { module = "io.coil-kt:coil-svg", version.ref = "coil" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 ui = { group = "androidx.compose.ui", name = "ui" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
@@ -63,4 +66,5 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 retrofit-all = ["okhttp-core", "okhttp-urlconnection", "retrofit-core", "retrofit-converter-gson"]
 room-all = ["room-runtime", "room-ktx"]
 coil-all = ["coil-base", "coil-compose", "coil-gif", "coil-svg"]
+koin-all = ["koin-android", "koin-androidx-compose"]
 
