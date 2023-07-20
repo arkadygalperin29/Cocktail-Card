@@ -40,14 +40,14 @@ fun CoctailScaffold(
             CompositionLocalProvider(LocalContentColor provides Grey1000) {
                 when (topBarType) {
                     is AppHeaderType.WithLogo -> {
-                        AppHeaderWithLogo(
+                        CoctailHeaderWithLogo(
                             logoAlignment = topBarType.logoAlignment,
                             navController = navController
                         )
                     }
 
                     is AppHeaderType.WithLogoWithoutBell -> {
-                        AppHeaderWithLogo(
+                        CoctailHeaderWithLogo(
                             logoAlignment = topBarType.logoAlignment,
                             navController = navController,
                             showBellIcon = false
@@ -72,7 +72,7 @@ fun CoctailScaffold(
         bottomBar = {
             when (bottomBarType) {
                 is AppBottomBarType.Normal -> {
-                        EkoBottomNavigation(
+                        CoctailBottomNavigation(
                             modifier = Modifier.wrapContentHeight(),
                             navController = navController
                         )

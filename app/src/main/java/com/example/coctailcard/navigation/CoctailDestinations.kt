@@ -3,6 +3,7 @@ package com.example.coctailcard.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavController
+import org.koin.core.component.KoinComponent
 
 
 typealias CoctailRoute = String
@@ -44,6 +45,12 @@ fun rememberCoctailNavActions(navController: NavController) = remember(navContro
     CoctailNavActions(navController)
 }
 
-class CoctailNavActions(private val navController: NavController) {
-
+class CoctailNavActions(private val navController: NavController): KoinComponent {
+    val navigateToHome: () -> Unit = {
+        navController.popBackStack(
+            route = CoctailDestinations.MENU_ROUTE,
+            inclusive = false,
+            saveState = true,
+        )
+    }
 }
