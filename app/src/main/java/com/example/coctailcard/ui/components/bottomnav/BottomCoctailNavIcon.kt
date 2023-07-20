@@ -21,7 +21,7 @@ import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Yellow1
 
 @Composable
-fun AppKSKNavIcon(
+fun CoctailCenteredBottomButton(
     item: BottomNavItem
 ){
     Box(
@@ -49,7 +49,8 @@ fun AppKSKNavIcon(
         ) {
             Icon(
                 painter = painterResource(id = item.icon),
-                contentDescription = item.title
+                contentDescription = item.title,
+                modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 7.dp)
             )
         }
     }
@@ -58,5 +59,5 @@ fun AppKSKNavIcon(
 @Preview
 @Composable
 private fun PreviewComponent(){
-    AppKSKNavIcon(item = BottomNavItem.CardKSK)
+    CoctailCenteredBottomButton(item = BottomNavItem.CardKSK)
 }

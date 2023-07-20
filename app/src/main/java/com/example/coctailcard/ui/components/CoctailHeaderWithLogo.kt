@@ -53,7 +53,7 @@ fun CoctailHeaderWithLogo(
                 .width(127.dp)
                 .height(19.dp),
             contentScale = ContentScale.Fit,
-            painter = painterResource(R.drawable.cocktail_main_icon),
+            painter = painterResource(R.drawable.empty_glass_icon),
             contentDescription = "logo"
         )
         if (showBellIcon) {

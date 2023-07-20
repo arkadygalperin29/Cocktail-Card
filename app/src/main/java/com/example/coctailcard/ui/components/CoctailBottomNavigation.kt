@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.coctailcard.navigation.rememberCoctailNavActions
-import com.example.coctailcard.ui.components.bottomnav.AppKSKNavIcon
+import com.example.coctailcard.ui.components.bottomnav.CoctailCenteredBottomButton
 import com.example.coctailcard.ui.components.bottomnav.AppNavigationBarItem
 import com.example.coctailcard.ui.components.bottomnav.BottomNavItem
 import com.example.coctailcard.ui.theme.Black1
@@ -41,7 +41,7 @@ fun CoctailBottomNavigation(
         BottomNavItem.Start,
         BottomNavItem.Offers,
         BottomNavItem.CardKSK,
-        BottomNavItem.Stations,
+        BottomNavItem.PercentageList,
         BottomNavItem.More
     )
     Box(
@@ -95,7 +95,7 @@ fun CoctailBottomNavigation(
                         icon = {
                             when (item) {
                                 is BottomNavItem.CardKSK -> {
-                                    AppKSKNavIcon(item = item)
+                                    CoctailCenteredBottomButton(item = item)
                                 }
 
                                 else -> {

@@ -27,13 +27,13 @@ sealed class BottomNavItem(
     object CardKSK :
         BottomNavItem(
             "Coctails",
-            R.drawable.cocktail_main_icon,
+            R.drawable.baseline_cup,
             CoctailDestinations.MENU_ROUTE,
             {  })
 
-    object Stations :
+    object PercentageList :
         BottomNavItem(
-            "Sort by alcohol %",
+            "Degree",
             R.drawable.alcoholic_percentage,
             CoctailDestinations.MENU_ROUTE,
             { })
@@ -41,7 +41,7 @@ sealed class BottomNavItem(
     object More :
         BottomNavItem(
             "Glasses",
-            R.drawable.empty_glass_icon,
+            R.drawable.baseline_cup,
             CoctailDestinations.MENU_ROUTE,
             {  })
 }
