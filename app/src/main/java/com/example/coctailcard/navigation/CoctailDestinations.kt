@@ -3,6 +3,7 @@ package com.example.coctailcard.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavController
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import org.koin.core.component.KoinComponent
 
 
@@ -21,7 +22,7 @@ object CoctailDestinations {
     const val SUCCESSFUL_REGISTRATION_ROUTE = "successful_registration"
     const val SCANNER_FOR_CARD_CODE_REGISTRATION = "scanner_for_card_code_registration"
     const val MAP_ROUTE = "map"
-    const val ACCOUNT_ROUTE = "accountmain"
+    const val GLASS_ROUTE = "glass_route"
     const val ACCOUNT_DATA_ROUTE = "accountdata"
     const val ACCOUNT_PASSWORD_ROUTE = "accountpassword"
     const val COUPON_ROUTE: CoctailRoute = "coupon/{id}"
@@ -45,12 +46,23 @@ fun rememberCoctailNavActions(navController: NavController) = remember(navContro
     CoctailNavActions(navController)
 }
 
-class CoctailNavActions(private val navController: NavController): KoinComponent {
+class CoctailNavActions(private val navController: NavController) : KoinComponent {
     val navigateToHome: () -> Unit = {
         navController.popBackStack(
             route = CoctailDestinations.MENU_ROUTE,
             inclusive = false,
             saveState = true,
         )
+    }
+    val navigateToInbox: () -> Unit = {
+        navController.navigate(CoctailDestinations.GLASS_ROUTE) {
+            val primaryRoute: Int? = navController.currentBackStackEntry?.destination?.id
+            val fallbackRoute: Int = navController.graph.findStartDestination().id
+            popUpTo(primaryRoute ?: fallbackRoute) {
+                saveState = true
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
     }
 }

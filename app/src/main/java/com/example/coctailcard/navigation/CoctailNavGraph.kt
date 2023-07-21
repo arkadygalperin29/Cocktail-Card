@@ -8,7 +8,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
+import com.example.coctailcard.ui.components.glassscreen.GlassScreen
 import com.example.coctailcard.ui.components.menuscreen.MenuScreen
+import com.example.coctailcard.ui.components.menuscreen.MenuScreenViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CoctailNavGraph(
@@ -30,9 +33,14 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
         startDestination = CoctailDestinations.MENU_ROUTE
     ) {
         composable(CoctailDestinations.MENU_ROUTE) {
+            val viewModel: MenuScreenViewModel = koinViewModel()
             MenuScreen(
                 navController = navController,
+                viewModel = viewModel
             )
+        }
+        composable(CoctailDestinations.GLASS_ROUTE) {
+            GlassScreen()
         }
     }
 }

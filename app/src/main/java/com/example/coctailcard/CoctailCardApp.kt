@@ -9,7 +9,6 @@ import com.example.coctailcard.ui.theme.CoctailCardTheme
 fun CoctailCardApp() {
     CoctailCardTheme {
         val navController = rememberNavController()
-        CoctailNavGraph()
+        CoctailNavGraph(navController = navController)
     }
-
 }
