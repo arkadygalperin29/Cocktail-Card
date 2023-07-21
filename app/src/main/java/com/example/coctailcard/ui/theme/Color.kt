@@ -26,6 +26,9 @@ val Black1 = Color(0xFF000000)
 val Red1 = Color(0xFFCE592C)
 val RedClean = Color(0xFFFF0000)
 val Blue1 = Color(0xFF3870B3)
+val Blue2 = Color(0xFF6899D3)
+val Purple1 = Color(0xFFCC33CC)
+
 
 data class AppButtonColorsFilled(
     val containerColor: Color = Yellow1,

@@ -50,7 +50,7 @@ fun CoctailScaffold(
                         CoctailHeaderWithLogo(
                             logoAlignment = topBarType.logoAlignment,
                             navController = navController,
-                            showBellIcon = false
+                            showFavoritesIcon = false
                         )
                     }
 

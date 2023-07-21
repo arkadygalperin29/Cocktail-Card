@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -30,7 +30,7 @@ import com.example.coctailcard.ui.theme.Yellow1
 fun CoctailHeaderWithLogo(
     logoAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
     navController: NavController,
-    showBellIcon: Boolean = true
+    showFavoritesIcon: Boolean = true
 ) {
     val actions = rememberCoctailNavActions(navController = navController)
 
@@ -56,7 +56,7 @@ fun CoctailHeaderWithLogo(
             painter = painterResource(R.drawable.empty_glass_icon),
             contentDescription = "logo"
         )
-        if (showBellIcon) {
+        if (showFavoritesIcon) {
             Box(
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
@@ -69,7 +69,7 @@ fun CoctailHeaderWithLogo(
                 Icon(
                     modifier = Modifier
                         .size(24.dp),
-                    imageVector = Icons.Outlined.Notifications,
+                    imageVector = Icons.Outlined.Favorite,
                     contentDescription = null,
                     tint = Grey00
                 )
