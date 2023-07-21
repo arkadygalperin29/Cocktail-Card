@@ -27,7 +27,7 @@ sealed class BottomNavItem(
     object CardKSK :
         BottomNavItem(
             "Coctails",
-            R.drawable.baseline_cup,
+            R.drawable.cocktail,
             CoctailDestinations.MENU_ROUTE,
             {  })
 

@@ -14,14 +14,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.coctailcard.R
 import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Yellow1
 
 @Composable
-fun CoctailCenteredBottomButton(
+fun CocktailCenteredBottomButton(
     item: BottomNavItem
 ){
     Box(
@@ -34,7 +36,7 @@ fun CoctailCenteredBottomButton(
         Card(
             modifier = Modifier
                 .padding(bottom = 4.dp)
-                .size(36.dp)
+                .size(40.dp)
                 .shadow(
                     elevation = 5.dp,
                     ambientColor = Yellow1,
@@ -50,7 +52,7 @@ fun CoctailCenteredBottomButton(
             Icon(
                 painter = painterResource(id = item.icon),
                 contentDescription = item.title,
-                modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 7.dp)
+                modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 5.dp, bottom = 3.dp)
             )
         }
     }
@@ -59,5 +61,5 @@ fun CoctailCenteredBottomButton(
 @Preview
 @Composable
 private fun PreviewComponent(){
-    CoctailCenteredBottomButton(item = BottomNavItem.CardKSK)
+    CocktailCenteredBottomButton(item = BottomNavItem.CardKSK)
 }

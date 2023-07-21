@@ -20,7 +20,6 @@ import com.example.coctailcard.ui.components.scaffold.AppHeaderType
 import com.example.coctailcard.ui.theme.Grey1000
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 fun CoctailScaffold(
     modifier: Modifier = Modifier,
     navController: NavController,
