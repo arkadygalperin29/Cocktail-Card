@@ -33,10 +33,8 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
         startDestination = CoctailDestinations.MENU_ROUTE
     ) {
         composable(CoctailDestinations.MENU_ROUTE) {
-            val viewModel: MenuScreenViewModel = koinViewModel()
             MenuScreen(
                 navController = navController,
-                viewModel = viewModel
             )
         }
         composable(CoctailDestinations.GLASS_ROUTE) {

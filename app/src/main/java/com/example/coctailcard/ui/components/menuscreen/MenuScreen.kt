@@ -26,9 +26,7 @@ import org.koin.androidx.compose.koinViewModel
 fun MenuScreen(
     modifier: Modifier = Modifier,
     navController: NavController = rememberNavController(),
-    viewModel: MenuScreenViewModel = koinViewModel()
 ) {
-    val cocktails = viewModel.cocktails.collectAsState()
     val scrollState = rememberScrollState()
     val keyboardController = LocalSoftwareKeyboardController.current
     CoctailScaffold(

@@ -40,7 +40,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun CoctailCardTheme(
+fun CocktailCardTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
@@ -82,7 +82,7 @@ fun CocktailCardThemePreview(
 ) {
     stopKoin()
     LocalContext.current.configureKoin()
-    CoctailCardTheme(darkTheme, dynamicColor) {
+    CocktailCardTheme(darkTheme, dynamicColor) {
         content()
     }
 }

@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class MenuScreenViewModel(
-    private val getCocktailsRepository: GetCocktailsRepository
+
 ) : ViewModel() {
 
 
@@ -23,7 +23,7 @@ class MenuScreenViewModel(
             fetchCocktails()
         }
     }*/
-
+/*
     suspend fun fetchCocktails() {
         when (val result = getCocktailsRepository.getCocktailsByFirstLetter()) {
             is RequestResult.Success -> {
@@ -37,6 +37,6 @@ class MenuScreenViewModel(
             else -> {
             }
         }
-    }
+    }*/
 
 }
