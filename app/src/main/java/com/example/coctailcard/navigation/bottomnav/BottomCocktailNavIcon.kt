@@ -1,4 +1,4 @@
-package com.example.coctailcard.ui.components.bottomnav
+package com.example.coctailcard.navigation.bottomnav
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

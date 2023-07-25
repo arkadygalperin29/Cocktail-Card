@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import com.example.coctailcard.ui.category.CategoriesSelection
 import org.koin.core.component.KoinComponent
 
 
@@ -15,21 +16,12 @@ object CoctailDestinations {
 
     const val MENU_ROUTE = "home"
     const val OFFERS_ROUTE: CoctailRoute = "offers/{page}"
-    const val LOGIN_ROUTE = "login"
-    const val FORGOT_PASSWORD_ROUTE = "forgotpassword"
-    const val FORGOT_PASSWORD_SUCCESS_ROUTE = "forgotpasswordsuccess"
-    const val REGISTER_ROUTE = "register"
-    const val SUCCESSFUL_REGISTRATION_ROUTE = "successful_registration"
-    const val SCANNER_FOR_CARD_CODE_REGISTRATION = "scanner_for_card_code_registration"
-    const val MAP_ROUTE = "map"
     const val GLASS_ROUTE = "glass_route"
     const val ACCOUNT_DATA_ROUTE = "accountdata"
     const val ACCOUNT_PASSWORD_ROUTE = "accountpassword"
     const val COUPON_ROUTE: CoctailRoute = "coupon/{id}"
     const val PROMOTION_ROUTE: CoctailRoute = "promotion/{id}"
     const val STATION_ROUTE: CoctailRoute = "station/{id}"
-    const val EMPTY_COUPON_LIST_ROUTE = "empty_coupon_list_route"
-    const val EMPTY_PROMOTION_LIST_ROUTE = "empty_promotion_list_route"
     const val NON_ALCOHOLIC_ROUTE = "non_alcoholic_route"
     const val ALCOHOLIC_ROUTE = "alcoholic_route"
     const val CATEGORY_ROUTE = "category_route"
@@ -63,6 +55,18 @@ class CoctailNavActions(private val navController: NavController) : KoinComponen
             }
             launchSingleTop = true
             restoreState = true
+        }
+    }
+
+    val navigateToCategory: (CategoriesSelection) -> Unit = {
+        navController.navigate(CoctailDestinations.CATEGORY_ROUTE) {
+            val primaryRoute: Int? = navController.currentBackStackEntry?.destination?.id
+            val fallbackRoute: Int = navController.graph.findStartDestination().id
+            popUpTo(primaryRoute ?: fallbackRoute) {
+                saveState = true
+            }
+            launchSingleTop = true
+ //           restoreState = true
         }
     }
 }

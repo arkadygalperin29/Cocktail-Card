@@ -1,4 +1,4 @@
-package com.example.coctailcard.ui.components.menuscreen
+package com.example.coctailcard.ui.menuscreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

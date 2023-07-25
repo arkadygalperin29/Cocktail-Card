@@ -1,4 +1,4 @@
-package com.example.coctailcard.ui.components.menuscreen
+package com.example.coctailcard.ui.menuscreen
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

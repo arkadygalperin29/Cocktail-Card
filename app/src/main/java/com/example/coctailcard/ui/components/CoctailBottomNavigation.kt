@@ -21,10 +21,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.coctailcard.navigation.bottomnav.AppNavigationBarItem
+import com.example.coctailcard.navigation.bottomnav.BottomNavItem
+import com.example.coctailcard.navigation.bottomnav.CocktailCenteredBottomButton
 import com.example.coctailcard.navigation.rememberCoctailNavActions
-import com.example.coctailcard.ui.components.bottomnav.CocktailCenteredBottomButton
-import com.example.coctailcard.ui.components.bottomnav.AppNavigationBarItem
-import com.example.coctailcard.ui.components.bottomnav.BottomNavItem
 import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Grey400
 import com.example.coctailcard.ui.theme.Yellow1
@@ -89,7 +89,7 @@ fun CoctailBottomNavigation(
                     AppNavigationBarItem(
                         selected = currentRoute == item.screenRoute,
                         onClick = {
-
+                            item.action(actions)
                         },
                         selectedMarkerEnabled = item !is BottomNavItem.CardKSK,
                         icon = {
