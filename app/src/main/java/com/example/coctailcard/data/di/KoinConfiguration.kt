@@ -10,7 +10,7 @@ fun Context.configureKoin() {
             restModule(),
             databaseModule(),
             repositoryModule(),
-            //        viewModelModule(),
+            viewModelModule(),
             coilModule(),
         )
     }
