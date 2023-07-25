@@ -40,5 +40,14 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
         composable(CoctailDestinations.GLASS_ROUTE) {
             GlassScreen()
         }
+        composable(CoctailDestinations.CATEGORY_ROUTE) {
+
+        }
+        composable(CoctailDestinations.ALCOHOLIC_ROUTE) {
+
+        }
+        composable(CoctailDestinations.NON_ALCOHOLIC_ROUTE) {
+
+        }
     }
 }

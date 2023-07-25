@@ -30,9 +30,9 @@ object CoctailDestinations {
     const val STATION_ROUTE: CoctailRoute = "station/{id}"
     const val EMPTY_COUPON_LIST_ROUTE = "empty_coupon_list_route"
     const val EMPTY_PROMOTION_LIST_ROUTE = "empty_promotion_list_route"
-    const val TERMS_AND_CONDITIONS_LIST_ROUTE = "terms_and_conditions_list_route"
-    const val LOYALTY_CARD_ROUTE = "loyalty_card_route"
-    const val INBOX_ROUTE = "inbox"
+    const val NON_ALCOHOLIC_ROUTE = "non_alcoholic_route"
+    const val ALCOHOLIC_ROUTE = "alcoholic_route"
+    const val CATEGORY_ROUTE = "category_route"
 
 
     const val ARG_CODE = "code"
