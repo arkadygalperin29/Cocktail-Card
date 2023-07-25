@@ -1,4 +1,3 @@
-
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.androidApplication)
@@ -71,6 +70,7 @@ dependencies {
     implementation(libs.bundles.retrofit.all)
     implementation(libs.bundles.room.all)
     implementation(libs.bundles.coil.all)
+    implementation(libs.koin.core)
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)

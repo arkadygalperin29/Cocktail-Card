@@ -9,8 +9,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.example.coctailcard.ui.category.CategoryScreen
+import com.example.coctailcard.ui.category.CategoryViewModel
 import com.example.coctailcard.ui.glassscreen.GlassScreen
 import com.example.coctailcard.ui.menuscreen.MenuScreen
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CoctailNavGraph(
@@ -41,7 +43,7 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
         }
         composable(CoctailDestinations.CATEGORY_ROUTE) {
             CategoryScreen(
-                navController = navController
+                navController = navController,
             )
         }
         composable(CoctailDestinations.ALCOHOLIC_ROUTE) {

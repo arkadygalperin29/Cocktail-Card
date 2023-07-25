@@ -5,6 +5,7 @@ import com.example.coctailcard.data.repositories.alcoholic.AlcoholicCocktailsRep
 import com.example.coctailcard.data.repositories.nonalcoholic.NonAlcoholicCocktailsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 
 data class CategoryState(
     val selectedButton: Int = 0
@@ -24,4 +25,7 @@ class CategoryViewModel(
     )
     val state = _state.asStateFlow()
 
+    fun updateState(state: CategoryState) {
+        _state.update { state }
+    }
 }

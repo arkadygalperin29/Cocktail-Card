@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -24,6 +26,7 @@ fun CategoryScreen(
     modifier: Modifier = Modifier,
     navController: NavController = rememberNavController(),
 ) {
+ //   val state by viewModel.state.collectAsState()
     CoctailScaffold(
         modifier = modifier,
         navController = navController
@@ -49,8 +52,18 @@ fun CategoryScreen(
                     stringResource(id = R.string.nonalcoholic)
                 ),
                 selected = 1,
-                onItemSelected = { }
+                onItemSelected = {
+ /*                   viewModel.updateState(
+                        state.copy(
+                            selectedButton = it
+                        )
+                    )*/
+                }
             )
+/*            when (state.selectedButton) {
+                CategoriesSelection.ALCOHOLIC.ordinal -> {}
+                CategoriesSelection.NON_ALCOHOLIC.ordinal -> {}
+            }*/
         }
     }
 }
