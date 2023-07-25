@@ -19,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -27,11 +28,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.R
-import com.example.coctailcard.navigation.rememberCoctailNavActions
+import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Grey00
 import com.example.coctailcard.ui.theme.Header1
-import com.example.coctailcard.ui.theme.Yellow1
 
 @Composable
 fun AppHeaderWithButtons(
@@ -40,7 +40,7 @@ fun AppHeaderWithButtons(
     returnIcon: Painter = painterResource(id = R.drawable.baseline_chevron_left_24),
     navController: NavController,
 ) {
-    val actions = rememberCoctailNavActions(navController = navController)
+    val actions = rememberCocktailNavActions(navController = navController)
 
     Column(
         modifier = Modifier
@@ -92,7 +92,7 @@ fun AppHeaderWithButtons(
         }
         Divider(
             thickness = 2.dp,
-            color = Yellow1
+            color = Color.White
         )
     }
 }

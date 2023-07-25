@@ -3,7 +3,6 @@ package com.example.coctailcard.navigation.bottomnav
 import com.example.coctailcard.R
 import com.example.coctailcard.navigation.CoctailDestinations
 import com.example.coctailcard.navigation.CoctailNavActions
-import com.example.coctailcard.navigation.rememberCoctailNavActions
 import com.example.coctailcard.ui.category.CategoriesSelection
 
 sealed class BottomNavItem(
@@ -19,33 +18,33 @@ sealed class BottomNavItem(
             "Start",
             R.drawable.baseline_home_24,
             CoctailDestinations.MENU_ROUTE,
-            { })
+            { navigateToHome() })
 
-    object Offers :
+    object Categories :
         BottomNavItem(
             "Categories",
             R.drawable.categories,
             CoctailDestinations.CATEGORY_ROUTE,
             { navigateToCategory(CategoriesSelection.ALCOHOLIC) })
 
-    object CardKSK :
+    object Cocktails :
         BottomNavItem(
             "Coctails",
             R.drawable.cocktail,
             CoctailDestinations.CATEGORY_ROUTE,
-            {  })
+            { })
 
-    object PercentageList :
+    object SortByDegree :
         BottomNavItem(
             "Degree",
             R.drawable.alcoholic_percentage,
             CoctailDestinations.MENU_ROUTE,
             { })
 
-    object More :
+    object Glasses :
         BottomNavItem(
             "Glasses",
             R.drawable.baseline_cup,
             CoctailDestinations.MENU_ROUTE,
-            {  })
+            { })
 }

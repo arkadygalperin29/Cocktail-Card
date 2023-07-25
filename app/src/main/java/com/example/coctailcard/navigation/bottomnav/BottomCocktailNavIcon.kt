@@ -18,8 +18,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.coctailcard.R
 import com.example.coctailcard.ui.theme.Black1
+import com.example.coctailcard.ui.theme.Blue1
+import com.example.coctailcard.ui.theme.Pink40
 import com.example.coctailcard.ui.theme.Yellow1
 
 @Composable
@@ -44,7 +45,7 @@ fun CocktailCenteredBottomButton(
                     shape = CircleShape,
                 ),
             colors = CardDefaults.cardColors(
-                containerColor = Yellow1,
+                containerColor = Color.White,
                 contentColor = Black1
             ),
             shape = CircleShape,
@@ -61,5 +62,5 @@ fun CocktailCenteredBottomButton(
 @Preview
 @Composable
 private fun PreviewComponent(){
-    CocktailCenteredBottomButton(item = BottomNavItem.CardKSK)
+    CocktailCenteredBottomButton(item = BottomNavItem.Cocktails)
 }

@@ -34,7 +34,7 @@ object CoctailDestinations {
 }
 
 @Composable
-fun rememberCoctailNavActions(navController: NavController) = remember(navController) {
+fun rememberCocktailNavActions(navController: NavController) = remember(navController) {
     CoctailNavActions(navController)
 }
 

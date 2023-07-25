@@ -17,16 +17,20 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.R
+import com.example.coctailcard.data.repositories.alcoholic.AlcoholicCocktailsRepository
+import com.example.coctailcard.data.repositories.nonalcoholic.NonAlcoholicCocktailsRepository
 import com.example.coctailcard.ui.components.CategoryTabs
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.theme.Grey1000
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CategoryScreen(
     modifier: Modifier = Modifier,
     navController: NavController = rememberNavController(),
+    viewModel: CategoryViewModel = koinViewModel()
 ) {
- //   val state by viewModel.state.collectAsState()
+    val state by viewModel.state.collectAsState()
     CoctailScaffold(
         modifier = modifier,
         navController = navController
@@ -53,17 +57,17 @@ fun CategoryScreen(
                 ),
                 selected = 1,
                 onItemSelected = {
- /*                   viewModel.updateState(
-                        state.copy(
-                            selectedButton = it
-                        )
-                    )*/
+                    /*                   viewModel.updateState(
+                                           state.copy(
+                                               selectedButton = it
+                                           )
+                                       )*/
                 }
             )
-/*            when (state.selectedButton) {
-                CategoriesSelection.ALCOHOLIC.ordinal -> {}
-                CategoriesSelection.NON_ALCOHOLIC.ordinal -> {}
-            }*/
+            /*            when (state.selectedButton) {
+                            CategoriesSelection.ALCOHOLIC.ordinal -> {}
+                            CategoriesSelection.NON_ALCOHOLIC.ordinal -> {}
+                        }*/
         }
     }
 }
@@ -72,5 +76,8 @@ fun CategoryScreen(
 @Composable
 @Preview
 fun CategoryScreenPreview() {
-    CategoryScreen()
+    CategoryScreen(
+        modifier = Modifier,
+        rememberNavController()
+    )
 }

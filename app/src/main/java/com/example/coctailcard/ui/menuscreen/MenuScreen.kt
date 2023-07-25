@@ -19,6 +19,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.theme.Pink40
 import com.example.coctailcard.util.paddingWithScroll
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable

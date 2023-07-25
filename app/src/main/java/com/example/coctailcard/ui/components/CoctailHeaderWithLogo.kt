@@ -21,7 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.coctailcard.R
-import com.example.coctailcard.navigation.rememberCoctailNavActions
+import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Grey00
 import com.example.coctailcard.ui.theme.Yellow1
@@ -32,7 +32,7 @@ fun CoctailHeaderWithLogo(
     navController: NavController,
     showFavoritesIcon: Boolean = true
 ) {
-    val actions = rememberCoctailNavActions(navController = navController)
+    val actions = rememberCocktailNavActions(navController = navController)
 
     Box(
         modifier = Modifier

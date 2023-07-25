@@ -24,10 +24,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.coctailcard.navigation.bottomnav.AppNavigationBarItem
 import com.example.coctailcard.navigation.bottomnav.BottomNavItem
 import com.example.coctailcard.navigation.bottomnav.CocktailCenteredBottomButton
-import com.example.coctailcard.navigation.rememberCoctailNavActions
+import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Grey400
-import com.example.coctailcard.ui.theme.Yellow1
 import com.example.coctailcard.util.customShadow
 
 @Composable
@@ -35,14 +34,14 @@ fun CoctailBottomNavigation(
     modifier: Modifier = Modifier,
     navController: NavController
 ) {
-    val actions = rememberCoctailNavActions(navController)
+    val actions = rememberCocktailNavActions(navController)
 
     val items = listOf(
         BottomNavItem.Start,
-        BottomNavItem.Offers,
-        BottomNavItem.CardKSK,
-        BottomNavItem.PercentageList,
-        BottomNavItem.More
+        BottomNavItem.Categories,
+        BottomNavItem.Cocktails,
+        BottomNavItem.SortByDegree,
+        BottomNavItem.Glasses
     )
     Box(
         modifier = modifier
@@ -91,10 +90,10 @@ fun CoctailBottomNavigation(
                         onClick = {
                             item.action(actions)
                         },
-                        selectedMarkerEnabled = item !is BottomNavItem.CardKSK,
+                        selectedMarkerEnabled = item !is BottomNavItem.Cocktails,
                         icon = {
                             when (item) {
-                                is BottomNavItem.CardKSK -> {
+                                is BottomNavItem.Cocktails -> {
                                     CocktailCenteredBottomButton(item = item)
                                 }
 
@@ -103,7 +102,7 @@ fun CoctailBottomNavigation(
                                         modifier = Modifier.padding(bottom = 6.dp),
                                         painter = painterResource(id = item.icon),
                                         contentDescription = item.title,
-                                        tint = if (currentRoute == item.screenRoute) Yellow1 else Grey400
+                                        tint = if (currentRoute == item.screenRoute) Color.White else Grey400
                                     )
                                 }
                             }

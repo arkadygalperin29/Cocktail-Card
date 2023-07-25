@@ -31,7 +31,7 @@ fun AppNavigationBarItem(
     label: String,
     selected: Boolean,
     selectedMarkerEnabled: Boolean = true,
-    selectedColor: Color = Yellow1
+    selectedColor: Color = Color.White
 ) {
     Column(
         modifier = modifier
@@ -42,7 +42,7 @@ fun AppNavigationBarItem(
             Spacer(
                 modifier = Modifier
                     .let {
-                        if (selected) it.background(Yellow1) else it.background(
+                        if (selected) it.background(Color.White) else it.background(
                             Color.Transparent
                         )
                     }
