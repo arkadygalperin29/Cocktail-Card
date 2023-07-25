@@ -42,10 +42,10 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
             GlassScreen()
         }
         composable(CoctailDestinations.CATEGORY_ROUTE) {
-            val viewModel: CategoryViewModel = koinViewModel()
+ //           val viewModel: CategoryViewModel = koinViewModel()
             CategoryScreen(
                 navController = navController,
-                viewModel = viewModel
+ //               viewModel = viewModel
             )
         }
     }

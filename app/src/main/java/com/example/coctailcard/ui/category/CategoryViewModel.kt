@@ -1,14 +1,18 @@
 package com.example.coctailcard.ui.category
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.coctailcard.data.network.RequestResult
 import com.example.coctailcard.data.network.models.AlcoholicCocktail
 import com.example.coctailcard.data.network.models.NonAlcoholicCocktail
 import com.example.coctailcard.data.repositories.alcoholic.AlcoholicCocktailsRepository
 import com.example.coctailcard.data.repositories.nonalcoholic.NonAlcoholicCocktailsRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 data class CategoryState(
     val selectedButton: Int = 0,
@@ -39,9 +43,21 @@ class CategoryViewModel(
         _state.update { state }
     }
 
+    init {
+        fetchBothRequests()
+    }
+
+    fun fetchBothRequests() {
+        viewModelScope.launch(Dispatchers.IO) {
+            fetchAlcoholicDrinks()
+            fetchNonAlcoholicDrinks()
+        }
+    }
+
 
 
     suspend fun fetchAlcoholicDrinks() {
+        Log.d("Response", "msg: ${_alcoholicDrinks.value.toString()}")
         when (val response = alcoholicCocktailsRepository.getAlcoholicCoctails()) {
             is RequestResult.Success -> {
                 runCatching {
@@ -64,7 +80,6 @@ class CategoryViewModel(
                     it.printStackTrace()
                 }
             }
-
             else -> {}
         }
     }
