@@ -47,7 +47,7 @@ class CategoryViewModel(
         fetchBothRequests()
     }
 
-    fun fetchBothRequests() {
+    private fun fetchBothRequests() {
         viewModelScope.launch(Dispatchers.IO) {
             fetchAlcoholicDrinks()
             fetchNonAlcoholicDrinks()

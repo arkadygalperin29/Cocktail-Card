@@ -9,7 +9,7 @@ sealed class AppHeaderType {
         val logoAlignment: Alignment.Horizontal = Alignment.CenterHorizontally
     ) : AppHeaderType()
 
-    data class WithLogoWithoutBell(
+    data class WithLogoWithoutFavorites(
         val logoAlignment: Alignment.Horizontal = Alignment.CenterHorizontally
     ) : AppHeaderType()
 

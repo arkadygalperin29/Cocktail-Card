@@ -5,12 +5,10 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -45,7 +43,7 @@ fun CoctailScaffold(
                         )
                     }
 
-                    is AppHeaderType.WithLogoWithoutBell -> {
+                    is AppHeaderType.WithLogoWithoutFavorites -> {
                         CoctailHeaderWithLogo(
                             logoAlignment = topBarType.logoAlignment,
                             navController = navController,

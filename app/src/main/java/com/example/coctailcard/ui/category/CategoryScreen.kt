@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.LayoutDirection
@@ -24,9 +22,9 @@ import com.example.coctailcard.ui.theme.Grey1000
 fun CategoryScreen(
     modifier: Modifier = Modifier,
     navController: NavController = rememberNavController(),
-    viewModel: CategoryViewModel
+    //   viewModel: CategoryViewModel
 ) {
-    val state by viewModel.state.collectAsState()
+    //   val state by viewModel.state.collectAsState()
     CoctailScaffold(
         modifier = modifier,
         navController = navController
@@ -53,19 +51,20 @@ fun CategoryScreen(
                 ),
                 selected = 1,
                 onItemSelected = {
-                    viewModel.updateState(
+/*                    viewModel.updateState(
                         state.copy(
                             selectedButton = it
                         )
                     )
+                }*/
                 }
             )
-            when (state.selectedButton) {
-                CategoriesSelection.ALCOHOLIC.ordinal -> {}
-                CategoriesSelection.NON_ALCOHOLIC.ordinal -> {
-                    NonAlcoholicListScreen(modifier = modifier)
-                }
-            }
+            /*            when (state.selectedButton) {
+                            CategoriesSelection.ALCOHOLIC.ordinal -> {}
+                            CategoriesSelection.NON_ALCOHOLIC.ordinal -> {
+                                NonAlcoholicListScreen(modifier = modifier)
+                            }
+                        }*/
         }
     }
 }
