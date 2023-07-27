@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,7 +28,7 @@ import com.example.coctailcard.R
 import com.example.coctailcard.navigation.CocktailNavActions
 import com.example.coctailcard.ui.components.CategoryTabs
 import com.example.coctailcard.ui.components.CoctailScaffold
-import com.example.coctailcard.ui.theme.Grey1000
+import com.example.coctailcard.ui.theme.Pink40
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -43,7 +44,7 @@ fun CategoryScreen(
     ) { paddingValues ->
         Column(
             modifier = Modifier
-                .background(Grey1000)
+                .background(Pink40)
                 .fillMaxSize()
                 .padding(
                     top = paddingValues.calculateTopPadding(),
@@ -105,7 +106,8 @@ fun NonAlcoholicListScreen(
     ) {
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(12.dp),
-            state = lazyColumnState
+            state = lazyColumnState,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             items(nonAlcoholicCocktails.value) { nonAlcoholicCocktail ->
                 NonAlcoholicDrink(
@@ -133,7 +135,7 @@ fun AlcoholicListScreen(
             .fillMaxSize()
     ) {
         LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(12.dp),
+            verticalArrangement = Arrangement.spacedBy(15.dp),
             state = lazyColumnState
         ) {
             items(alcoholicCocktails.value) { alcoholicCocktail ->

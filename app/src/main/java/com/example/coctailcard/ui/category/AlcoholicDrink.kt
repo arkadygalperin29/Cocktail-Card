@@ -34,7 +34,7 @@ fun AlcoholicDrink(
 ) {
     Column(
         modifier = Modifier
-            .size(150.dp)
+            .height(250.dp).fillMaxWidth(0.5f)
             .background(color = Blue1)
             .clickable {
                alcoholicCocktailClick()
@@ -57,7 +57,7 @@ fun AlcoholicDrink(
                 .background(color = Color.Black),
             model = alcoholicCocktail.image,
             contentDescription = "Cocktail detail card",
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Fit
         )
     }
 }
