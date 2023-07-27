@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import com.example.coctailcard.navigation.CoctailDestinations.ARG_ID
 import com.example.coctailcard.navigation.CoctailDestinations.ARG_PAGE
 import com.example.coctailcard.ui.category.CategoriesSelection
 import org.koin.core.component.KoinComponent
@@ -21,9 +22,7 @@ object CoctailDestinations {
     const val GLASS_ROUTE = "glass_route"
     const val ACCOUNT_DATA_ROUTE = "accountdata"
     const val ACCOUNT_PASSWORD_ROUTE = "accountpassword"
-    const val COUPON_ROUTE: CocktailRoute = "coupon/{id}"
-    const val PROMOTION_ROUTE: CocktailRoute = "promotion/{id}"
-    const val STATION_ROUTE: CocktailRoute = "station/{id}"
+    const val COCKTAIL_DETAIL_ROUTE: CocktailRoute = "lookup.php/{id}"
     const val NON_ALCOHOLIC_ROUTE = "non_alcoholic_route"
     const val ALCOHOLIC_ROUTE = "alcoholic_route"
     const val CATEGORY_ROUTE = "category_route"
@@ -34,6 +33,14 @@ object CoctailDestinations {
     const val ARG_ID = "id"
     const val ARG_PAGE = "page"
 }
+
+object CocktailAppDeeplinks {
+    const val COCKTAIL = "ekotank://ekotank?destination=coupons&destination_id={deeplink_id}"
+    const val ARG_ID = "deeplink_id"
+}
+
+val Bundle?.id get() = this?.getString(ARG_ID)
+fun CocktailRoute.withId(id: String): CocktailRoute = replace("{$ARG_ID}", id)
 val Bundle?.page get() = this?.getString(ARG_PAGE)?.toIntOrNull()
 fun CocktailRoute.withPage(page: Int): CocktailRoute = replace("{$ARG_PAGE}", page.toString())
 
@@ -76,6 +83,17 @@ class CocktailNavActions(private val navController: NavController) : KoinCompone
 
     val navigateToMenu: () -> Unit = {
         navController.navigate(CoctailDestinations.MENU_ROUTE) {
+            val primaryRoute: Int? = navController.currentBackStackEntry?.destination?.id
+            val fallbackRoute: Int = navController.graph.findStartDestination().id
+            popUpTo(primaryRoute ?: fallbackRoute) {
+                saveState = true
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
+    val navigateToCocktailDetails: (String) -> Unit = {
+        navController.navigate(CoctailDestinations.COCKTAIL_DETAIL_ROUTE.withId(it)) {
             val primaryRoute: Int? = navController.currentBackStackEntry?.destination?.id
             val fallbackRoute: Int = navController.graph.findStartDestination().id
             popUpTo(primaryRoute ?: fallbackRoute) {
