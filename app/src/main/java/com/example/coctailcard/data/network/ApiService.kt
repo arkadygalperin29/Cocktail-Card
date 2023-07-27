@@ -23,7 +23,7 @@ interface ApiService {
     @GET("filter.php?a=Non_Alcoholic")
     suspend fun getNonAlcoholicCocktails(): ApiResponse<List<NonAlcoholicCocktail>>
     @GET("lookup.php/{id}")
-    suspend fun getCocktailById(@Path("id") cocktailId: String): ApiResponse<Cocktail>
+    suspend fun getCocktailById(@Path("id") cocktailId: Int): ApiResponse<Cocktail>
     @GET("list.php?g=list")
     suspend fun getAllKindsOfGlasses(): ApiResponse<List<Glass>>
 

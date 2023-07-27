@@ -113,7 +113,7 @@ fun CocktailSingleCardPreview() {
     CocktailSingleCard(
         Cocktail(
             "1", "Daiquiry", "Alcoholic", "16%", "Margarita", "", "", "", "", "",
-            "", "", "", "", "", "", "", "", "", ""
-        ), {}
+            "", "", "", "", "", "", "", "", "", "",
+        ""), {}
     )
 }
