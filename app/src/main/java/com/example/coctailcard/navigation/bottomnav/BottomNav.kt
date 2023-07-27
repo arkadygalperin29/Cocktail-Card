@@ -2,14 +2,14 @@ package com.example.coctailcard.navigation.bottomnav
 
 import com.example.coctailcard.R
 import com.example.coctailcard.navigation.CoctailDestinations
-import com.example.coctailcard.navigation.CoctailNavActions
+import com.example.coctailcard.navigation.CocktailNavActions
 import com.example.coctailcard.ui.category.CategoriesSelection
 
 sealed class BottomNavItem(
     var title: String,
     var icon: Int,
     var screenRoute: String,
-    var action: CoctailNavActions.() -> Unit
+    var action: CocktailNavActions.() -> Unit
 ) {
 
 

@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.R
+import com.example.coctailcard.navigation.CocktailNavActions
 import com.example.coctailcard.ui.components.CategoryTabs
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.theme.Grey1000
@@ -74,5 +75,5 @@ fun NonAlcoholicListScreen(
     modifier: Modifier,
     navController: NavController = rememberNavController()
 ) {
-
+    val actions = CocktailNavActions(navController)
 }
