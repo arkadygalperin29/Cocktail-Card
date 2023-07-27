@@ -1,5 +1,6 @@
 package com.example.coctailcard.navigation
 
+import android.os.Bundle
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavController
@@ -33,7 +34,7 @@ object CoctailDestinations {
     const val ARG_ID = "id"
     const val ARG_PAGE = "page"
 }
-
+val Bundle?.page get() = this?.getString(ARG_PAGE)?.toIntOrNull()
 fun CocktailRoute.withPage(page: Int): CocktailRoute = replace("{$ARG_PAGE}", page.toString())
 
 @Composable

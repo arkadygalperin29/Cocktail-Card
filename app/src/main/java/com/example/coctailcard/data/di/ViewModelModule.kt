@@ -8,11 +8,5 @@ import org.koin.dsl.module
 
 fun KoinApplication.viewModelModule() = module {
 //    viewModel { MenuScreenViewModel(get()) }
-    viewModel { params ->
-        CategoryViewModel(
-            alcoholicCocktailsRepository = get(),
-            nonAlcoholicCocktailsRepository = get(),
-            page = params.get()
-        )
-    }
+    viewModel { CategoryViewModel(get(), get()) }
 }

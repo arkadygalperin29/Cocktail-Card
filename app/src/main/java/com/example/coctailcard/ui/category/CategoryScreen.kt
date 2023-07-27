@@ -1,14 +1,24 @@
 package com.example.coctailcard.ui.category
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -18,14 +28,15 @@ import com.example.coctailcard.navigation.CocktailNavActions
 import com.example.coctailcard.ui.components.CategoryTabs
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.theme.Grey1000
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CategoryScreen(
     modifier: Modifier = Modifier,
     navController: NavController = rememberNavController(),
-    //   viewModel: CategoryViewModel
+    viewModel: CategoryViewModel = koinViewModel()
 ) {
-    //   val state by viewModel.state.collectAsState()
+    val state by viewModel.state.collectAsState()
     CoctailScaffold(
         modifier = modifier,
         navController = navController
@@ -50,30 +61,94 @@ fun CategoryScreen(
                     stringResource(id = R.string.alcoholic),
                     stringResource(id = R.string.nonalcoholic)
                 ),
-                selected = 1,
+                selected = state.selectedButton,
                 onItemSelected = {
-/*                    viewModel.updateState(
+                    viewModel.updateState(
                         state.copy(
                             selectedButton = it
                         )
                     )
-                }*/
                 }
             )
-            /*            when (state.selectedButton) {
-                            CategoriesSelection.ALCOHOLIC.ordinal -> {}
-                            CategoriesSelection.NON_ALCOHOLIC.ordinal -> {
-                                NonAlcoholicListScreen(modifier = modifier)
-                            }
-                        }*/
+            when (state.selectedButton) {
+                CategoriesSelection.ALCOHOLIC.ordinal -> {
+                    AlcoholicListScreen(
+                        navController = navController,
+                        paddingValues = paddingValues
+                    )
+                }
+
+                CategoriesSelection.NON_ALCOHOLIC.ordinal -> {
+                    NonAlcoholicListScreen(
+                        navController = navController,
+                        paddingValues = paddingValues
+                    )
+                }
+            }
         }
     }
 }
 
 @Composable
 fun NonAlcoholicListScreen(
-    modifier: Modifier,
-    navController: NavController = rememberNavController()
+    viewModel: CategoryViewModel = koinViewModel(),
+    navController: NavController,
+    paddingValues: PaddingValues = PaddingValues()
 ) {
     val actions = CocktailNavActions(navController)
+    val nonAlcoholicCocktails = viewModel.nonAlcoholicCocktails.collectAsState()
+    val lazyColumnState = rememberLazyListState()
+    Column(
+        modifier = Modifier
+            .padding(top = 16.dp, start = 16.dp, end = 16.dp)
+            .fillMaxSize()
+    ) {
+        LazyColumn(
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+            state = lazyColumnState
+        ) {
+            items(nonAlcoholicCocktails.value) { nonAlcoholicCocktail ->
+                NonAlcoholicDrink(
+                    nonAlcoholicCocktail = nonAlcoholicCocktail,
+                    nonAlcoholicCocktailClick = { }
+                )
+            }
+            item { Spacer(modifier = Modifier.height(paddingValues.calculateBottomPadding())) }
+        }
+    }
+}
+
+@Composable
+fun AlcoholicListScreen(
+    viewModel: CategoryViewModel = koinViewModel(),
+    navController: NavController,
+    paddingValues: PaddingValues = PaddingValues()
+) {
+    val actions = CocktailNavActions(navController)
+    val alcoholicCocktails = viewModel.alcoholicCocktails.collectAsState()
+    val lazyColumnState = rememberLazyListState()
+    Column(
+        modifier = Modifier
+            .padding(top = 16.dp, start = 16.dp, end = 16.dp)
+            .fillMaxSize()
+    ) {
+        LazyColumn(
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+            state = lazyColumnState
+        ) {
+            items(alcoholicCocktails.value) { alcoholicCocktail ->
+                AlcoholicDrink(
+                    alcoholicCocktail = alcoholicCocktail,
+                    alcoholicCocktailClick = { }
+                )
+            }
+            item { Spacer(modifier = Modifier.height(paddingValues.calculateBottomPadding())) }
+        }
+    }
+}
+
+@Preview
+@Composable
+fun AlcoholicListScreenPreview() {
+    AlcoholicListScreen(navController = rememberNavController())
 }

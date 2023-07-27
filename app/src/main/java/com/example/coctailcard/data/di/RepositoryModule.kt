@@ -11,7 +11,7 @@ import org.koin.dsl.module
 
 
 fun KoinApplication.repositoryModule() = module {
-    single<GetCocktailsRepository> { GetCocktailsRepositoryImpl(get()) }
-    single<AlcoholicCocktailsRepository> { AlcoholicCocktailsRepositoryImpl(get()) }
-    single<NonAlcoholicCocktailsRepository> { NonAlcoholicCocktailsRepositoryImpl(get()) }
+    factory<GetCocktailsRepository> { GetCocktailsRepositoryImpl(get()) }
+    factory<AlcoholicCocktailsRepository> { AlcoholicCocktailsRepositoryImpl(get()) }
+    factory<NonAlcoholicCocktailsRepository> { NonAlcoholicCocktailsRepositoryImpl(get()) }
 }

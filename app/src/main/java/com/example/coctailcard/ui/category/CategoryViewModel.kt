@@ -22,13 +22,11 @@ data class CategoryState(
 class CategoryViewModel(
     private val alcoholicCocktailsRepository: AlcoholicCocktailsRepository,
     private val nonAlcoholicCocktailsRepository: NonAlcoholicCocktailsRepository,
-    private val page: Int
-) :
-    ViewModel() {
+) : ViewModel() {
 
     private val _state = MutableStateFlow(
         CategoryState(
-            selectedButton = page
+            selectedButton = 1
         )
     )
     val state = _state.asStateFlow()
