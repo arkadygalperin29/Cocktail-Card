@@ -11,24 +11,24 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class MenuScreenViewModel(
-
+    private val getCocktailsRepository: GetCocktailsRepository
 ) : ViewModel() {
 
 
     private val _cocktails = MutableStateFlow<List<Cocktail>>(emptyList())
     val cocktails = _cocktails.asStateFlow()
 
-/*    init {
+    init {
         viewModelScope.launch {
             fetchCocktails()
         }
-    }*/
-/*
+    }
+
     suspend fun fetchCocktails() {
         when (val result = getCocktailsRepository.getCocktailsByFirstLetter()) {
             is RequestResult.Success -> {
                 runCatching {
-                    _cocktails.emit(result.data)
+                    _cocktails.value = result.data
                     Log.d("CocktailReq", "${result.data}")
                 }.onFailure {
                     it.printStackTrace()
@@ -37,6 +37,5 @@ class MenuScreenViewModel(
             else -> {
             }
         }
-    }*/
-
+    }
 }

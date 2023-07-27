@@ -73,4 +73,16 @@ class CocktailNavActions(private val navController: NavController) : KoinCompone
             //           restoreState = true
         }
     }
+
+    val navigateToMenu: () -> Unit = {
+        navController.navigate(CoctailDestinations.MENU_ROUTE) {
+            val primaryRoute: Int? = navController.currentBackStackEntry?.destination?.id
+            val fallbackRoute: Int = navController.graph.findStartDestination().id
+            popUpTo(primaryRoute ?: fallbackRoute) {
+                saveState = true
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
 }

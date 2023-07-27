@@ -21,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.coctailcard.data.network.models.Cocktail
+import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Blue1
 import com.example.coctailcard.ui.theme.Grey100
 import com.example.coctailcard.ui.theme.Pink40
@@ -35,7 +36,7 @@ fun CocktailSingleCard(
         modifier = Modifier
             .fillMaxWidth()
             .height(150.dp)
-            .background(color = Blue1)
+            .border(2.dp, Black1, RoundedCornerShape(16.dp))
             .clickable {
                 onCocktailClicked(cocktail.id.toString())
             }
@@ -43,65 +44,65 @@ fun CocktailSingleCard(
         AsyncImage(
             modifier = Modifier
                 .fillMaxHeight()
-                .fillMaxWidth(0.4f)
+                .fillMaxWidth(0.45f)
                 .background(color = Color.Black)
                 .align(Alignment.BottomStart),
             model = cocktail.drinkImage,
             contentDescription = "Cocktail detail card",
             contentScale = ContentScale.Crop
         )
-    }
-    Column(
-        modifier = Modifier
-            .padding(start = 160.dp)
-            .border(2.dp, Pink40, RoundedCornerShape(8.dp))
-    ) {
-        if (!cocktail.name.isNullOrEmpty()) {
-            Text(
-                text = cocktail.name,
-                modifier = Modifier
-                    .fillMaxWidth(0.5f)
-                    .padding(start = 16.dp, top = 16.dp),
-                maxLines = 4,
-                overflow = TextOverflow.Ellipsis,
-                style = Text12,
-                color = Grey100
-            )
-        }
-        if (!cocktail.category.isNullOrEmpty()) {
-            Text(
-                text = cocktail.category,
-                modifier = Modifier
-                    .fillMaxWidth(0.5f)
-                    .padding(start = 16.dp, top = 16.dp),
-                maxLines = 4,
-                overflow = TextOverflow.Ellipsis,
-                style = Text12,
-                color = Grey100
-            )
-        }
-        if (!cocktail.alcoholic.isNullOrEmpty()) {
-            Text(
-                text = cocktail.alcoholic,
-                modifier = Modifier
-                    .fillMaxWidth(0.5f)
-                    .padding(start = 16.dp, top = 16.dp),
-                maxLines = 4,
-                overflow = TextOverflow.Ellipsis,
-                style = Text12,
-                color = Grey100
-            )
-        }
-        if (!cocktail.glass.isNullOrEmpty()) {
-            Text(
-                text = cocktail.glass,
-                modifier = Modifier.fillMaxWidth(0.5f)
-                    .padding(start = 16.dp, top = 16.dp),
-                maxLines = 4,
-                overflow = TextOverflow.Ellipsis,
-                style = Text12,
-                color = Grey100
-            )
+        Column(
+            modifier = Modifier
+                .padding()
+                .align(Alignment.TopEnd)
+        ) {
+            if (!cocktail.name.isNullOrEmpty()) {
+                Text(
+                    text = cocktail.name,
+                    modifier = Modifier
+                        .fillMaxWidth(0.5f)
+                        .padding(top = 16.dp),
+                    maxLines = 4,
+                    overflow = TextOverflow.Ellipsis,
+                    style = Text12,
+                    color = Grey100
+                )
+            }
+            if (!cocktail.category.isNullOrEmpty()) {
+                Text(
+                    text = cocktail.category,
+                    modifier = Modifier
+                        .fillMaxWidth(0.5f)
+                        .padding(top = 16.dp),
+                    maxLines = 4,
+                    overflow = TextOverflow.Ellipsis,
+                    style = Text12,
+                    color = Grey100
+                )
+            }
+            if (!cocktail.alcoholic.isNullOrEmpty()) {
+                Text(
+                    text = cocktail.alcoholic,
+                    modifier = Modifier
+                        .fillMaxWidth(0.5f)
+                        .padding(top = 16.dp),
+                    maxLines = 4,
+                    overflow = TextOverflow.Ellipsis,
+                    style = Text12,
+                    color = Grey100
+                )
+            }
+            if (!cocktail.glass.isNullOrEmpty()) {
+                Text(
+                    text = cocktail.glass,
+                    modifier = Modifier.fillMaxWidth(0.5f)
+                        .padding(top = 16.dp),
+                    maxLines = 4,
+                    overflow = TextOverflow.Ellipsis,
+                    style = Text12,
+                    color = Grey100
+                )
+            }
         }
     }
 }

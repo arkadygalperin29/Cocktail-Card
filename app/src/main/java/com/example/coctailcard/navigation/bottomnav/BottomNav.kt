@@ -18,7 +18,7 @@ sealed class BottomNavItem(
             "Start",
             R.drawable.baseline_home_24,
             CoctailDestinations.MENU_ROUTE,
-            { navigateToHome() })
+            { navigateToMenu() })
 
     object Categories :
         BottomNavItem(
