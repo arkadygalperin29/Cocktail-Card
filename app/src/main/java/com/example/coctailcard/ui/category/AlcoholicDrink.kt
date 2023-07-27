@@ -1,6 +1,7 @@
 package com.example.coctailcard.ui.category
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.coctailcard.data.network.models.AlcoholicCocktail
 import com.example.coctailcard.data.network.models.NonAlcoholicCocktail
+import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Blue1
 import com.example.coctailcard.ui.theme.Grey100
 import com.example.coctailcard.ui.theme.Text12
@@ -35,7 +38,7 @@ fun AlcoholicDrink(
     Column(
         modifier = Modifier
             .height(250.dp).fillMaxWidth(0.5f)
-            .background(color = Blue1)
+            .border(2.dp, Black1, RoundedCornerShape(16.dp))
             .clickable {
                alcoholicCocktailClick()
             }
@@ -57,7 +60,7 @@ fun AlcoholicDrink(
                 .background(color = Color.Black),
             model = alcoholicCocktail.image,
             contentDescription = "Cocktail detail card",
-            contentScale = ContentScale.Fit
+            contentScale = ContentScale.Crop
         )
     }
 }

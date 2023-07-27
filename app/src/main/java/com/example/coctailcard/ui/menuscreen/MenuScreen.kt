@@ -27,7 +27,6 @@ import com.example.coctailcard.ui.theme.Pink40
 import com.example.coctailcard.util.paddingWithScroll
 import org.koin.androidx.compose.koinViewModel
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun MenuScreen(
     modifier: Modifier = Modifier,
@@ -35,9 +34,7 @@ fun MenuScreen(
     viewModel: MenuScreenViewModel = koinViewModel()
 ) {
     val cocktails = viewModel.cocktails.collectAsState()
-    val scrollState = rememberScrollState()
     val lazyGridState = rememberLazyGridState()
-    val keyboardController = LocalSoftwareKeyboardController.current
     CoctailScaffold(
         modifier = modifier,
         navController = navController,
