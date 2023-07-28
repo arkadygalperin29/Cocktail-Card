@@ -112,10 +112,9 @@ fun NonAlcoholicListScreen(
             items(nonAlcoholicCocktails.value) { nonAlcoholicCocktail ->
                 NonAlcoholicDrink(
                     nonAlcoholicCocktail = nonAlcoholicCocktail,
-                    nonAlcoholicCocktailClick = { }
+                    nonAlcoholicCocktailClick = { /*actions.navigateToCocktailDetails(it)*/ }
                 )
             }
-            item { Spacer(modifier = Modifier.height(paddingValues.calculateBottomPadding())) }
         }
     }
 }
@@ -141,7 +140,7 @@ fun AlcoholicListScreen(
             items(alcoholicCocktails.value) { alcoholicCocktail ->
                 AlcoholicDrink(
                     alcoholicCocktail = alcoholicCocktail,
-                    alcoholicCocktailClick = { }
+                    alcoholicCocktailClick = { /*actions.navigateToCocktailDetails(it)*/ }
                 )
             }
             item { Spacer(modifier = Modifier.height(paddingValues.calculateBottomPadding())) }

@@ -35,8 +35,8 @@ object CoctailDestinations {
 }
 
 object CocktailAppDeeplinks {
-    const val COCKTAIL = "ekotank://ekotank?destination=coupons&destination_id={deeplink_id}"
-    const val ARG_ID = "deeplink_id"
+    const val COCKTAIL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php/{id}"
+    const val ARG_ID = "id"
 }
 
 val Bundle?.id get() = this?.getString(ARG_ID)

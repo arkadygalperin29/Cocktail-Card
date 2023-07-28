@@ -29,7 +29,7 @@ import com.example.coctailcard.ui.theme.Text12
 @Composable
 fun NonAlcoholicDrink(
     nonAlcoholicCocktail: NonAlcoholicCocktail,
-    nonAlcoholicCocktailClick: () -> Unit
+    nonAlcoholicCocktailClick: (String) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -37,7 +37,7 @@ fun NonAlcoholicDrink(
             .fillMaxWidth(0.5f)
             .border(2.dp, Black1, RoundedCornerShape(16.dp))
             .clickable {
-                nonAlcoholicCocktailClick()
+                nonAlcoholicCocktailClick(nonAlcoholicCocktail.id)
             }
     ) {
         Text(

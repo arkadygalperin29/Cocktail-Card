@@ -76,11 +76,8 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
         }
         composable(
             route = CoctailDestinations.ALCOHOLIC_ROUTE,
-            deepLinks = listOf(
-                navDeepLink { uriPattern = CocktailAppDeeplinks.COCKTAIL }
-            )
         ) {
-            val id = it.arguments.id ?: it.arguments.idFromDeeplink
+            val id = it.arguments.id
             val viewModel: CocktailDetailViewModel = koinViewModel()
             PromotionDetailScreen(
                 navController = navController,
@@ -94,7 +91,7 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
                 navDeepLink { uriPattern = CocktailAppDeeplinks.COCKTAIL }
             )
         ) {
-            val id = it.arguments.id ?: it.arguments.idFromDeeplink
+            val id = it.arguments.id
             val viewModel: CocktailDetailViewModel = koinViewModel()
             PromotionDetailScreen(
                 navController = navController,
