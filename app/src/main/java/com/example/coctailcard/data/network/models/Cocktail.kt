@@ -2,47 +2,47 @@ package com.example.coctailcard.data.network.models
 
 import com.google.gson.annotations.SerializedName
 
-data class Cocktail(
+open class Cocktail(
     @SerializedName("idDrink")
-    val id: String,
+    var id: String? = null,
     @SerializedName("strDrink")
-    val name: String?,
+    var name: String? = null,
     @SerializedName("strCategory")
-    val category: String?,
+    var category: String? = null,
     @SerializedName("strAlcoholic")
-    val alcoholic: String?,
+    var alcoholic: String? = null,
     @SerializedName("strGlass")
-    val glass: String?,
+    var glass: String? = null,
     @SerializedName("strInstructions")
-    val instructions: String?,
+    var instructions: String? = null,
     @SerializedName("strDrinkThumb")
-    val drinkImage: String?,
+    var drinkImage: String? = null,
     @SerializedName("strIngredient1")
-    val strIngredient1: String?,
+    var strIngredient1: String? = null,
     @SerializedName("strIngredient2")
-    val strIngredient2: String?,
+    var strIngredient2: String? = null,
     @SerializedName("strIngredient3")
-    val strIngredient3: String?,
+    var strIngredient3: String? = null,
     @SerializedName("strIngredient4")
-    val strIngredient4: String?,
+    var strIngredient4: String? = null,
     @SerializedName("strIngredient5")
-    val strIngredient5: String?,
+    var strIngredient5: String? = null,
     @SerializedName("strIngredient6")
-    val strIngredient6: String?,
+    var strIngredient6: String? = null,
     @SerializedName("strIngredient7")
-    val strIngredient7: String?,
+    var strIngredient7: String? = null,
     @SerializedName("strIngredient8")
-    val strIngredient8: String?,
+    var strIngredient8: String? = null,
     @SerializedName("strIngredient9")
-    val strIngredient9: String?,
+    var strIngredient9: String? = null,
     @SerializedName("strIngredient10")
-    val strIngredient10: String?,
+    var strIngredient10: String? = null,
     @SerializedName("strIngredient11")
-    val strIngredient11: String?,
+    var strIngredient11: String? = null,
     @SerializedName("strIngredient12")
-    val strIngredient12: String?,
+    var strIngredient12: String? = null,
     @SerializedName("strIngredient13")
-    val strIngredient13: String?,
+    var strIngredient13: String? = null,
     @SerializedName("strIngredient14")
-    val strIngredient14: String?
+    var strIngredient14: String? = null
 )

@@ -33,7 +33,6 @@ import com.example.coctailcard.ui.theme.RedClean
 import com.example.coctailcard.ui.theme.Text14
 import com.example.coctailcard.util.UiEvent
 import com.example.coctailcard.util.paddingWithScroll
-import kotlinx.coroutines.delay
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -48,16 +47,16 @@ fun CocktailDetailScreen(
     val cocktail = viewModel.cocktail.collectAsState()
     val scrollState = rememberScrollState()
 
-/*    LaunchedEffect(true) {
+    LaunchedEffect(true) {
         viewModel.uiEvent.collect { event ->
             when (event) {
                 is UiEvent.NavigateTo -> event.navAction(actions)
                 else -> {}
             }
         }
-    }*/
+    }
     LaunchedEffect(key1 = true) {
-        viewModel.getCocktailById(id.toInt())
+        viewModel.getCocktailById(id)
     }
     CoctailScaffold(
         modifier = modifier,
@@ -82,15 +81,13 @@ fun CocktailDetailScreen(
 fun CocktailDetail(
     cocktail: Cocktail
 ) {
-
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Pink40)
+            .background(color = Color.Black)
     ) {
         Box(
-            Modifier
-                .fillMaxWidth()
+            modifier = Modifier.fillMaxWidth()
                 .padding(top = 8.dp, start = 16.dp, end = 16.dp, bottom = 16.dp)
                 .background(color = Pink40)
         ) {
@@ -100,223 +97,242 @@ fun CocktailDetail(
                     .height(180.dp)
                     .clip(shape = RoundedCornerShape(16.dp))
                     .background(color = Color.Black),
-                model = cocktail.drinkImage ?: "",
+                model = cocktail.drinkImage,
                 contentDescription = null,
                 contentScale = ContentScale.Crop
             )
         }
         if (!cocktail.name.isNullOrEmpty()) {
-            Text(
-                text = cocktail.name,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp),
-                style = Header1,
-                color = Grey50
-            )
+            cocktail.name?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp),
+                    style = Header1,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.alcoholic.isNullOrEmpty()) {
-            Text(
-                text = cocktail.alcoholic,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.alcoholic?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.category.isNullOrEmpty()) {
-            Text(
-                text = cocktail.category,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = RedClean
-            )
-        }
-        if (!cocktail.name.isNullOrEmpty()) {
-            Text(
-                text = cocktail.name,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.category?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = RedClean
+                )
+            }
         }
         if (!cocktail.glass.isNullOrEmpty()) {
-            Text(
-                text = cocktail.glass,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.glass?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.instructions.isNullOrEmpty()) {
-            Text(
-                text = cocktail.instructions,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
-        }
-        if (!cocktail.instructions.isNullOrEmpty()) {
-            Text(
-                text = cocktail.instructions,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.instructions?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.strIngredient1.isNullOrEmpty()) {
-            Text(
-                text = cocktail.strIngredient1,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.strIngredient1?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.strIngredient2.isNullOrEmpty()) {
-            Text(
-                text = cocktail.strIngredient2,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.strIngredient2?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.strIngredient3.isNullOrEmpty()) {
-            Text(
-                text = cocktail.strIngredient3,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.strIngredient3?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.strIngredient4.isNullOrEmpty()) {
-            Text(
-                text = cocktail.strIngredient4,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.strIngredient4?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.strIngredient5.isNullOrEmpty()) {
-            Text(
-                text = cocktail.strIngredient5,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.strIngredient5?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.strIngredient6.isNullOrEmpty()) {
-            Text(
-                text = cocktail.strIngredient6,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.strIngredient6?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.strIngredient7.isNullOrEmpty()) {
-            Text(
-                text = cocktail.strIngredient7,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.strIngredient7?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.strIngredient8.isNullOrEmpty()) {
-            Text(
-                text = cocktail.strIngredient8,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.strIngredient8?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.strIngredient9.isNullOrEmpty()) {
-            Text(
-                text = cocktail.strIngredient9,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.strIngredient9?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.strIngredient10.isNullOrEmpty()) {
-            Text(
-                text = cocktail.strIngredient10,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.strIngredient10?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.strIngredient11.isNullOrEmpty()) {
-            Text(
-                text = cocktail.strIngredient11,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.strIngredient11?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.strIngredient12.isNullOrEmpty()) {
-            Text(
-                text = cocktail.strIngredient12,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.strIngredient12?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.strIngredient13.isNullOrEmpty()) {
-            Text(
-                text = cocktail.strIngredient13,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.strIngredient13?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
         if (!cocktail.strIngredient14.isNullOrEmpty()) {
-            Text(
-                text = cocktail.strIngredient14,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                style = Text14,
-                color = Grey50
-            )
+            cocktail.strIngredient14?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
         }
     }
 }
+
 
 @Preview
 @Composable
@@ -346,4 +362,10 @@ fun PromotionDetailPreview() {
             strIngredient14 = null
         )
     )
+}
+
+@Preview
+@Composable
+fun CocktailDetailScreenPreview() {
+    CocktailDetailScreen(id = "17222")
 }

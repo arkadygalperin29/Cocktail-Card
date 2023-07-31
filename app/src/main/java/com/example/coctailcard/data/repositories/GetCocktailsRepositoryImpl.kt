@@ -17,9 +17,9 @@ class GetCocktailsRepositoryImpl(
         )
     }
 
-    override suspend fun getCocktailById(id: Int): RequestResult<Cocktail> {
+    override suspend fun getCocktailById(id: String): RequestResult<Cocktail> {
         return runCatching {
-            apiService.getCocktailById(id).data
+            apiService.getCocktailById(cocktailId = id).data
                 ?: throw IllegalStateException("Can't download the cocktail by id")
         }.fold(
             onSuccess = { RequestResult.Success(it) },

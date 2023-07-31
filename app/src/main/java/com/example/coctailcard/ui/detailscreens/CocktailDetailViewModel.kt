@@ -1,5 +1,6 @@
 package com.example.coctailcard.ui.detailscreens
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coctailcard.data.network.RequestResult
@@ -24,7 +25,7 @@ class CocktailDetailViewModel(
     private var _cocktail = MutableStateFlow<Cocktail?>(null)
     val cocktail = _cocktail.asStateFlow()
 
-    fun getCocktailById(id: Int) {
+    fun getCocktailById(id: String) {
         viewModelScope.launch(Dispatchers.IO) {
             when (val response = getCocktailsRepository.getCocktailById(id)) {
                 is RequestResult.Success -> {
@@ -34,9 +35,8 @@ class CocktailDetailViewModel(
                         it.printStackTrace()
                     }
                 }
-
                 else -> {
-                    sendUiEvent(UiEvent.NavigateTo { navigateToCategory(CategoriesSelection.NON_ALCOHOLIC) })
+        //           sendUiEvent(UiEvent.NavigateTo { navigateToCategory(CategoriesSelection.NON_ALCOHOLIC) })
                 }
             }
         }
