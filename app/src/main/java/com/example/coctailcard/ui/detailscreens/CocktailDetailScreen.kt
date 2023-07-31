@@ -37,7 +37,7 @@ import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun PromotionDetailScreen(
+fun CocktailDetailScreen(
     modifier: Modifier = Modifier,
     navController: NavController = rememberNavController(),
     id: String,

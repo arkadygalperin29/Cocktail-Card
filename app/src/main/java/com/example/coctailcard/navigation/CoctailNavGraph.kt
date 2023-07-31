@@ -1,28 +1,22 @@
 package com.example.coctailcard.navigation
 
-import android.os.Bundle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.core.text.isDigitsOnly
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navDeepLink
 import androidx.navigation.navigation
 import com.example.coctailcard.ui.category.CategoryScreen
 import com.example.coctailcard.ui.category.CategoryViewModel
+import com.example.coctailcard.ui.detailscreens.CocktailDetailScreen
 import com.example.coctailcard.ui.detailscreens.CocktailDetailViewModel
-import com.example.coctailcard.ui.detailscreens.PromotionDetailScreen
 import com.example.coctailcard.ui.glassscreen.GlassScreen
 import com.example.coctailcard.ui.menuscreen.MenuScreen
 import com.example.coctailcard.ui.menuscreen.MenuScreenViewModel
 import org.koin.androidx.compose.koinViewModel
 
-val Bundle?.idFromDeeplink
-    get() = this?.getString(CocktailAppDeeplinks.ARG_ID)
-        .takeIf { it?.isNotBlank() ?: false && it?.isDigitsOnly() ?: false }
 
 @Composable
 fun CoctailNavGraph(
@@ -75,28 +69,34 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
             )
         }
         composable(
-            route = CoctailDestinations.ALCOHOLIC_ROUTE,
+            route = CoctailDestinations.ALCOHOLIC_ROUTE
         ) {
             val id = it.arguments.id
             val viewModel: CocktailDetailViewModel = koinViewModel()
-            PromotionDetailScreen(
+            CocktailDetailScreen(
                 navController = navController,
                 viewModel = viewModel,
                 id = id ?: "-1"
             )
         }
         composable(
-            route = CoctailDestinations.NON_ALCOHOLIC_ROUTE,
-            deepLinks = listOf(
-                navDeepLink { uriPattern = CocktailAppDeeplinks.COCKTAIL }
-            )
+            route = CoctailDestinations.NON_ALCOHOLIC_ROUTE
         ) {
             val id = it.arguments.id
             val viewModel: CocktailDetailViewModel = koinViewModel()
-            PromotionDetailScreen(
+            CocktailDetailScreen(
                 navController = navController,
                 viewModel = viewModel,
                 id = id ?: "-1"
+            )
+        }
+        composable(CoctailDestinations.COCKTAIL_DETAIL_ROUTE) {
+            val id = it.arguments.id ?: "-1"
+            val viewModel: CocktailDetailViewModel = koinViewModel()
+            CocktailDetailScreen(
+                navController = navController,
+                viewModel = viewModel,
+                id = id,
             )
         }
     }

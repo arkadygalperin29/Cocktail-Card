@@ -18,7 +18,6 @@ object CoctailDestinations {
     const val MAIN_GRAPH = "main_grabg"
 
     const val MENU_ROUTE = "home"
-    const val OFFERS_ROUTE: CocktailRoute = "offers/{page}"
     const val GLASS_ROUTE = "glass_route"
     const val ACCOUNT_DATA_ROUTE = "accountdata"
     const val ACCOUNT_PASSWORD_ROUTE = "accountpassword"
@@ -34,10 +33,6 @@ object CoctailDestinations {
     const val ARG_PAGE = "page"
 }
 
-object CocktailAppDeeplinks {
-    const val COCKTAIL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php/{id}"
-    const val ARG_ID = "id"
-}
 
 val Bundle?.id get() = this?.getString(ARG_ID)
 fun CocktailRoute.withId(id: String): CocktailRoute = replace("{$ARG_ID}", id)
