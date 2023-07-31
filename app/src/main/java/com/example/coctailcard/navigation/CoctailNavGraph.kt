@@ -68,7 +68,7 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
                 viewModel = viewModel
             )
         }
-        composable(
+/*        composable(
             route = CoctailDestinations.ALCOHOLIC_ROUTE
         ) {
             val id = it.arguments.id
@@ -78,8 +78,8 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
                 viewModel = viewModel,
                 id = id ?: "-1"
             )
-        }
-        composable(
+        }*/
+/*        composable(
             route = CoctailDestinations.NON_ALCOHOLIC_ROUTE
         ) {
             val id = it.arguments.id
@@ -89,7 +89,7 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
                 viewModel = viewModel,
                 id = id ?: "-1"
             )
-        }
+        }*/
         composable(CoctailDestinations.COCKTAIL_DETAIL_ROUTE) {
             val id = it.arguments.id ?: "-1"
             val viewModel: CocktailDetailViewModel = koinViewModel()

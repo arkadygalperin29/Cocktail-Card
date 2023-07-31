@@ -33,6 +33,7 @@ import com.example.coctailcard.ui.theme.RedClean
 import com.example.coctailcard.ui.theme.Text14
 import com.example.coctailcard.util.UiEvent
 import com.example.coctailcard.util.paddingWithScroll
+import kotlinx.coroutines.delay
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -47,14 +48,14 @@ fun CocktailDetailScreen(
     val cocktail = viewModel.cocktail.collectAsState()
     val scrollState = rememberScrollState()
 
-    LaunchedEffect(true) {
+/*    LaunchedEffect(true) {
         viewModel.uiEvent.collect { event ->
             when (event) {
                 is UiEvent.NavigateTo -> event.navAction(actions)
                 else -> {}
             }
         }
-    }
+    }*/
     LaunchedEffect(key1 = true) {
         viewModel.getCocktailById(id.toInt())
     }

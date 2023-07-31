@@ -19,18 +19,19 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.example.coctailcard.data.network.models.Cocktail
+import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.theme.Black1
-import com.example.coctailcard.ui.theme.Blue1
 import com.example.coctailcard.ui.theme.Grey100
-import com.example.coctailcard.ui.theme.Pink40
 import com.example.coctailcard.ui.theme.Text12
 
 @Composable
 fun CocktailSingleCard(
     cocktail: Cocktail,
-    onCocktailClicked: (String) -> Unit
+    onCocktailClicked: (String) -> Unit,
 ) {
     Box(
         modifier = Modifier
@@ -38,7 +39,7 @@ fun CocktailSingleCard(
             .height(150.dp)
             .border(2.dp, Black1, RoundedCornerShape(16.dp))
             .clickable {
-                onCocktailClicked(cocktail.id.toString())
+                onCocktailClicked(cocktail.id)
             }
     ) {
         AsyncImage(
@@ -95,7 +96,8 @@ fun CocktailSingleCard(
             if (!cocktail.glass.isNullOrEmpty()) {
                 Text(
                     text = cocktail.glass,
-                    modifier = Modifier.fillMaxWidth(0.5f)
+                    modifier = Modifier
+                        .fillMaxWidth(0.5f)
                         .padding(top = 16.dp),
                     maxLines = 4,
                     overflow = TextOverflow.Ellipsis,
@@ -114,6 +116,7 @@ fun CocktailSingleCardPreview() {
         Cocktail(
             "1", "Daiquiry", "Alcoholic", "16%", "Margarita", "", "", "", "", "",
             "", "", "", "", "", "", "", "", "", "",
-        ""), {}
+            ""
+        ), {}
     )
 }

@@ -52,7 +52,7 @@ class CocktailNavActions(private val navController: NavController) : KoinCompone
             saveState = true,
         )
     }
-    val navigateToInbox: () -> Unit = {
+    val navigateToGlasses: () -> Unit = {
         navController.navigate(CoctailDestinations.GLASS_ROUTE) {
             val primaryRoute: Int? = navController.currentBackStackEntry?.destination?.id
             val fallbackRoute: Int = navController.graph.findStartDestination().id
