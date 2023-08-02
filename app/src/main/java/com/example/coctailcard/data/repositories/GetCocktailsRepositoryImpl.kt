@@ -7,9 +7,9 @@ import com.example.coctailcard.data.network.models.Cocktail
 class GetCocktailsRepositoryImpl(
     private val apiService: ApiService
 ) : GetCocktailsRepository {
-    override suspend fun getCocktailsByFirstLetter(): RequestResult<List<Cocktail>> {
+    override suspend fun getCocktailsByFirstLetter(letterSearch: String): RequestResult<List<Cocktail>> {
         return runCatching {
-            apiService.getCocktailsByFirstLetter().data
+            apiService.getCocktailsByFirstLetter(letterSearch).data
                 ?: throw IllegalStateException("cocktails cannot be loaded")
         }.fold(
             onSuccess = { RequestResult.Success(it) },
@@ -17,7 +17,7 @@ class GetCocktailsRepositoryImpl(
         )
     }
 
-    override suspend fun getCocktailById(id: String): RequestResult<Cocktail> {
+    override suspend fun getCocktailById(id: String): RequestResult<List<Cocktail>> {
         return runCatching {
             apiService.getCocktailById(cocktailId = id).data
                 ?: throw IllegalStateException("Can't download the cocktail by id")

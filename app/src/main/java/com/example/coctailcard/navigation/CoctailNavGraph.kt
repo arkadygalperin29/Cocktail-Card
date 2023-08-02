@@ -39,8 +39,10 @@ fun NavGraphBuilder.authGraph(navController: NavHostController) {
         startDestination = CoctailDestinations.MENU_ROUTE
     ) {
         composable(CoctailDestinations.MENU_ROUTE) {
+            val viewModel: MenuScreenViewModel = koinViewModel()
             MenuScreen(
-                navController = navController
+                navController = navController,
+                viewModel = viewModel
             )
         }
     }

@@ -13,8 +13,8 @@ interface ApiService {
     @GET("sampleData")
     suspend fun getSampleData(): List<SampleData>
 
-    @GET("search.php?f=a")
-    suspend fun getCocktailsByFirstLetter(): ApiResponse<List<Cocktail>>
+    @GET("search.php")
+    suspend fun getCocktailsByFirstLetter(@Query("f") letterSearch: String): ApiResponse<List<Cocktail>>
 
     //list all cocktails by first letter www.thecocktaildb.com/api/json/v1/1/search.php?f=a
     @GET("filter.php?a=Alcoholic")
@@ -22,8 +22,8 @@ interface ApiService {
 
     @GET("filter.php?a=Non_Alcoholic")
     suspend fun getNonAlcoholicCocktails(): ApiResponse<List<NonAlcoholicCocktail>>
-    @GET("lookup.php?{id}")
-    suspend fun getCocktailById(@Path("id") cocktailId: String): ApiResponse<Cocktail>
+    @GET("lookup.php")
+    suspend fun getCocktailById(@Query("i") cocktailId: String): ApiResponse<List<Cocktail>>
     @GET("list.php?g=list")
     suspend fun getAllKindsOfGlasses(): ApiResponse<List<Glass>>
 

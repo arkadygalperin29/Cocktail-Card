@@ -30,13 +30,13 @@ class CocktailDetailViewModel(
             when (val response = getCocktailsRepository.getCocktailById(id)) {
                 is RequestResult.Success -> {
                     runCatching {
-                        _cocktail.value = response.data
+                        _cocktail.value = response.data[0]
                     }.onFailure {
                         it.printStackTrace()
                     }
                 }
                 else -> {
-        //           sendUiEvent(UiEvent.NavigateTo { navigateToCategory(CategoriesSelection.NON_ALCOHOLIC) })
+  //  do empty screen if can't load the data || sendUiEvent(UiEvent.NavigateTo { navigateToCategory(CategoriesSelection.NON_ALCOHOLIC) })
                 }
             }
         }

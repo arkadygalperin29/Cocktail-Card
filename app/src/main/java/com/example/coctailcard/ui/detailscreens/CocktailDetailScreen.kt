@@ -1,6 +1,7 @@
 package com.example.coctailcard.ui.detailscreens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,6 +17,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -26,6 +28,7 @@ import com.example.coctailcard.data.network.models.Cocktail
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
+import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Grey50
 import com.example.coctailcard.ui.theme.Header1
 import com.example.coctailcard.ui.theme.Pink40
@@ -84,10 +87,11 @@ fun CocktailDetail(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color.Black)
+            .background(color = Pink40)
     ) {
         Box(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .padding(top = 8.dp, start = 16.dp, end = 16.dp, bottom = 16.dp)
                 .background(color = Pink40)
         ) {
@@ -96,7 +100,8 @@ fun CocktailDetail(
                     .fillMaxWidth()
                     .height(180.dp)
                     .clip(shape = RoundedCornerShape(16.dp))
-                    .background(color = Color.Black),
+                    .background(color = Color.Black)
+                    .border(2.dp, Black1, shape = RoundedCornerShape(16.dp)),
                 model = cocktail.drinkImage,
                 contentDescription = null,
                 contentScale = ContentScale.Crop

@@ -20,12 +20,13 @@ class MenuScreenViewModel(
 
     init {
         viewModelScope.launch {
-            fetchCocktails()
+            fetchCocktails("c")   //Make something done or invent that the changed response
+            //will try to provide a list of drinks according to the letter query.
         }
     }
 
-    suspend fun fetchCocktails() {
-        when (val result = getCocktailsRepository.getCocktailsByFirstLetter()) {
+    suspend fun fetchCocktails(getLetter: String) {
+        when (val result = getCocktailsRepository.getCocktailsByFirstLetter(getLetter)) {
             is RequestResult.Success -> {
                 runCatching {
                     _cocktails.value = result.data

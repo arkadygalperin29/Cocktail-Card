@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,6 +32,7 @@ fun MenuScreen(
     val actions = rememberCocktailNavActions(navController = navController)
     val cocktails = viewModel.cocktails.collectAsState()
     val lazyGridState = rememberLazyGridState()
+
     CoctailScaffold(
         modifier = modifier,
         navController = navController,
