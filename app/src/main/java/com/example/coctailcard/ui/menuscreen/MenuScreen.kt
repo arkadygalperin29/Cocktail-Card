@@ -15,6 +15,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,7 +38,7 @@ fun MenuScreen(
     val actions = rememberCocktailNavActions(navController = navController)
     val cocktails = viewModel.cocktails.collectAsState()
     val lazyGridState = rememberLazyGridState()
-    var searchQuery by remember { mutableStateOf("a") }
+    var searchQuery by rememberSaveable { mutableStateOf("a") }
 
     LaunchedEffect(searchQuery) {
         viewModel.fetchCocktails(searchQuery)
@@ -60,7 +61,9 @@ fun MenuScreen(
             })
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
-                modifier = Modifier.fillMaxSize().padding(top = 8.dp),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 8.dp),
                 state = lazyGridState,
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalArrangement = Arrangement.spacedBy(17.dp)
