@@ -12,6 +12,10 @@ import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -20,6 +24,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.CoctailScaffold
+import com.example.coctailcard.ui.components.SearchBar
 import com.example.coctailcard.ui.theme.Pink40
 import org.koin.androidx.compose.koinViewModel
 
@@ -32,6 +37,11 @@ fun MenuScreen(
     val actions = rememberCocktailNavActions(navController = navController)
     val cocktails = viewModel.cocktails.collectAsState()
     val lazyGridState = rememberLazyGridState()
+    var searchQuery by remember { mutableStateOf("a") }
+
+    LaunchedEffect(searchQuery) {
+        viewModel.fetchCocktails(searchQuery)
+    }
 
     CoctailScaffold(
         modifier = modifier,
@@ -45,9 +55,12 @@ fun MenuScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            SearchBar(onSearch = { query ->
+                searchQuery = query
+            })
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxSize().padding(top = 8.dp),
                 state = lazyGridState,
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalArrangement = Arrangement.spacedBy(17.dp)

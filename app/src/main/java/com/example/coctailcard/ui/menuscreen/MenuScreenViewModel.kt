@@ -18,12 +18,12 @@ class MenuScreenViewModel(
     private val _cocktails = MutableStateFlow<List<Cocktail>>(emptyList())
     val cocktails = _cocktails.asStateFlow()
 
-    init {
-        viewModelScope.launch {
-            fetchCocktails("c")   //Make something done or invent that the changed response
-            //will try to provide a list of drinks according to the letter query.
+/*    init {
+       viewModelScope.launch {
+            fetchCocktails("a")
+           //That is initial query fetch to not make the screen empty.
         }
-    }
+    }*/
 
     suspend fun fetchCocktails(getLetter: String) {
         when (val result = getCocktailsRepository.getCocktailsByFirstLetter(getLetter)) {
