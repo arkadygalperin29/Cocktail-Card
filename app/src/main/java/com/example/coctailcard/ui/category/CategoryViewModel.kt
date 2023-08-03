@@ -4,8 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coctailcard.data.network.RequestResult
-import com.example.coctailcard.data.network.models.AlcoholicCocktail
-import com.example.coctailcard.data.network.models.NonAlcoholicCocktail
+import com.example.coctailcard.data.network.models.Cocktail
 import com.example.coctailcard.data.repositories.alcoholic.AlcoholicCocktailsRepository
 import com.example.coctailcard.data.repositories.nonalcoholic.NonAlcoholicCocktailsRepository
 import kotlinx.coroutines.Dispatchers
@@ -31,10 +30,10 @@ class CategoryViewModel(
     )
     val state = _state.asStateFlow()
 
-    private val _alcoholicDrinks = MutableStateFlow<List<AlcoholicCocktail>>(emptyList())
+    private val _alcoholicDrinks = MutableStateFlow<List<Cocktail>>(emptyList())
     val alcoholicCocktails = _alcoholicDrinks.asStateFlow()
 
-    private val _nonAlcoholicDrinks = MutableStateFlow<List<NonAlcoholicCocktail>>(emptyList())
+    private val _nonAlcoholicDrinks = MutableStateFlow<List<Cocktail>>(emptyList())
     val nonAlcoholicCocktails = _nonAlcoholicDrinks.asStateFlow()
 
     fun updateState(state: CategoryState) {

@@ -46,5 +46,5 @@ sealed class BottomNavItem(
             "Glasses",
             R.drawable.baseline_cup,
             CoctailDestinations.MENU_ROUTE,
-            { })
+            { navigateToGlasses() })
 }

@@ -20,15 +20,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.coctailcard.data.network.models.NonAlcoholicCocktail
+import com.example.coctailcard.data.network.models.Cocktail
 import com.example.coctailcard.ui.theme.Black1
-import com.example.coctailcard.ui.theme.Blue1
 import com.example.coctailcard.ui.theme.Grey100
 import com.example.coctailcard.ui.theme.Text12
 
 @Composable
 fun NonAlcoholicDrink(
-    nonAlcoholicCocktail: NonAlcoholicCocktail,
+    nonAlcoholicCocktail: Cocktail,
     nonAlcoholicCocktailClick: (String) -> Unit
 ) {
     Column(
@@ -37,27 +36,31 @@ fun NonAlcoholicDrink(
             .fillMaxWidth(0.5f)
             .border(2.dp, Black1, RoundedCornerShape(16.dp))
             .clickable {
-                nonAlcoholicCocktailClick(nonAlcoholicCocktail.id)
+                nonAlcoholicCocktail.id?.let { nonAlcoholicCocktailClick(it) }
             }
     ) {
-        Text(
-            text = nonAlcoholicCocktail.name,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 8.dp, top = 16.dp)
-                .align(Alignment.CenterHorizontally),
-            maxLines = 4,
-            textAlign = TextAlign.Center,
-            overflow = TextOverflow.Ellipsis,
-            style = Text12,
-            color = Grey100,
-        )
+        if (!nonAlcoholicCocktail.name.isNullOrEmpty()) {
+            nonAlcoholicCocktail.name?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 8.dp, top = 16.dp)
+                        .align(Alignment.CenterHorizontally),
+                    maxLines = 4,
+                    textAlign = TextAlign.Center,
+                    overflow = TextOverflow.Ellipsis,
+                    style = Text12,
+                    color = Grey100,
+                )
+            }
+        }
         AsyncImage(
             modifier = Modifier
                 .fillMaxSize()
                 .background(color = Color.Black)
                 .align(Alignment.CenterHorizontally),
-            model = nonAlcoholicCocktail.image,
+            model = nonAlcoholicCocktail.drinkImage,
             contentDescription = "Cocktail detail card",
             contentScale = ContentScale.Crop
         )
@@ -69,5 +72,5 @@ fun NonAlcoholicDrink(
 @Preview
 @Composable
 fun NonAlcoholicDrinkPreview() {
-    NonAlcoholicDrink(NonAlcoholicCocktail("Daiquiry", "", ""), { })
+    NonAlcoholicDrink(Cocktail("Daiquiry", "", ""), { })
 }

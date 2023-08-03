@@ -19,14 +19,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.coctailcard.data.network.models.AlcoholicCocktail
+import com.example.coctailcard.data.network.models.Cocktail
 import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Grey100
 import com.example.coctailcard.ui.theme.Text12
 
 @Composable
 fun AlcoholicDrink(
-    alcoholicCocktail: AlcoholicCocktail,
+    alcoholicCocktail: Cocktail,
     alcoholicCocktailClick: (String) -> Unit
 ) {
     Column(
@@ -35,33 +35,37 @@ fun AlcoholicDrink(
             .fillMaxWidth(0.5f)
             .border(2.dp, Black1, RoundedCornerShape(16.dp))
             .clickable {
-                alcoholicCocktailClick(alcoholicCocktail.id)
+                alcoholicCocktail.id?.let { alcoholicCocktailClick(it) }
             }
     ) {
-        Text(
-            text = alcoholicCocktail.name,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 8.dp, top = 16.dp),
-            maxLines = 4,
-            textAlign = TextAlign.Center,
-            overflow = TextOverflow.Ellipsis,
-            style = Text12,
-            color = Grey100,
-        )
-        AsyncImage(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(color = Color.Black),
-            model = alcoholicCocktail.image,
-            contentDescription = "Cocktail detail card",
-            contentScale = ContentScale.Crop
-        )
+        if (!alcoholicCocktail.name.isNullOrEmpty()) {
+            alcoholicCocktail.name?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 8.dp, top = 16.dp),
+                    maxLines = 4,
+                    textAlign = TextAlign.Center,
+                    overflow = TextOverflow.Ellipsis,
+                    style = Text12,
+                    color = Grey100,
+                )
+            }
+            AsyncImage(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(color = Color.Black),
+                model = alcoholicCocktail.drinkImage,
+                contentDescription = "Cocktail detail card",
+                contentScale = ContentScale.Crop
+            )
+        }
     }
 }
 
 @Preview
 @Composable
 fun AlcoholicDrinkPreview() {
-    AlcoholicDrink(AlcoholicCocktail("Margharita", "", ""), { })
+    AlcoholicDrink(Cocktail("Margharita", "", ""), { })
 }
