@@ -28,6 +28,7 @@ import com.example.coctailcard.ui.theme.Grey50
 fun GlassSingleCard(
     glass: Glass,
     onGlassClicked: (String) -> Unit,
+    drawableResId: Int
 ) {
     Box(
         modifier = Modifier
@@ -44,7 +45,7 @@ fun GlassSingleCard(
                 .fillMaxHeight()
                 .fillMaxWidth(0.45f)
                 .align(Alignment.BottomStart),
-            painter = painterResource(id = glass.imageRes ?: R.drawable.balloon_glass),
+            painter = painterResource(id = drawableResId ?: R.drawable.balloon_glass),
             contentDescription = "Cocktail detail card",
             contentScale = ContentScale.Fit
         )
@@ -67,6 +68,6 @@ fun GlassSingleCardPreview() {
             "Baloon glass",
             imageRes = R.drawable.balloon_glass,
             description = "Glass for some drinks"
-        ), { })
+        ), { }, drawableResId = R.drawable.coupe_glass )
 }
 
