@@ -1,5 +1,6 @@
 package com.example.coctailcard.ui.glassscreen
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -28,7 +29,8 @@ import com.example.coctailcard.ui.theme.Grey50
 fun GlassSingleCard(
     glass: Glass,
     onGlassClicked: (String) -> Unit,
-    drawableResId: Int
+    drawableResId: Int,
+    description: String
 ) {
     Box(
         modifier = Modifier
@@ -55,7 +57,7 @@ fun GlassSingleCard(
                 .padding(start = 32.dp, top = 8.dp)
         ) {
             Text(text = glass.name)
-            glass.description?.let { Text(text = it) }
+   //         Text(text = description ?: "empty filler")
         }
     }
 }
@@ -68,6 +70,10 @@ fun GlassSingleCardPreview() {
             "Baloon glass",
             imageRes = R.drawable.balloon_glass,
             description = "Glass for some drinks"
-        ), { }, drawableResId = R.drawable.coupe_glass )
+        ),
+        { },
+        drawableResId = R.drawable.coupe_glass,
+        description = "some info"
+    )
 }
 
