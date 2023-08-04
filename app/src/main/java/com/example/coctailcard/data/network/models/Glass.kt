@@ -1,5 +1,12 @@
 package com.example.coctailcard.data.network.models
 
+import androidx.annotation.DrawableRes
+import com.google.gson.annotations.SerializedName
+
 data class Glass(
-    val name: String
+    @SerializedName("strGlass")
+    val name: String,
+    @DrawableRes
+    val imageRes: Int,
+    val description: String
 )

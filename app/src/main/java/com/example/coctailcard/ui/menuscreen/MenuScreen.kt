@@ -36,7 +36,7 @@ fun MenuScreen(
     viewModel: MenuScreenViewModel = koinViewModel(),
 ) {
     val actions = rememberCocktailNavActions(navController = navController)
-    val cocktails = viewModel.cocktails.collectAsState()
+    val cocktails by viewModel.cocktails.collectAsState()
     val lazyGridState = rememberLazyGridState()
     var searchQuery by rememberSaveable { mutableStateOf("a") }
 
@@ -68,7 +68,7 @@ fun MenuScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalArrangement = Arrangement.spacedBy(17.dp)
             ) {
-                items(cocktails.value) { cocktail ->
+                items(cocktails) { cocktail ->
                     CocktailSingleCard(
                         cocktail = cocktail,
                         onCocktailClicked = { actions.navigateToCocktailDetails(it) })
