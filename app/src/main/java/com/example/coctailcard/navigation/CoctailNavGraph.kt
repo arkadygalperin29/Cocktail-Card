@@ -13,6 +13,7 @@ import com.example.coctailcard.ui.category.CategoryViewModel
 import com.example.coctailcard.ui.detailscreens.CocktailDetailScreen
 import com.example.coctailcard.ui.detailscreens.CocktailDetailViewModel
 import com.example.coctailcard.ui.glassscreen.GlassScreen
+import com.example.coctailcard.ui.glassscreen.GlassViewModel
 import com.example.coctailcard.ui.menuscreen.MenuScreen
 import com.example.coctailcard.ui.menuscreen.MenuScreenViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -61,8 +62,10 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
             )
         }
         composable(CoctailDestinations.GLASS_ROUTE) {
+            val viewModel: GlassViewModel = koinViewModel()
             GlassScreen(
-                navController = navController
+                navController = navController,
+                viewModel = viewModel
             )
         }
         composable(CoctailDestinations.CATEGORY_ROUTE) {
@@ -72,28 +75,28 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
                 viewModel = viewModel
             )
         }
-/*        composable(
-            route = CoctailDestinations.ALCOHOLIC_ROUTE
-        ) {
-            val id = it.arguments.id
-            val viewModel: CocktailDetailViewModel = koinViewModel()
-            CocktailDetailScreen(
-                navController = navController,
-                viewModel = viewModel,
-                id = id ?: "-1"
-            )
-        }*/
-/*        composable(
-            route = CoctailDestinations.NON_ALCOHOLIC_ROUTE
-        ) {
-            val id = it.arguments.id
-            val viewModel: CocktailDetailViewModel = koinViewModel()
-            CocktailDetailScreen(
-                navController = navController,
-                viewModel = viewModel,
-                id = id ?: "-1"
-            )
-        }*/
+        /*        composable(
+                    route = CoctailDestinations.ALCOHOLIC_ROUTE
+                ) {
+                    val id = it.arguments.id
+                    val viewModel: CocktailDetailViewModel = koinViewModel()
+                    CocktailDetailScreen(
+                        navController = navController,
+                        viewModel = viewModel,
+                        id = id ?: "-1"
+                    )
+                }*/
+        /*        composable(
+                    route = CoctailDestinations.NON_ALCOHOLIC_ROUTE
+                ) {
+                    val id = it.arguments.id
+                    val viewModel: CocktailDetailViewModel = koinViewModel()
+                    CocktailDetailScreen(
+                        navController = navController,
+                        viewModel = viewModel,
+                        id = id ?: "-1"
+                    )
+                }*/
         composable(CoctailDestinations.COCKTAIL_DETAIL_ROUTE) {
             val id = it.arguments.id ?: "-1"
             val viewModel: CocktailDetailViewModel = koinViewModel()

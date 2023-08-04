@@ -7,8 +7,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -17,12 +20,15 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.theme.Pink40
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun GlassScreen(
     modifier: Modifier = Modifier,
     navController: NavController = rememberNavController(),
+    viewModel: GlassViewModel = koinViewModel(),
 ) {
+    val glasses by viewModel.glasses.collectAsState()
     val lazyGridState = rememberLazyGridState()
     CoctailScaffold(
         modifier = modifier,
@@ -45,7 +51,9 @@ fun GlassScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalArrangement = Arrangement.spacedBy(17.dp)
             ) {
-
+                items(glasses) {
+                    GlassSingleCard(glass = it, onGlassClicked = { })
+                }
             }
         }
     }

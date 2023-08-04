@@ -7,6 +7,6 @@ data class Glass(
     @SerializedName("strGlass")
     val name: String,
     @DrawableRes
-    val imageRes: Int,
-    val description: String
+    val imageRes: Int? = null,
+    val description: String? = null
 )

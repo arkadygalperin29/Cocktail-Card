@@ -55,7 +55,7 @@ fun GlassSingleCard(
             modifier = Modifier.align(Alignment.TopCenter).padding(start = 32.dp, top = 8.dp)
         ) {
             Text(text = glass.name)
-            Text(text = glass.description)
+            glass.description?.let { Text(text = it) }
         }
     }
 }
