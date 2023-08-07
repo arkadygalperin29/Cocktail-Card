@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -43,6 +44,7 @@ fun GlassScreen(
     val glasses by viewModel.glasses.collectAsState()
     val pagerState = rememberPagerState { glasses.size }
     val lazyRowState = rememberLazyListState()
+    val lazyColumnState = rememberLazyListState()
     val lazyGridState = rememberLazyGridState()
     CoctailScaffold(
         modifier = modifier,
@@ -56,14 +58,12 @@ fun GlassScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(1),
+            LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(top = 8.dp),
-                state = lazyGridState,
+                state = lazyColumnState,
                 verticalArrangement = Arrangement.spacedBy(16.dp),
-                horizontalArrangement = Arrangement.spacedBy(17.dp)
             ) {
                 itemsIndexed(glasses) { index, glass ->
                     val stringResId = getStringResourceId(index)
