@@ -19,13 +19,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.coctailcard.R
 import com.example.coctailcard.data.network.models.Glass
 import com.example.coctailcard.ui.theme.Black1
+import com.example.coctailcard.ui.theme.Green1
+import com.example.coctailcard.ui.theme.Grey100
+import com.example.coctailcard.ui.theme.Grey1000
 import com.example.coctailcard.ui.theme.Grey50
+import com.example.coctailcard.ui.theme.Header1
 import com.example.coctailcard.ui.theme.Pink40
+import com.example.coctailcard.ui.theme.Pink80
+import com.example.coctailcard.ui.theme.Text12
 
 @Composable
 fun GlassSingleCard(
@@ -51,7 +58,12 @@ fun GlassSingleCard(
         ) {
             Text(
                 text = glass.name,
-                modifier = Modifier.padding(start = 8.dp).align(Alignment.CenterHorizontally)
+                modifier = Modifier
+                    .padding(start = 8.dp)
+                    .align(Alignment.CenterHorizontally),
+                overflow = TextOverflow.Ellipsis,
+                style = Header1,
+                color = Grey1000,
             )
             Image(
                 modifier = Modifier
@@ -67,6 +79,9 @@ fun GlassSingleCard(
                     .padding(8.dp)
                     .fillMaxWidth(),
                 text = description ?: "empty filler",
+                overflow = TextOverflow.Ellipsis,
+                style = Header1,
+                color = Grey1000,
                 maxLines = 20
             )
         }
