@@ -1,6 +1,5 @@
 package com.example.coctailcard.ui.glassscreen
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -8,9 +7,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -24,6 +25,7 @@ import com.example.coctailcard.R
 import com.example.coctailcard.data.network.models.Glass
 import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Grey50
+import com.example.coctailcard.ui.theme.Pink40
 
 @Composable
 fun GlassSingleCard(
@@ -35,29 +37,38 @@ fun GlassSingleCard(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(150.dp)
-            .border(2.dp, Black1, RoundedCornerShape(16.dp))
+            .fillMaxHeight()
+            .border(4.dp, Black1, RoundedCornerShape(16.dp))
             .clickable {
                 onGlassClicked(glass.name.toString())
             }
             .background(color = Grey50)
     ) {
-        Image(
-            modifier = Modifier
-                .fillMaxHeight()
-                .fillMaxWidth(0.45f)
-                .align(Alignment.BottomStart),
-            painter = painterResource(id = drawableResId ?: R.drawable.balloon_glass),
-            contentDescription = "Cocktail detail card",
-            contentScale = ContentScale.Fit
-        )
         Column(
             modifier = Modifier
-                .align(Alignment.TopCenter)
-                .padding(start = 32.dp, top = 8.dp)
+                .padding(top = 8.dp)
+                .fillMaxSize()
         ) {
-            Text(text = glass.name)
-   //         Text(text = description ?: "empty filler")
+            Text(
+                text = glass.name,
+                modifier = Modifier.padding(start = 8.dp).align(Alignment.CenterHorizontally)
+            )
+            Image(
+                modifier = Modifier
+                    .fillMaxHeight(0.5f)
+                    .fillMaxWidth(0.5f)
+                    .align(Alignment.CenterHorizontally),
+                painter = painterResource(id = drawableResId ?: R.drawable.balloon_glass),
+                contentDescription = "Cocktail detail card",
+                contentScale = ContentScale.Crop
+            )
+            Text(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .fillMaxWidth(),
+                text = description ?: "empty filler",
+                maxLines = 20
+            )
         }
     }
 }

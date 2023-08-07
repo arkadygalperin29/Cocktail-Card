@@ -1,14 +1,19 @@
 package com.example.coctailcard.ui.glassscreen
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -25,6 +30,7 @@ import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.theme.Pink40
 import org.koin.androidx.compose.koinViewModel
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun GlassScreen(
     modifier: Modifier = Modifier,
@@ -34,6 +40,8 @@ fun GlassScreen(
     val actions = rememberCocktailNavActions(navController = navController)
     val context = LocalContext.current
     val glasses by viewModel.glasses.collectAsState()
+    val pagerState = rememberPagerState { glasses.size }
+    val lazyRowState = rememberLazyListState()
     val lazyGridState = rememberLazyGridState()
     CoctailScaffold(
         modifier = modifier,
@@ -48,7 +56,7 @@ fun GlassScreen(
             verticalArrangement = Arrangement.Center
         ) {
             LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
+                columns = GridCells.Fixed(1),
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(top = 8.dp),
@@ -97,7 +105,7 @@ private fun getDrawableResIdForItem(index: Int): Int {
         21 -> R.drawable.wine_glass_png
         22 -> R.drawable.beer_mug
         23 -> R.drawable.margarita_coupette_glass
-        24 -> R.drawable.pilsner_glass_beer
+        24 -> R.drawable.beer_pilsner
         25 -> R.drawable.beer_cocktail_glass
         26 -> R.drawable.parfait_glass
         27 -> R.drawable.mason_jar_png
