@@ -36,10 +36,10 @@ sealed class BottomNavItem(
 
     object SortByDegree :
         BottomNavItem(
-            "Degree",
-            R.drawable.alcoholic_percentage,
+            "Ingredients",
+            R.drawable.ingredients,
             CoctailDestinations.MENU_ROUTE,
-            { })
+            { navigateToIngredients() })
 
     object Glasses :
         BottomNavItem(
