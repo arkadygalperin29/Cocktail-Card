@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import com.example.coctailcard.navigation.CoctailDestinations.ARG_GLASS_NAME
 import com.example.coctailcard.navigation.CoctailDestinations.ARG_ID
 import com.example.coctailcard.navigation.CoctailDestinations.ARG_PAGE
 import com.example.coctailcard.ui.category.CategoriesSelection
@@ -22,19 +23,22 @@ object CoctailDestinations {
     const val ACCOUNT_DATA_ROUTE = "accountdata"
     const val ACCOUNT_PASSWORD_ROUTE = "accountpassword"
     const val COCKTAIL_DETAIL_ROUTE: CocktailRoute = "lookup.php/{id}"
+    const val GLASS_DETAIL_ROUTE: CocktailRoute = "list.php/g=list"
     const val NON_ALCOHOLIC_ROUTE = "non_alcoholic_route"
     const val ALCOHOLIC_ROUTE = "alcoholic_route"
     const val CATEGORY_ROUTE = "category_route"
 
 
     const val ARG_CODE = "code"
-    const val ARG_EMAIL = "email"
+    const val ARG_GLASS_NAME = "glass_name"
     const val ARG_ID = "id"
     const val ARG_PAGE = "page"
 }
 
 
 val Bundle?.id get() = this?.getString(ARG_ID)
+
+val Bundle?.name get() = this?.getString(ARG_GLASS_NAME)
 fun CocktailRoute.withId(id: String): CocktailRoute = replace("{$ARG_ID}", id)
 val Bundle?.page get() = this?.getString(ARG_PAGE)?.toIntOrNull()
 fun CocktailRoute.withPage(page: Int): CocktailRoute = replace("{$ARG_PAGE}", page.toString())

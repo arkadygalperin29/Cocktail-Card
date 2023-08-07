@@ -6,9 +6,12 @@ import androidx.lifecycle.viewModelScope
 import com.example.coctailcard.data.network.RequestResult
 import com.example.coctailcard.data.network.models.Glass
 import com.example.coctailcard.data.repositories.glasses.GetGlassesRepository
+import com.example.coctailcard.util.UiEvent
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 class GlassViewModel(private val glassesRepository: GetGlassesRepository) : ViewModel() {
@@ -31,6 +34,7 @@ class GlassViewModel(private val glassesRepository: GetGlassesRepository) : View
                         it.printStackTrace()
                     }
                 }
+
                 else -> {
                 }
             }

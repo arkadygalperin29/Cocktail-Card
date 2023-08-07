@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.R
+import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.theme.Pink40
 import org.koin.androidx.compose.koinViewModel
@@ -30,6 +31,7 @@ fun GlassScreen(
     navController: NavController = rememberNavController(),
     viewModel: GlassViewModel = koinViewModel(),
 ) {
+    val actions = rememberCocktailNavActions(navController = navController)
     val context = LocalContext.current
     val glasses by viewModel.glasses.collectAsState()
     val lazyGridState = rememberLazyGridState()
@@ -57,7 +59,12 @@ fun GlassScreen(
                 itemsIndexed(glasses) { index, glass ->
                     val stringResId = getStringResourceId(index)
                     val drawableResId = getDrawableResIdForItem(index)
-                    GlassSingleCard(glass = glass, onGlassClicked = { }, drawableResId, context.getString(stringResId))
+                    GlassSingleCard(
+                        glass = glass,
+                        onGlassClicked = {  },
+                        drawableResId = drawableResId,
+                        description = context.getString(stringResId)
+                    )
                 }
             }
         }
