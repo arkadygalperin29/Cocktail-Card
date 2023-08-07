@@ -2,6 +2,8 @@ package com.example.coctailcard.data.network
 
 import com.example.coctailcard.data.network.models.Cocktail
 import com.example.coctailcard.data.network.models.Glass
+import com.example.coctailcard.data.network.models.Ingredient
+import com.example.coctailcard.data.network.models.IngredientDetailed
 import com.example.coctailcard.data.network.models.SampleData
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -26,11 +28,9 @@ interface ApiService {
     @GET("list.php?g=list")
     suspend fun getAllKindsOfGlasses(): ApiResponse<List<Glass>>
 
-    @GET("filter.php?g=Champagne_flute")
-    suspend fun getAllCocktailsWithChampagneFlute(@Query("g") glassType: String = "Champagne_flute")
-            : ApiResponse<List<Cocktail>>
+    @GET("list.php?i=list")
+    suspend fun getIngredientsList(): ApiResponse<List<Ingredient>>
 
-    @GET("filter.php?g=Wine_Glass")
-    suspend fun getAllCocktailsWithWineGlass(@Query("g") glassType: String = "Wine_Glass")
-            : ApiResponse<List<Cocktail>>
+    @GET("lookup.php")
+    suspend fun getIngredientById(@Query("iid") ingredientId: String): IngredientsResponse<List<IngredientDetailed>>
 }

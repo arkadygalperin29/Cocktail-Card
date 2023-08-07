@@ -34,4 +34,8 @@
     <string name="whiskey_sour_glass_description">A sour glass (also known as a delmonico glass) has a rounded cup with a stem specified for sweet, citrus drinks, such as a Whiskey Sour. The stem helps keep a cold drink from the warmth of your hand.</string>
     <string name="white_wine_glass_description">White wine glasses are generally smaller than red wine glasses. This shape preserves floral aromas and helps maintain a cooler temperature. Full-bodied whites like Chardonnay are served in a glass with a bowl that is smaller than a red wine glass but larger than a light-bodied white wine glass.</string>
     <string name="wine_glass_description">A wine glass is a type of glass that is used to drink and taste wine. Most wine glasses are stemware (goblets), i.e., they are composed of three parts: the bowl, stem, and foot.</string>
+
+
+    <string name="vodka_description">Vodka is a distilled alcohol that is usually clear and lacking a noticeable aroma or taste. Different styles and varieties of distilled vodka come from Russia, Poland and Sweden, but any liquor made from water and agricultural ethanol can be classified as vodka.</string>
+    
 </resources>

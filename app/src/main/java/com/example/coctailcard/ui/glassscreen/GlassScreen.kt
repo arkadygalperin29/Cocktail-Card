@@ -32,20 +32,15 @@ import com.example.coctailcard.ui.theme.Grey50
 import com.example.coctailcard.ui.theme.Pink40
 import org.koin.androidx.compose.koinViewModel
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun GlassScreen(
     modifier: Modifier = Modifier,
     navController: NavController = rememberNavController(),
     viewModel: GlassViewModel = koinViewModel(),
 ) {
-    val actions = rememberCocktailNavActions(navController = navController)
     val context = LocalContext.current
     val glasses by viewModel.glasses.collectAsState()
-    val pagerState = rememberPagerState { glasses.size }
-    val lazyRowState = rememberLazyListState()
     val lazyColumnState = rememberLazyListState()
-    val lazyGridState = rememberLazyGridState()
     CoctailScaffold(
         modifier = modifier,
         navController = navController,
