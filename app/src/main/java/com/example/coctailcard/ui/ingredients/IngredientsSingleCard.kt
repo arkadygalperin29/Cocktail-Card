@@ -26,6 +26,7 @@ import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Grey1000
 import com.example.coctailcard.ui.theme.Grey50
 import com.example.coctailcard.ui.theme.Header1
+import com.example.coctailcard.ui.theme.Text12
 
 @Composable
 fun IngredientSingleCard(
@@ -70,7 +71,7 @@ fun IngredientSingleCard(
                         .fillMaxWidth(),
                     text = description ?: "empty filler",
                     overflow = TextOverflow.Ellipsis,
-                    style = Header1,
+                    style = Text12,
                     color = Grey1000,
                     maxLines = 20
                 )

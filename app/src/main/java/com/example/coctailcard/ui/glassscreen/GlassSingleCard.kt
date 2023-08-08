@@ -80,7 +80,7 @@ fun GlassSingleCard(
                     .fillMaxWidth(),
                 text = description ?: "empty filler",
                 overflow = TextOverflow.Ellipsis,
-                style = Header1,
+                style = Text12,
                 color = Grey1000,
                 maxLines = 20
             )
