@@ -28,6 +28,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.R
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.CoctailScaffold
+import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Grey50
 import com.example.coctailcard.ui.theme.Pink40
 import org.koin.androidx.compose.koinViewModel
@@ -48,7 +49,7 @@ fun GlassScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Grey50)
+                .background(Black1)
                 .padding(paddingValues),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center

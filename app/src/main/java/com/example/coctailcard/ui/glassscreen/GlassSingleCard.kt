@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
+import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -41,15 +42,11 @@ fun GlassSingleCard(
     drawableResId: Int,
     description: String
 ) {
-    Box(
+    Card(
         modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight()
+            .fillMaxSize()
             .border(4.dp, Black1, RoundedCornerShape(16.dp))
-            .clickable {
-                onGlassClicked(glass.name.toString())
-            }
-            .background(color = Grey50)
+
     ) {
         Column(
             modifier = Modifier

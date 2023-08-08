@@ -38,7 +38,7 @@ fun IngredientSingleCard(
         modifier = Modifier
             .fillMaxSize()
             .border(4.dp, Black1, RoundedCornerShape(16.dp))
-            .background(color = Grey50)
+
     ) {
         Box {
             Column(
