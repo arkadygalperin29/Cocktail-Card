@@ -15,6 +15,7 @@ import com.example.coctailcard.ui.detailscreens.CocktailDetailViewModel
 import com.example.coctailcard.ui.glassscreen.GlassScreen
 import com.example.coctailcard.ui.glassscreen.GlassViewModel
 import com.example.coctailcard.ui.ingredients.IngredientsScreen
+import com.example.coctailcard.ui.ingredients.IngredientsViewModel
 import com.example.coctailcard.ui.menuscreen.MenuScreen
 import com.example.coctailcard.ui.menuscreen.MenuScreenViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -108,8 +109,10 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
             )
         }
         composable(CoctailDestinations.INGREDIENTS_ROUTE) {
+            val viewModel: IngredientsViewModel = koinViewModel()
             IngredientsScreen(
-                navController = navController
+                navController = navController,
+                viewModel = viewModel
             )
         }
     }

@@ -6,6 +6,8 @@ import com.example.coctailcard.data.repositories.alcoholic.AlcoholicCocktailsRep
 import com.example.coctailcard.data.repositories.alcoholic.AlcoholicCocktailsRepositoryImpl
 import com.example.coctailcard.data.repositories.glasses.GetGlassesRepository
 import com.example.coctailcard.data.repositories.glasses.GetGlassesRepositoryImpl
+import com.example.coctailcard.data.repositories.ingredients.GetIngredientsRepository
+import com.example.coctailcard.data.repositories.ingredients.GetIngredientsRepositoryImpl
 import com.example.coctailcard.data.repositories.nonalcoholic.NonAlcoholicCocktailsRepository
 import com.example.coctailcard.data.repositories.nonalcoholic.NonAlcoholicCocktailsRepositoryImpl
 import org.koin.core.KoinApplication
@@ -17,4 +19,5 @@ fun KoinApplication.repositoryModule() = module {
     factory<AlcoholicCocktailsRepository> { AlcoholicCocktailsRepositoryImpl(get()) }
     factory<NonAlcoholicCocktailsRepository> { NonAlcoholicCocktailsRepositoryImpl(get()) }
     factory<GetGlassesRepository> { GetGlassesRepositoryImpl(get()) }
+    factory<GetIngredientsRepository> { GetIngredientsRepositoryImpl(get()) }
 }
