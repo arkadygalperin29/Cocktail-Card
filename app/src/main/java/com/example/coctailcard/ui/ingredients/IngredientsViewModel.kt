@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coctailcard.data.network.RequestResult
 import com.example.coctailcard.data.network.models.Ingredient
+import com.example.coctailcard.data.network.models.IngredientDetailed
 import com.example.coctailcard.data.repositories.ingredients.GetIngredientsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,6 +18,9 @@ class IngredientsViewModel(
 
     private val _ingredients = MutableStateFlow<List<Ingredient>>(emptyList())
     val ingredients = _ingredients.asStateFlow()
+
+    private var _ingredient = MutableStateFlow<IngredientDetailed?>(null)
+    val ingredient = _ingredient.asStateFlow()
 
     init {
         fetchIngredients()
@@ -40,4 +44,17 @@ class IngredientsViewModel(
         }
     }
 
+    suspend fun fetchIngredientById(id: String) {
+        when (val result = ingredientsRepository.getIngredientById(id)) {
+            is RequestResult.Success -> {
+                runCatching {
+                    _ingredient.value = result.data[0]
+                }.onFailure {
+                    it.printStackTrace()
+                }
+            }
+
+            else -> {}
+        }
+    }
 }
