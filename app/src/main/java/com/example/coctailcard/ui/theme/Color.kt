@@ -30,6 +30,19 @@ val Blue2 = Color(0xFF6899D3)
 val Purple1 = Color(0xFFCC33CC)
 val Teal1 = Color(0xFF008080)
 val Brown1 = Color(0xFF7A5C58)
+val RoseGold1 = Color(0xFFB76E79)
+val PeriWinkle1 = Color(0xFFCCCCFF) // use with Black Text
+val MintGreen = Color(0xFF99EDC3) //use with Black Text
+val PaleGray = Color(0xFF7286A0) //use with White Text
+val SealBrown = Color(0xFF59260B) //use with White Text
+val Cream = Color(0xFFFFFDD0) //use with Black Text
+val CoolWhite = Color(0xFFF4FDFF) //use with Black Text
+val MiddleGreen = Color(0xFFA4C2A5) //Use with Black Text
+val Aubergine = Color(0xFF472C4C) //With White text
+val TerraCotta = Color(0xFFE2725B) // With White Text
+val SoftBlueGray = Color(0xFFB7C9E2) // With Black Text
+val Peach = Color(0xFFFFCDA2) // With Black Text
+val SkyBlue = Color(0xFF87CEEB) //with Black Text
 
 
 data class AppButtonColorsFilled(

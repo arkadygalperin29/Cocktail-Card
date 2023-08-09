@@ -136,6 +136,11 @@
     <string name="blackberry_brandy_description">Premium blackberries are blended with fine Brandy to create this delicious spirit, made specially to the Polish taste. Slightly higher in alcohol content than a typical flavored Brandy. Floral bouquet leads to a rich and smooth palate full of fresh fruit flavor with a baking spice background.</string>
     <string name="peppermint_schnapps_description">Peppermint schnapps is a distilled spirit made by adding peppermint flavoring to a clear grain spirit. It tastes like a liquid candy cane, with an astringent, almost mouthwash-like finish. Most sources believe the original version originated in Germany (in German the term Schnaps means a strong alcoholic beverage).</string>
     <string name="creme_de_cassis_description">Crème de cassis (French pronunciation: ​[kʁɛm də kasis]) (also known as Cassis liqueur) is a sweet, dark red liqueur made from blackcurrants. Crème de cassis bottled at 15% ABV. Several cocktails are made with crème de cassis, including the popular wine cocktail, kir.</string>
-    
+    <string name="type">Type: %1$s</string>
+    <string name="category">Category: %1$s</string>
+    <string name="glass">Glass: %1$s</string>
+    <string name="instructions">Instructions: %1$s</string>
+    <string name="ingredients">"Ingredients: "</string>
+
 
 </resources>
