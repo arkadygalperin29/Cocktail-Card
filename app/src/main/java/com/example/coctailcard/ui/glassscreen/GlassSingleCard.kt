@@ -3,18 +3,16 @@ package com.example.coctailcard.ui.glassscreen
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,14 +24,14 @@ import androidx.compose.ui.unit.dp
 import com.example.coctailcard.R
 import com.example.coctailcard.data.network.models.Glass
 import com.example.coctailcard.ui.theme.Black1
-import com.example.coctailcard.ui.theme.Green1
-import com.example.coctailcard.ui.theme.Grey100
+import com.example.coctailcard.ui.theme.Brown1
 import com.example.coctailcard.ui.theme.Grey1000
 import com.example.coctailcard.ui.theme.Grey50
 import com.example.coctailcard.ui.theme.Header1
 import com.example.coctailcard.ui.theme.Pink40
-import com.example.coctailcard.ui.theme.Pink80
-import com.example.coctailcard.ui.theme.Text12
+import com.example.coctailcard.ui.theme.Teal1
+import com.example.coctailcard.ui.theme.Text14
+import com.example.coctailcard.ui.theme.Yellow1
 
 @Composable
 fun GlassSingleCard(
@@ -45,8 +43,10 @@ fun GlassSingleCard(
     Card(
         modifier = Modifier
             .fillMaxSize()
-            .border(4.dp, Black1, RoundedCornerShape(16.dp))
-
+            .border(4.dp, Black1, RoundedCornerShape(16.dp)),
+        colors = CardDefaults.cardColors(
+            containerColor = Teal1
+        )
     ) {
         Column(
             modifier = Modifier
@@ -60,27 +60,35 @@ fun GlassSingleCard(
                     .align(Alignment.CenterHorizontally),
                 overflow = TextOverflow.Ellipsis,
                 style = Header1,
-                color = Grey1000,
+                color = Grey50,
             )
             Image(
                 modifier = Modifier
                     .fillMaxHeight(0.5f)
                     .fillMaxWidth(0.5f)
-                    .align(Alignment.CenterHorizontally),
+                    .align(Alignment.CenterHorizontally)
+                    .border(4.dp, Black1),
                 painter = painterResource(id = drawableResId ?: R.drawable.balloon_glass),
                 contentDescription = "Cocktail detail card",
                 contentScale = ContentScale.Crop
             )
-            Text(
-                modifier = Modifier
-                    .padding(8.dp)
-                    .fillMaxWidth(),
-                text = description ?: "empty filler",
-                overflow = TextOverflow.Ellipsis,
-                style = Text12,
-                color = Grey1000,
-                maxLines = 20
-            )
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+                .border(3.dp, Grey50)
+                .background(Brown1)
+            ) {
+                Text(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .fillMaxWidth(),
+                    text = description ?: "empty filler",
+                    overflow = TextOverflow.Ellipsis,
+                    style = Text14,
+                    color = Grey50,
+                    maxLines = 20
+                )
+            }
         }
     }
 }
