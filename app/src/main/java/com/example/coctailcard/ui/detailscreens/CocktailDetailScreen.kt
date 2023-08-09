@@ -490,7 +490,7 @@ fun CocktailDetail(
 
 @Preview
 @Composable
-fun PromotionDetailPreview() {
+fun CocktailDetailPreview() {
     CocktailDetail(
         cocktail = Cocktail(
             id = "1",
@@ -521,5 +521,9 @@ fun PromotionDetailPreview() {
 @Preview
 @Composable
 fun CocktailDetailScreenPreview() {
-    CocktailDetailScreen(id = "17222")
+    CocktailDetailScreen(
+        id = "17222",
+        navController = rememberNavController(),
+        modifier = Modifier
+    )
 }
