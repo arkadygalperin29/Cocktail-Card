@@ -101,6 +101,7 @@ fun CocktailDetailScreen(
 fun CocktailDetail(
     cocktail: Cocktail
 ) {
+    val actions = rememberCocktailNavActions(navController = rememberNavController())
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -200,7 +201,7 @@ fun CocktailDetail(
                             (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
                         .background(color = Cream, shape = RoundedCornerShape(8.dp))
-                        .clickable { }
+                        .clickable { actions.navigateToIngredientDetails(it) }
                 ) {
                     Text(
                         text = it,

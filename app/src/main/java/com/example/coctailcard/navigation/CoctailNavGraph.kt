@@ -14,6 +14,7 @@ import com.example.coctailcard.ui.detailscreens.CocktailDetailScreen
 import com.example.coctailcard.ui.detailscreens.CocktailDetailViewModel
 import com.example.coctailcard.ui.glassscreen.GlassScreen
 import com.example.coctailcard.ui.glassscreen.GlassViewModel
+import com.example.coctailcard.ui.ingredients.IngredientDetailScreen
 import com.example.coctailcard.ui.ingredients.IngredientsScreen
 import com.example.coctailcard.ui.ingredients.IngredientsViewModel
 import com.example.coctailcard.ui.menuscreen.MenuScreen
@@ -112,6 +113,15 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
             val viewModel: IngredientsViewModel = koinViewModel()
             IngredientsScreen(
                 navController = navController,
+                viewModel = viewModel
+            )
+        }
+        composable(CoctailDestinations.INGREDIENT_DETAIL_ROUTE) {
+            val iid = it.arguments.iid ?: "-2"
+            val viewModel: IngredientsViewModel = koinViewModel()
+            IngredientDetailScreen(
+                navController = navController,
+                iid = iid,
                 viewModel = viewModel
             )
         }
