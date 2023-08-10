@@ -26,7 +26,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.example.coctailcard.R
-import com.example.coctailcard.data.network.models.ImageLoad
 import com.example.coctailcard.data.network.models.IngredientDetailed
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.CoctailScaffold
@@ -49,7 +48,6 @@ fun IngredientDetailScreen(
 ) {
     val actions = rememberCocktailNavActions(navController = navController)
     val ingredient = viewModel.ingredient.collectAsState()
-    val image = viewModel.image.collectAsState()
     val scrollState = rememberScrollState()
 
     LaunchedEffect(true) {
@@ -62,9 +60,6 @@ fun IngredientDetailScreen(
     }
     LaunchedEffect(true) {
         viewModel.fetchIngredientByName(name.dropLast(1))
-    }
-    LaunchedEffect(true) {
-        viewModel.fetchImageName(name.dropLast(1))
     }
 
     CoctailScaffold(
@@ -81,15 +76,14 @@ fun IngredientDetailScreen(
                 .background(Pink40)
                 .paddingWithScroll(paddingValues, scrollState),
         ) {
-            ingredient.value?.let { IngredientDetail(ingredientDetailed = it, ImageLoad(image.toString())) }
+            ingredient.value?.let { IngredientDetail(ingredientDetailed = it) }
         }
     }
 }
 
 @Composable
 fun IngredientDetail(
-    ingredientDetailed: IngredientDetailed,
-    image: ImageLoad
+    ingredientDetailed: IngredientDetailed
 ) {
     Column(
         modifier = Modifier
@@ -110,7 +104,7 @@ fun IngredientDetail(
                     .clip(shape = RoundedCornerShape(16.dp))
                     .background(color = Color.Black)
                     .border(2.dp, Black1, shape = RoundedCornerShape(16.dp)),
-                model = image.image,
+                model = stringResource(R.string.coil_image_url_ingredients, ingredientDetailed.name.toString()),
                 contentDescription = null,
                 contentScale = ContentScale.Crop
             )
@@ -194,7 +188,7 @@ fun IngredientDetailPreview() {
             "Square",
             "Alcoholic",
             "45"
-        ), ImageLoad("43141")
+        )
     )
 }
 

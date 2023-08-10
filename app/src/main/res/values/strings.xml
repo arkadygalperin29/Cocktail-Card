@@ -143,6 +143,7 @@
     <string name="ingredients">"Ingredients: "</string>
     <string name="drink_type_ingredient_detail">Drink type: %1$s</string>
     <string name="is_alcoholic">Alcohol: %1$s</string>
+    <string name="coil_image_url_ingredients">https://www.thecocktaildb.com/images/ingredients/%1$s.png</string>
 
 
 </resources>
