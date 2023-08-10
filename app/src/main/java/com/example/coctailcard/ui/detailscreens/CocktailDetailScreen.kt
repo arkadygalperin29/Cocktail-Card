@@ -29,7 +29,6 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.example.coctailcard.R
 import com.example.coctailcard.data.network.models.Cocktail
-import com.example.coctailcard.navigation.CocktailNavActions
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
@@ -94,15 +93,17 @@ fun CocktailDetailScreen(
                 .background(Pink40)
                 .paddingWithScroll(paddingValues, scrollState),
         ) {
-            cocktail.value?.let { CocktailDetail(cocktail = it) }
+            cocktail.value?.let { CocktailDetail(cocktail = it, navController = navController) }
         }
     }
 }
 
 @Composable
 fun CocktailDetail(
-    cocktail: Cocktail
+    cocktail: Cocktail,
+    navController: NavController = rememberNavController()
 ) {
+    val actions = rememberCocktailNavActions(navController = navController)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -194,7 +195,7 @@ fun CocktailDetail(
             color = Grey50
         )
         if (!cocktail.strIngredient1.isNullOrEmpty()) {
-            cocktail.strIngredient1?.let {
+            cocktail.strIngredient1?.let { name ->
                 Box(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
@@ -202,10 +203,10 @@ fun CocktailDetail(
                             (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
                         .background(color = Cream, shape = RoundedCornerShape(8.dp))
-                        .clickable { /*actions.navigateToIngredientDetails(it)*/ }
+                        .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
-                        text = it,
+                        text = name,
                         modifier = Modifier.padding(8.dp),
                         style = Text14,
                         color = Black1
@@ -214,7 +215,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient2.isNullOrEmpty()) {
-            cocktail.strIngredient2?.let {
+            cocktail.strIngredient2?.let { name ->
                 Box(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
@@ -222,10 +223,10 @@ fun CocktailDetail(
                             (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
                         .background(color = RoseGold1, shape = RoundedCornerShape(8.dp))
-                        .clickable { }
+                        .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
-                        text = it,
+                        text = name,
                         modifier = Modifier
                             .padding(8.dp),
                         style = Text14,

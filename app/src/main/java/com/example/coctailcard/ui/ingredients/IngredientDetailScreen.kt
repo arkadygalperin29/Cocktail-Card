@@ -47,7 +47,7 @@ fun IngredientDetailScreen(
         }
     }
     LaunchedEffect(true) {
-        viewModel.fetchIngredientByName(name)
+        viewModel.fetchIngredientByName(name.dropLast(1))
     }
 
     CoctailScaffold(

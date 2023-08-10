@@ -108,8 +108,8 @@ class CocktailNavActions(private val navController: NavController) : KoinCompone
             restoreState = true
         }
     }
-    val navigateToIngredients: () -> Unit = {
-        navController.navigate(CoctailDestinations.INGREDIENTS_ROUTE) {
+    val navigateToIngredientDetails: (String) -> Unit = {
+        navController.navigate(CoctailDestinations.INGREDIENT_DETAIL_ROUTE.withIid(it)) {
             val primaryRoute: Int? = navController.currentBackStackEntry?.destination?.id
             val fallbackRoute: Int = navController.graph.findStartDestination().id
             popUpTo(primaryRoute ?: fallbackRoute) {
@@ -119,8 +119,8 @@ class CocktailNavActions(private val navController: NavController) : KoinCompone
             restoreState = true
         }
     }
-    val navigateToIngredientDetails: (String) -> Unit = {
-        navController.navigate(CoctailDestinations.INGREDIENT_DETAIL_ROUTE.withIid(it)) {
+    val navigateToIngredients: () -> Unit = {
+        navController.navigate(CoctailDestinations.INGREDIENTS_ROUTE) {
             val primaryRoute: Int? = navController.currentBackStackEntry?.destination?.id
             val fallbackRoute: Int = navController.graph.findStartDestination().id
             popUpTo(primaryRoute ?: fallbackRoute) {

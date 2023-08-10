@@ -34,7 +34,6 @@ class GlassViewModel(private val glassesRepository: GetGlassesRepository) : View
                         it.printStackTrace()
                     }
                 }
-
                 else -> {
                 }
             }

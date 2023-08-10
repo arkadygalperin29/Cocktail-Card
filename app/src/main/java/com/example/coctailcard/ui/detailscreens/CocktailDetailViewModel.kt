@@ -29,11 +29,7 @@ class CocktailDetailViewModel(
 
     private var _ingredient = MutableStateFlow<List<IngredientDetailed>>(emptyList())
     val ingredient = _ingredient.asStateFlow()
-
-    init {
-        fetchIngredientBySearchName("gin")
-        fetchIngredientBySearchName("vodka")
-    }
+    
 
     fun getCocktailById(id: String) {
         viewModelScope.launch(Dispatchers.IO) {
