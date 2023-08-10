@@ -7,6 +7,7 @@ import com.example.coctailcard.data.network.RequestResult
 import com.example.coctailcard.data.network.models.Cocktail
 import com.example.coctailcard.data.repositories.GetCocktailsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
@@ -18,12 +19,12 @@ class MenuScreenViewModel(
     private val _cocktails = MutableStateFlow<List<Cocktail>>(emptyList())
     val cocktails = _cocktails.asStateFlow()
 
-/*    init {
-       viewModelScope.launch {
-            fetchCocktails("a")
-           //That is initial query fetch to not make the screen empty.
-        }
-    }*/
+    private val _searchQuery = MutableStateFlow("a")
+    val searchQuery = _searchQuery.asStateFlow()
+
+    fun setSearchQuery(query: String) {
+        _searchQuery.value = query
+    }
 
     suspend fun fetchCocktails(getLetter: String) {
         when (val result = getCocktailsRepository.getCocktailsByFirstLetter(getLetter)) {

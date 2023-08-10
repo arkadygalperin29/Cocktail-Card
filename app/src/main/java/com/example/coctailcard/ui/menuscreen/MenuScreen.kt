@@ -35,10 +35,10 @@ fun MenuScreen(
     navController: NavController = rememberNavController(),
     viewModel: MenuScreenViewModel = koinViewModel(),
 ) {
+    val searchQuery by viewModel.searchQuery.collectAsState()
     val actions = rememberCocktailNavActions(navController = navController)
     val cocktails by viewModel.cocktails.collectAsState()
     val lazyGridState = rememberLazyGridState()
-    var searchQuery by rememberSaveable { mutableStateOf("a") }
 
     LaunchedEffect(searchQuery) {
         viewModel.fetchCocktails(searchQuery)
@@ -57,7 +57,7 @@ fun MenuScreen(
             verticalArrangement = Arrangement.Center
         ) {
             SearchBar(onSearch = { query ->
-                searchQuery = query
+                viewModel.setSearchQuery(query)
             })
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),

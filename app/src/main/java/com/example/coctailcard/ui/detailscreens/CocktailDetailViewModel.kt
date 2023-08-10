@@ -5,8 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coctailcard.data.network.RequestResult
 import com.example.coctailcard.data.network.models.Cocktail
+import com.example.coctailcard.data.network.models.IngredientDetailed
 import com.example.coctailcard.data.repositories.GetCocktailsRepository
-import com.example.coctailcard.ui.category.CategoriesSelection
+import com.example.coctailcard.data.repositories.ingredients.GetIngredientsRepository
 import com.example.coctailcard.util.UiEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -16,7 +17,8 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 class CocktailDetailViewModel(
-    private val getCocktailsRepository: GetCocktailsRepository
+    private val getCocktailsRepository: GetCocktailsRepository,
+    private val ingredientsRepository: GetIngredientsRepository
 ) : ViewModel() {
 
     private val _uiEvent = Channel<UiEvent>()
@@ -24,6 +26,14 @@ class CocktailDetailViewModel(
 
     private var _cocktail = MutableStateFlow<Cocktail?>(null)
     val cocktail = _cocktail.asStateFlow()
+
+    private var _ingredient = MutableStateFlow<List<IngredientDetailed>>(emptyList())
+    val ingredient = _ingredient.asStateFlow()
+
+    init {
+        fetchIngredientBySearchName("gin")
+        fetchIngredientBySearchName("vodka")
+    }
 
     fun getCocktailById(id: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -35,9 +45,43 @@ class CocktailDetailViewModel(
                         it.printStackTrace()
                     }
                 }
+
                 else -> {
-  //  do empty screen if can't load the data || sendUiEvent(UiEvent.NavigateTo { navigateToCategory(CategoriesSelection.NON_ALCOHOLIC) })
+                    //  do empty screen if can't load the data || sendUiEvent(UiEvent.NavigateTo { navigateToCategory(CategoriesSelection.NON_ALCOHOLIC) })
                 }
+            }
+        }
+    }
+
+    fun fetchIngredientBySearch(query: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            when (val response = ingredientsRepository.getIngredientBySearch(query)) {
+                is RequestResult.Success -> {
+                    runCatching {
+                        _ingredient.value = response.data
+                        Log.d("IngredientQueryReq", "$response.data")
+                    }.onFailure {
+                        it.printStackTrace()
+                    }
+                }
+                else -> {}
+            }
+        }
+    }
+
+    fun fetchIngredientBySearchName(name: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            when(val response = ingredientsRepository.getIngredientByName(name)) {
+                is RequestResult.Success -> {
+                    runCatching {
+                        _ingredient.value = response.data
+                        Log.d("IngredientsQueryReq", "${response.data}")
+                    }.onFailure {
+                        it.printStackTrace()
+                    }
+                }
+
+                else -> {}
             }
         }
     }

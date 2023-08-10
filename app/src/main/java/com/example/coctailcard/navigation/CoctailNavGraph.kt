@@ -15,6 +15,7 @@ import com.example.coctailcard.ui.detailscreens.CocktailDetailViewModel
 import com.example.coctailcard.ui.glassscreen.GlassScreen
 import com.example.coctailcard.ui.glassscreen.GlassViewModel
 import com.example.coctailcard.ui.ingredients.IngredientDetailScreen
+import com.example.coctailcard.ui.ingredients.IngredientDetailViewModel
 import com.example.coctailcard.ui.ingredients.IngredientsScreen
 import com.example.coctailcard.ui.ingredients.IngredientsViewModel
 import com.example.coctailcard.ui.menuscreen.MenuScreen
@@ -78,28 +79,6 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
                 viewModel = viewModel
             )
         }
-        /*        composable(
-                    route = CoctailDestinations.ALCOHOLIC_ROUTE
-                ) {
-                    val id = it.arguments.id
-                    val viewModel: CocktailDetailViewModel = koinViewModel()
-                    CocktailDetailScreen(
-                        navController = navController,
-                        viewModel = viewModel,
-                        id = id ?: "-1"
-                    )
-                }*/
-        /*        composable(
-                    route = CoctailDestinations.NON_ALCOHOLIC_ROUTE
-                ) {
-                    val id = it.arguments.id
-                    val viewModel: CocktailDetailViewModel = koinViewModel()
-                    CocktailDetailScreen(
-                        navController = navController,
-                        viewModel = viewModel,
-                        id = id ?: "-1"
-                    )
-                }*/
         composable(CoctailDestinations.COCKTAIL_DETAIL_ROUTE) {
             val id = it.arguments.id ?: "-1"
             val viewModel: CocktailDetailViewModel = koinViewModel()
@@ -117,11 +96,11 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
             )
         }
         composable(CoctailDestinations.INGREDIENT_DETAIL_ROUTE) {
-            val iid = it.arguments.iid ?: "-2"
-            val viewModel: IngredientsViewModel = koinViewModel()
+            val iid = it.arguments.iid ?: "-1"
+            val viewModel: IngredientDetailViewModel = koinViewModel()
             IngredientDetailScreen(
                 navController = navController,
-                iid = iid,
+                name = iid,
                 viewModel = viewModel
             )
         }

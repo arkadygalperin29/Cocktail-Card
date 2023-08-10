@@ -15,6 +15,12 @@ interface ApiService {
     @GET("search.php")
     suspend fun getCocktailsByFirstLetter(@Query("f") letterSearch: String): ApiResponse<List<Cocktail>>
 
+    @GET("search.php")
+    suspend fun getIngredientByIngredientsName(@Query("i") ingredientNameSearch: String): IngredientsResponse<List<IngredientDetailed>>
+
+    @GET("lookup.php")
+    suspend fun getIngredientBySearch(@Query("iid") searchQuery: String): IngredientsResponse<List<IngredientDetailed>>
+
     //list all cocktails by first letter www.thecocktaildb.com/api/json/v1/1/search.php?f=a
     @GET("filter.php?a=Alcoholic")
     suspend fun getCocktailsWithAlcohol(): ApiResponse<List<Cocktail>>

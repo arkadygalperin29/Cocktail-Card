@@ -29,6 +29,7 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.example.coctailcard.R
 import com.example.coctailcard.data.network.models.Cocktail
+import com.example.coctailcard.navigation.CocktailNavActions
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
@@ -78,6 +79,7 @@ fun CocktailDetailScreen(
     LaunchedEffect(key1 = true) {
         viewModel.getCocktailById(id)
     }
+
     CoctailScaffold(
         modifier = modifier,
         navController = navController,
@@ -101,7 +103,6 @@ fun CocktailDetailScreen(
 fun CocktailDetail(
     cocktail: Cocktail
 ) {
-    val actions = rememberCocktailNavActions(navController = rememberNavController())
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -201,7 +202,7 @@ fun CocktailDetail(
                             (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
                         .background(color = Cream, shape = RoundedCornerShape(8.dp))
-                        .clickable { actions.navigateToIngredientDetails(it) }
+                        .clickable { /*actions.navigateToIngredientDetails(it)*/ }
                 ) {
                     Text(
                         text = it,

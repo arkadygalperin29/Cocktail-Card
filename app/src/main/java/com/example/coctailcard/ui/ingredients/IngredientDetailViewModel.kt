@@ -1,10 +1,8 @@
 package com.example.coctailcard.ui.ingredients
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coctailcard.data.network.RequestResult
-import com.example.coctailcard.data.network.models.Ingredient
 import com.example.coctailcard.data.network.models.IngredientDetailed
 import com.example.coctailcard.data.repositories.ingredients.GetIngredientsRepository
 import com.example.coctailcard.util.UiEvent
@@ -15,30 +13,27 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
-class IngredientsViewModel(
+class IngredientDetailViewModel(
     private val ingredientsRepository: GetIngredientsRepository
-) : ViewModel() {
+): ViewModel() {
 
-    private val _ingredients = MutableStateFlow<List<Ingredient>>(emptyList())
-    val ingredients = _ingredients.asStateFlow()
+    private val _uiEvent = Channel<UiEvent>()
+    val uiEvent = _uiEvent.receiveAsFlow()
 
-    init {
-        fetchIngredients()
-    }
+    private var _ingredient = MutableStateFlow<IngredientDetailed?>(null)
+    val ingredient = _ingredient.asStateFlow()
 
-    private fun fetchIngredients() {
+    fun fetchIngredientByName(name: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            when (val result = ingredientsRepository.getIngredientsList()) {
+            when (val result = ingredientsRepository.getIngredientByName(name)) {
                 is RequestResult.Success -> {
                     runCatching {
-                        _ingredients.value = result.data
-                        Log.d("IngredientsReq", "${result.data}")
+                        _ingredient.value = result.data[0]
                     }.onFailure {
                         it.printStackTrace()
                     }
                 }
-                else -> {
-                }
+                else -> {}
             }
         }
     }

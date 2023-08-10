@@ -4,15 +4,15 @@ import com.google.gson.annotations.SerializedName
 
 open class IngredientDetailed(
     @SerializedName("idIngredient")
-    var id: String,
+    var id: String? = null,
     @SerializedName("strIngredient")
-    var name: String,
+    var name: String? = null,
     @SerializedName("strDescription")
-    var description: String,
+    var description: String? = null,
     @SerializedName("strType")
-    var glassType: String,
+    var glassType: String? = null,
     @SerializedName("strAlcohol")
-    var isAlcoholic: String,
+    var isAlcoholic: String? = null,
     @SerializedName("strABV")
     var alcoholicVolume: String? = null
 )

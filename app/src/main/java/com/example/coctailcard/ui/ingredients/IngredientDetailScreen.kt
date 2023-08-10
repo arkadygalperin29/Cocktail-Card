@@ -25,15 +25,14 @@ import com.example.coctailcard.ui.theme.Header1
 import com.example.coctailcard.ui.theme.Pink40
 import com.example.coctailcard.util.UiEvent
 import com.example.coctailcard.util.paddingWithScroll
-import kotlinx.coroutines.delay
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun IngredientDetailScreen(
     modifier: Modifier = Modifier,
     navController: NavController = rememberNavController(),
-    iid: String,
-    viewModel: IngredientsViewModel = koinViewModel()
+    name: String,
+    viewModel: IngredientDetailViewModel = koinViewModel()
 ) {
     val actions = rememberCocktailNavActions(navController = navController)
     val ingredient = viewModel.ingredient.collectAsState()
@@ -47,10 +46,10 @@ fun IngredientDetailScreen(
             }
         }
     }
-    LaunchedEffect(key1 = true) {
-        delay(2000L)
-        viewModel.fetchIngredientById(id = iid)
+    LaunchedEffect(true) {
+        viewModel.fetchIngredientByName(name)
     }
+
     CoctailScaffold(
         modifier = modifier,
         navController = navController,
@@ -68,7 +67,6 @@ fun IngredientDetailScreen(
             ingredient.value?.let { IngredientDetail(ingredientDetailed = it) }
         }
     }
-
 }
 
 @Composable
@@ -80,67 +78,57 @@ fun IngredientDetail(
             .fillMaxSize()
             .background(color = Pink40)
     ) {
-        /*Box(    Add the static images later.
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 8.dp, start = 16.dp, end = 16.dp, bottom = 16.dp)
-                .background(color = Pink40)
-        ) {
-            AsyncImage(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(350.dp)
-                    .clip(shape = RoundedCornerShape(16.dp))
-                    .background(color = Color.Black)
-                    .border(2.dp, Black1, shape = RoundedCornerShape(16.dp)),
-                model = ingredientDetailed.glassType,
-                contentDescription = null,
-                contentScale = ContentScale.Crop
-            )
-        }*/
-        if (ingredientDetailed.name.isNotEmpty()) {
-            Text(
-                text = ingredientDetailed.name,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp),
-                textAlign = TextAlign.Center,
-                style = Header1,
-                color = Grey50
-            )
+        if (!ingredientDetailed.name.isNullOrEmpty()) {
+            ingredientDetailed.name?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp),
+                    textAlign = TextAlign.Center,
+                    style = Header1,
+                    color = Grey50
+                )
+            }
         }
-        if (ingredientDetailed.description.isNotEmpty()) {
-            Text(
-                text = ingredientDetailed.description,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp),
-                textAlign = TextAlign.Center,
-                style = Header1,
-                color = Grey50
-            )
+        if (!ingredientDetailed.description.isNullOrEmpty()) {
+            ingredientDetailed.description?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp),
+                    textAlign = TextAlign.Center,
+                    style = Header1,
+                    color = Grey50
+                )
+            }
         }
-        if (ingredientDetailed.glassType.isNotEmpty()) {
-            Text(
-                text = ingredientDetailed.glassType,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp),
-                textAlign = TextAlign.Center,
-                style = Header1,
-                color = Grey50
-            )
+        if (!ingredientDetailed.glassType.isNullOrEmpty()) {
+            ingredientDetailed.glassType?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp),
+                    textAlign = TextAlign.Center,
+                    style = Header1,
+                    color = Grey50
+                )
+            }
         }
-        if (ingredientDetailed.isAlcoholic.isNotEmpty()) {
-            Text(
-                text = ingredientDetailed.isAlcoholic,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp),
-                textAlign = TextAlign.Center,
-                style = Header1,
-                color = Grey50
-            )
+        if (ingredientDetailed.isAlcoholic.isNullOrEmpty()) {
+            ingredientDetailed.isAlcoholic?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp),
+                    textAlign = TextAlign.Center,
+                    style = Header1,
+                    color = Grey50
+                )
+            }
         }
         if (!ingredientDetailed.alcoholicVolume.isNullOrEmpty()) {
             ingredientDetailed.alcoholicVolume?.let {
@@ -176,5 +164,5 @@ fun IngredientDetailPreview() {
 @Preview
 @Composable
 fun IngredientDetailScreenPreview() {
-    IngredientDetailScreen(iid = "552")
+    IngredientDetailScreen(name = "vodka")
 }

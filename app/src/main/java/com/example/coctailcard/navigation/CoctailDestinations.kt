@@ -24,7 +24,7 @@ object CoctailDestinations {
     const val ACCOUNT_DATA_ROUTE = "accountdata"
     const val ACCOUNT_PASSWORD_ROUTE = "accountpassword"
     const val COCKTAIL_DETAIL_ROUTE: CocktailRoute = "lookup.php/{id}"
-    const val INGREDIENT_DETAIL_ROUTE: CocktailRoute = "lookup.php/{iid}"
+    const val INGREDIENT_DETAIL_ROUTE: CocktailRoute = "search.php/{iid}"
     const val GLASS_DETAIL_ROUTE: CocktailRoute = "list.php/g=list"
     const val NON_ALCOHOLIC_ROUTE = "non_alcoholic_route"
     const val ALCOHOLIC_ROUTE = "alcoholic_route"
@@ -45,6 +45,7 @@ val Bundle?.iid get() = this?.getString(ARG_IID)
 
 val Bundle?.name get() = this?.getString(ARG_GLASS_NAME)
 fun CocktailRoute.withId(id: String): CocktailRoute = replace("{$ARG_ID}", id)
+fun CocktailRoute.withIid(iid: String): CocktailRoute = replace("{$ARG_IID", iid)
 val Bundle?.page get() = this?.getString(ARG_PAGE)?.toIntOrNull()
 fun CocktailRoute.withPage(page: Int): CocktailRoute = replace("{$ARG_PAGE}", page.toString())
 
@@ -119,7 +120,7 @@ class CocktailNavActions(private val navController: NavController) : KoinCompone
         }
     }
     val navigateToIngredientDetails: (String) -> Unit = {
-        navController.navigate(CoctailDestinations.INGREDIENT_DETAIL_ROUTE.withId(it)) {
+        navController.navigate(CoctailDestinations.INGREDIENT_DETAIL_ROUTE.withIid(it)) {
             val primaryRoute: Int? = navController.currentBackStackEntry?.destination?.id
             val fallbackRoute: Int = navController.graph.findStartDestination().id
             popUpTo(primaryRoute ?: fallbackRoute) {
