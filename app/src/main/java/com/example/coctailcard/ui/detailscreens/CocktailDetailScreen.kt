@@ -236,7 +236,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient3.isNullOrEmpty()) {
-            cocktail.strIngredient3?.let {
+            cocktail.strIngredient3?.let { name ->
                 Box(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
@@ -244,10 +244,10 @@ fun CocktailDetail(
                             (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
                         .background(color = Peach, shape = RoundedCornerShape(8.dp))
-                        .clickable { }
+                        .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
-                        text = it,
+                        text = name,
                         modifier = Modifier
                             .padding(8.dp),
                         style = Text14,
@@ -257,7 +257,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient4.isNullOrEmpty()) {
-            cocktail.strIngredient4?.let {
+            cocktail.strIngredient4?.let { name ->
                 Box(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
@@ -265,10 +265,10 @@ fun CocktailDetail(
                             (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
                         .background(color = MintGreen, shape = RoundedCornerShape(8.dp))
-                        .clickable { }
+                        .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
-                        text = it,
+                        text = name,
                         modifier = Modifier
                             .padding(8.dp),
                         style = Text14,
@@ -278,7 +278,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient5.isNullOrEmpty()) {
-            cocktail.strIngredient5?.let {
+            cocktail.strIngredient5?.let { name ->
                 Box(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
@@ -286,10 +286,10 @@ fun CocktailDetail(
                             (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
                         .background(color = PaleGray, shape = RoundedCornerShape(8.dp))
-                        .clickable { }
+                        .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
-                        text = it,
+                        text = name,
                         modifier = Modifier
                             .padding(8.dp),
                         style = Text14,
@@ -299,7 +299,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient6.isNullOrEmpty()) {
-            cocktail.strIngredient6?.let {
+            cocktail.strIngredient6?.let { name ->
                 Box(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
@@ -307,10 +307,10 @@ fun CocktailDetail(
                             (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
                         .background(color = SealBrown, shape = RoundedCornerShape(8.dp))
-                        .clickable { }
+                        .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
-                        text = it,
+                        text = name,
                         modifier = Modifier
                             .padding(8.dp),
                         style = Text14,
@@ -320,7 +320,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient7.isNullOrEmpty()) {
-            cocktail.strIngredient7?.let {
+            cocktail.strIngredient7?.let { name ->
                 Box(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
@@ -328,10 +328,10 @@ fun CocktailDetail(
                             (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
                         .background(color = Teal1, shape = RoundedCornerShape(8.dp))
-                        .clickable { }
+                        .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
-                        text = it,
+                        text = name,
                         modifier = Modifier
                             .padding(8.dp),
                         style = Text14,
@@ -341,7 +341,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient8.isNullOrEmpty()) {
-            cocktail.strIngredient8?.let {
+            cocktail.strIngredient8?.let { name ->
                 Box(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
@@ -349,10 +349,10 @@ fun CocktailDetail(
                             (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
                         .background(color = CoolWhite, shape = RoundedCornerShape(8.dp))
-                        .clickable { }
+                        .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
-                        text = it,
+                        text = name,
                         modifier = Modifier
                             .padding(8.dp),
                         style = Text14,
@@ -362,7 +362,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient9.isNullOrEmpty()) {
-            cocktail.strIngredient9?.let {
+            cocktail.strIngredient9?.let { name ->
                 Box(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
@@ -370,10 +370,10 @@ fun CocktailDetail(
                             (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
                         .background(color = Aubergine, shape = RoundedCornerShape(8.dp))
-                        .clickable { }
+                        .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
-                        text = it,
+                        text = name,
                         modifier = Modifier
                             .padding(8.dp),
                         style = Text14,
@@ -383,7 +383,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient10.isNullOrEmpty()) {
-            cocktail.strIngredient10?.let {
+            cocktail.strIngredient10?.let { name ->
                 Box(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
@@ -391,10 +391,10 @@ fun CocktailDetail(
                             (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
                         .background(color = MiddleGreen, shape = RoundedCornerShape(8.dp))
-                        .clickable { }
+                        .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
-                        text = it,
+                        text = name,
                         modifier = Modifier
                             .padding(8.dp),
                         style = Text14,
@@ -404,7 +404,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient11.isNullOrEmpty()) {
-            cocktail.strIngredient11?.let {
+            cocktail.strIngredient11?.let { name ->
                 Box(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
@@ -412,10 +412,10 @@ fun CocktailDetail(
                             (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
                         .background(color = TerraCotta, shape = RoundedCornerShape(8.dp))
-                        .clickable { }
+                        .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
-                        text = it,
+                        text = name,
                         modifier = Modifier
                             .padding(8.dp),
                         style = Text14,
@@ -425,7 +425,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient12.isNullOrEmpty()) {
-            cocktail.strIngredient12?.let {
+            cocktail.strIngredient12?.let { name ->
                 Box(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
@@ -433,10 +433,10 @@ fun CocktailDetail(
                             (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
                         .background(color = SoftBlueGray, shape = RoundedCornerShape(8.dp))
-                        .clickable { }
+                        .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
-                        text = it,
+                        text = name,
                         modifier = Modifier
                             .padding(8.dp),
                         style = Text14,
@@ -446,7 +446,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient13.isNullOrEmpty()) {
-            cocktail.strIngredient13?.let {
+            cocktail.strIngredient13?.let { name ->
                 Box(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
@@ -454,10 +454,10 @@ fun CocktailDetail(
                             (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
                         .background(color = PeriWinkle1, shape = RoundedCornerShape(8.dp))
-                        .clickable { }
+                        .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
-                        text = it,
+                        text = name,
                         modifier = Modifier
                             .padding(8.dp),
                         style = Text14,
@@ -467,7 +467,7 @@ fun CocktailDetail(
             }
         }
         if (!cocktail.strIngredient14.isNullOrEmpty()) {
-            cocktail.strIngredient14?.let {
+            cocktail.strIngredient14?.let { name ->
                 Box(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
@@ -475,10 +475,10 @@ fun CocktailDetail(
                             (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
                         .background(color = SkyBlue, shape = RoundedCornerShape(8.dp))
-                        .clickable { }
+                        .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
-                        text = it,
+                        text = name,
                         modifier = Modifier
                             .padding(8.dp),
                         style = Text14,

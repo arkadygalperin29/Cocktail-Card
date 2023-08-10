@@ -117,7 +117,7 @@ fun IngredientDetail(
                 )
             }
         }
-        if (ingredientDetailed.isAlcoholic.isNullOrEmpty()) {
+        if (!ingredientDetailed.isAlcoholic.isNullOrEmpty()) {
             ingredientDetailed.isAlcoholic?.let {
                 Text(
                     text = it,
