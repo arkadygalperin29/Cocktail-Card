@@ -49,39 +49,6 @@ class CocktailDetailViewModel(
         }
     }
 
-    fun fetchIngredientBySearch(query: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            when (val response = ingredientsRepository.getIngredientBySearch(query)) {
-                is RequestResult.Success -> {
-                    runCatching {
-                        _ingredient.value = response.data
-                        Log.d("IngredientQueryReq", "$response.data")
-                    }.onFailure {
-                        it.printStackTrace()
-                    }
-                }
-                else -> {}
-            }
-        }
-    }
-
-    fun fetchIngredientBySearchName(name: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            when(val response = ingredientsRepository.getIngredientByName(name)) {
-                is RequestResult.Success -> {
-                    runCatching {
-                        _ingredient.value = response.data
-                        Log.d("IngredientsQueryReq", "${response.data}")
-                    }.onFailure {
-                        it.printStackTrace()
-                    }
-                }
-
-                else -> {}
-            }
-        }
-    }
-
     private suspend fun sendUiEvent(event: UiEvent) {
         _uiEvent.send(event)
     }

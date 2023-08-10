@@ -2,10 +2,13 @@ package com.example.coctailcard.data.network
 
 import com.example.coctailcard.data.network.models.Cocktail
 import com.example.coctailcard.data.network.models.Glass
+import com.example.coctailcard.data.network.models.ImageLoad
 import com.example.coctailcard.data.network.models.Ingredient
 import com.example.coctailcard.data.network.models.IngredientDetailed
 import com.example.coctailcard.data.network.models.SampleData
+import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -17,6 +20,8 @@ interface ApiService {
 
     @GET("search.php")
     suspend fun getIngredientByIngredientsName(@Query("i") ingredientNameSearch: String): IngredientsResponse<List<IngredientDetailed>>
+    @GET("www.thecocktaildb.com/images/ingredients/{imageName}")
+    fun getIngredientImageByName(@Path("imageName") imageName: String): ImageLoad
 
     @GET("lookup.php")
     suspend fun getIngredientBySearch(@Query("iid") searchQuery: String): IngredientsResponse<List<IngredientDetailed>>

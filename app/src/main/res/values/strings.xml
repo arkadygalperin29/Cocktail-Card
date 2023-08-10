@@ -141,6 +141,8 @@
     <string name="glass">Glass: %1$s</string>
     <string name="instructions">Instructions: %1$s</string>
     <string name="ingredients">"Ingredients: "</string>
+    <string name="drink_type_ingredient_detail">Drink type: %1$s</string>
+    <string name="is_alcoholic">Alcohol: %1$s</string>
 
 
 </resources>

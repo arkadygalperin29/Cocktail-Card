@@ -3,6 +3,7 @@ package com.example.coctailcard.ui.ingredients
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coctailcard.data.network.RequestResult
+import com.example.coctailcard.data.network.models.ImageLoad
 import com.example.coctailcard.data.network.models.IngredientDetailed
 import com.example.coctailcard.data.repositories.ingredients.GetIngredientsRepository
 import com.example.coctailcard.util.UiEvent
@@ -15,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class IngredientDetailViewModel(
     private val ingredientsRepository: GetIngredientsRepository
-): ViewModel() {
+) : ViewModel() {
 
     private val _uiEvent = Channel<UiEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
@@ -23,12 +24,30 @@ class IngredientDetailViewModel(
     private var _ingredient = MutableStateFlow<IngredientDetailed?>(null)
     val ingredient = _ingredient.asStateFlow()
 
+    private var _image = MutableStateFlow<ImageLoad?>(null)
+    val image = _image.asStateFlow()
+
     fun fetchIngredientByName(name: String) {
         viewModelScope.launch(Dispatchers.IO) {
             when (val result = ingredientsRepository.getIngredientByName(name)) {
                 is RequestResult.Success -> {
                     runCatching {
                         _ingredient.value = result.data[0]
+                    }.onFailure {
+                        it.printStackTrace()
+                    }
+                }
+
+                else -> {}
+            }
+        }
+    }
+    fun fetchImageName(image: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            when (val result = ingredientsRepository.getImageByIngredientName(image)) {
+                is RequestResult.Success -> {
+                    runCatching {
+                        _image.value = result.data
                     }.onFailure {
                         it.printStackTrace()
                     }

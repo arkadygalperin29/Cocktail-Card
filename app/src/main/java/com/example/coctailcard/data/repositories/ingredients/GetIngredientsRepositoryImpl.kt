@@ -2,8 +2,10 @@ package com.example.coctailcard.data.repositories.ingredients
 
 import com.example.coctailcard.data.network.ApiService
 import com.example.coctailcard.data.network.RequestResult
+import com.example.coctailcard.data.network.models.ImageLoad
 import com.example.coctailcard.data.network.models.Ingredient
 import com.example.coctailcard.data.network.models.IngredientDetailed
+import retrofit2.Call
 
 class GetIngredientsRepositoryImpl(private val apiService: ApiService) : GetIngredientsRepository {
     override suspend fun getIngredientsList(): RequestResult<List<Ingredient>> {
@@ -40,6 +42,15 @@ class GetIngredientsRepositoryImpl(private val apiService: ApiService) : GetIngr
         return runCatching {
             apiService.getIngredientByIngredientsName(searchName).data
                 ?: throw java.lang.IllegalStateException("can't load the ingredient by query")
+        }.fold(
+            onSuccess = { RequestResult.Success(it) },
+            onFailure = { RequestResult.Error(it) }
+        )
+    }
+    override suspend fun getImageByIngredientName(imageName: String): RequestResult<ImageLoad> {
+        return runCatching {
+            apiService.getIngredientImageByName(imageName)
+                ?: throw IllegalStateException("Can't load image by the name")
         }.fold(
             onSuccess = { RequestResult.Success(it) },
             onFailure = { RequestResult.Error(it) }

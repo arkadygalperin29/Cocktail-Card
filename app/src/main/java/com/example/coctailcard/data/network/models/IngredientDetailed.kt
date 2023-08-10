@@ -10,7 +10,7 @@ open class IngredientDetailed(
     @SerializedName("strDescription")
     var description: String? = null,
     @SerializedName("strType")
-    var glassType: String? = null,
+    var drinkType: String? = null,
     @SerializedName("strAlcohol")
     var isAlcoholic: String? = null,
     @SerializedName("strABV")
