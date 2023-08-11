@@ -128,9 +128,9 @@ fun IngredientDetail(
                     text = it,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 16.dp),
+                        .padding(start = 16.dp, top = 16.dp),
                     textAlign = TextAlign.Center,
-                    style = Header1,
+                    style = Text14,
                     color = Grey50
                 )
             }
@@ -141,8 +141,8 @@ fun IngredientDetail(
                     text = stringResource(R.string.drink_type_ingredient_detail, it),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 16.dp),
-                    textAlign = TextAlign.Center,
+                        .padding(start = 16.dp,top = 16.dp),
+                    textAlign = TextAlign.Start,
                     style = Text14,
                     color = Grey50
                 )
@@ -154,9 +154,9 @@ fun IngredientDetail(
                     text = stringResource(R.string.is_alcoholic, it),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 16.dp),
-                    textAlign = TextAlign.Center,
-                    style = Header1,
+                        .padding(start = 16.dp,top = 16.dp),
+                    textAlign = TextAlign.Start,
+                    style = Text14,
                     color = Grey50
                 )
             }
@@ -167,9 +167,9 @@ fun IngredientDetail(
                     text = "Alcohol volume: $it%",
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 16.dp),
-                    textAlign = TextAlign.Center,
-                    style = Header1,
+                        .padding(start = 16.dp,top = 16.dp),
+                    textAlign = TextAlign.Start,
+                    style = Text14,
                     color = Grey50
                 )
             }
