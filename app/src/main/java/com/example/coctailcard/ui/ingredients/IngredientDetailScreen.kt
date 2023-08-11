@@ -49,7 +49,6 @@ fun IngredientDetailScreen(
     viewModel: IngredientDetailViewModel = koinViewModel()
 ) {
     val actions = rememberCocktailNavActions(navController = navController)
-    val ingredient by viewModel.ingredient.collectAsState()
     val state by viewModel.state.collectAsState()
     val scrollState = rememberScrollState()
 
@@ -81,7 +80,7 @@ fun IngredientDetailScreen(
                 .background(Pink40)
                 .paddingWithScroll(paddingValues, scrollState),
         ) {
-            ingredient?.let { IngredientDetail(ingredientDetailed = it) }
+            state.ingredient?.let { IngredientDetail(ingredientDetailed = it) }
         }
     }
 }
@@ -109,7 +108,10 @@ fun IngredientDetail(
                     .clip(shape = RoundedCornerShape(16.dp))
                     .background(color = Color.Black)
                     .border(2.dp, Black1, shape = RoundedCornerShape(16.dp)),
-                model = stringResource(R.string.coil_image_url_ingredients, ingredientDetailed.name.toString()),
+                model = stringResource(
+                    R.string.coil_image_url_ingredients,
+                    ingredientDetailed.name.toString()
+                ),
                 contentDescription = null,
                 contentScale = ContentScale.Crop
             )
@@ -156,7 +158,7 @@ fun IngredientDetail(
         if (!ingredientDetailed.alcoholicVolume.isNullOrEmpty()) {
             ingredientDetailed.alcoholicVolume?.let {
                 Text(
-                    text = stringResource(R.string.alcohol_volume, it),
+                    text = "Alcohol volume: $it%",
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 16.dp, top = 16.dp),

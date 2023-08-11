@@ -31,7 +31,6 @@ fun GlassScreen(
     viewModel: GlassViewModel = koinViewModel(),
 ) {
     val context = LocalContext.current
-    val glasses by viewModel.glasses.collectAsState()
     val lazyColumnState = rememberLazyListState()
     val state by viewModel.glassState.collectAsState()
     CoctailScaffold(
@@ -54,7 +53,7 @@ fun GlassScreen(
                 state = lazyColumnState,
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
-                itemsIndexed(glasses) { index, glass ->
+                itemsIndexed(state.glasses) { index, glass ->
                     val stringResId = getStringResourceId(index)
                     val drawableResId = getDrawableResIdForItem(index)
                     GlassSingleCard(

@@ -99,7 +99,7 @@ fun NonAlcoholicListScreen(
     paddingValues: PaddingValues = PaddingValues()
 ) {
     val actions = CocktailNavActions(navController)
-    val nonAlcoholicCocktails = viewModel.nonAlcoholicCocktails.collectAsState()
+    val state by viewModel.state.collectAsState()
     val lazyColumnState = rememberLazyListState()
     Column(
         modifier = Modifier
@@ -111,7 +111,7 @@ fun NonAlcoholicListScreen(
             state = lazyColumnState,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            items(nonAlcoholicCocktails.value) { nonAlcoholicCocktail ->
+            items(state.nonAlcoholicCocktails) { nonAlcoholicCocktail ->
                 NonAlcoholicDrink(
                     nonAlcoholicCocktail = nonAlcoholicCocktail,
                     nonAlcoholicCocktailClick = { actions.navigateToCocktailDetails(it) }
@@ -128,7 +128,7 @@ fun AlcoholicListScreen(
     paddingValues: PaddingValues = PaddingValues()
 ) {
     val actions = CocktailNavActions(navController)
-    val alcoholicCocktails = viewModel.alcoholicCocktails.collectAsState()
+    val state by viewModel.state.collectAsState()
     val lazyColumnState = rememberLazyListState()
     Column(
         modifier = Modifier
@@ -139,10 +139,10 @@ fun AlcoholicListScreen(
             verticalArrangement = Arrangement.spacedBy(15.dp),
             state = lazyColumnState
         ) {
-            items(alcoholicCocktails.value) { alcoholicCocktail ->
+            items(state.alcoholicCocktails) { alcoholicCocktail ->
                 AlcoholicDrink(
                     alcoholicCocktail = alcoholicCocktail,
-                    alcoholicCocktailClick = { actions.navigateToCocktailDetails(it)  }
+                    alcoholicCocktailClick = { actions.navigateToCocktailDetails(it) }
                 )
             }
             item { Spacer(modifier = Modifier.height(paddingValues.calculateBottomPadding())) }

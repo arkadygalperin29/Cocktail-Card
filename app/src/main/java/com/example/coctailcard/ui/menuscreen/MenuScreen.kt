@@ -13,10 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,7 +24,6 @@ import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.SearchBar
 import com.example.coctailcard.ui.theme.Pink40
-import kotlinx.coroutines.delay
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -37,14 +32,12 @@ fun MenuScreen(
     navController: NavController = rememberNavController(),
     viewModel: MenuScreenViewModel = koinViewModel(),
 ) {
-    val searchQuery by viewModel.searchQuery.collectAsState()
     val actions = rememberCocktailNavActions(navController = navController)
-    val cocktails by viewModel.cocktails.collectAsState()
     val state by viewModel.state.collectAsState()
     val lazyGridState = rememberLazyGridState()
 
-    LaunchedEffect(searchQuery) {
-        viewModel.fetchCocktails(searchQuery)
+    LaunchedEffect(state.searchQuery) {
+        viewModel.fetchCocktails(state.searchQuery)
     }
 
     CoctailScaffold(
@@ -72,7 +65,7 @@ fun MenuScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalArrangement = Arrangement.spacedBy(17.dp)
             ) {
-                items(cocktails) { cocktail ->
+                items(state.cocktails) { cocktail ->
                     CocktailSingleCard(
                         cocktail = cocktail,
                         onCocktailClicked = { actions.navigateToCocktailDetails(it) })

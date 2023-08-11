@@ -22,7 +22,6 @@ import com.example.coctailcard.R
 import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.theme.Black1
-import com.example.coctailcard.ui.theme.Pink40
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -32,7 +31,6 @@ fun IngredientsScreen(
     viewModel: IngredientsViewModel = koinViewModel()
 ) {
     val context = LocalContext.current
-    val ingredients by viewModel.ingredients.collectAsState()
     val state by viewModel.state.collectAsState()
     val lazyColumnState = rememberLazyListState()
     CoctailScaffold(
@@ -55,7 +53,7 @@ fun IngredientsScreen(
                 state = lazyColumnState,
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
-                itemsIndexed(ingredients) { index, ingredients ->
+                itemsIndexed(state.ingredients) { index, ingredients ->
                     val stringResId = getStringResourceId(index)
                     val drawableResId = getDrawableResIdForItem(index)
                     IngredientSingleCard(

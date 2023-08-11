@@ -66,7 +66,6 @@ fun CocktailDetailScreen(
     viewModel: CocktailDetailViewModel = koinViewModel()
 ) {
     val actions = rememberCocktailNavActions(navController = navController)
-    val cocktail by viewModel.cocktail.collectAsState()
     val scrollState = rememberScrollState()
     val state by viewModel.state.collectAsState()
 
@@ -98,7 +97,7 @@ fun CocktailDetailScreen(
                 .background(Pink40)
                 .paddingWithScroll(paddingValues, scrollState),
         ) {
-            cocktail?.let { CocktailDetail(cocktail = it, navController = navController) }
+            state.cocktail?.let { CocktailDetail(cocktail = it, navController = navController) }
         }
     }
 }
