@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -96,11 +97,12 @@ fun NonAlcoholicListScreen(
     val lazyGridState = rememberLazyGridState()
     Column(
         modifier = Modifier
-            .padding(top = 8.dp, start = 16.dp, end = 16.dp)
+            .padding(start = 16.dp, end = 16.dp)
             .fillMaxSize()
     ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
+            modifier = Modifier.offset(y = (16.dp)),
             verticalArrangement = Arrangement.spacedBy(15.dp),
             horizontalArrangement = Arrangement.spacedBy(17.dp),
             state = lazyGridState
@@ -128,11 +130,12 @@ fun AlcoholicListScreen(
 
     Column(
         modifier = Modifier
-            .padding(top = 8.dp, start = 16.dp, end = 16.dp)
+            .padding(start = 16.dp, end = 16.dp)
             .fillMaxSize()
     ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
+            modifier = Modifier.offset(y = (16.dp)),
             verticalArrangement = Arrangement.spacedBy(15.dp),
             horizontalArrangement = Arrangement.spacedBy(17.dp),
             state = lazyGridState
