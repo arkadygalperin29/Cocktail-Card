@@ -122,26 +122,13 @@ fun IngredientDetail(
                 )
             }
         }
-        if (!ingredientDetailed.description.isNullOrEmpty()) {
-            ingredientDetailed.description?.let {
-                Text(
-                    text = it,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 16.dp, top = 16.dp),
-                    textAlign = TextAlign.Center,
-                    style = Text14,
-                    color = Grey50
-                )
-            }
-        }
         if (!ingredientDetailed.drinkType.isNullOrEmpty()) {
             ingredientDetailed.drinkType?.let {
                 Text(
                     text = stringResource(R.string.drink_type_ingredient_detail, it),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 16.dp,top = 16.dp),
+                        .padding(start = 16.dp, top = 16.dp),
                     textAlign = TextAlign.Start,
                     style = Text14,
                     color = Grey50
@@ -154,7 +141,7 @@ fun IngredientDetail(
                     text = stringResource(R.string.is_alcoholic, it),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 16.dp,top = 16.dp),
+                        .padding(start = 16.dp, top = 16.dp),
                     textAlign = TextAlign.Start,
                     style = Text14,
                     color = Grey50
@@ -164,10 +151,23 @@ fun IngredientDetail(
         if (!ingredientDetailed.alcoholicVolume.isNullOrEmpty()) {
             ingredientDetailed.alcoholicVolume?.let {
                 Text(
-                    text = "Alcohol volume: $it%",
+                    text = stringResource(R.string.alcohol_volume, it),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 16.dp,top = 16.dp),
+                        .padding(start = 16.dp, top = 16.dp),
+                    textAlign = TextAlign.Start,
+                    style = Text14,
+                    color = Grey50
+                )
+            }
+        }
+        if (!ingredientDetailed.description.isNullOrEmpty()) {
+            ingredientDetailed.description?.let {
+                Text(
+                    text = "Description: $it",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp),
                     textAlign = TextAlign.Start,
                     style = Text14,
                     color = Grey50
