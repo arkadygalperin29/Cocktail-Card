@@ -1,5 +1,6 @@
 package com.example.coctailcard.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,7 +15,6 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Surface
@@ -54,7 +54,14 @@ fun SearchBar(onSearch: (String) -> Unit) {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(8.dp)
         ) {
-            Icon(Icons.Default.Search, contentDescription = null, tint = Color.Gray)
+            Icon(
+                imageVector = Icons.Default.Search,
+                modifier = Modifier.clickable {
+                    onSearch(searchQuery)
+                },
+                contentDescription = null,
+                tint = Color.Gray
+            )
             Spacer(modifier = Modifier.width(8.dp))
             BasicTextField(
                 value = searchQuery,

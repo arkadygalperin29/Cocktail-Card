@@ -13,6 +13,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
@@ -34,6 +35,7 @@ fun NonAlcoholicDrink(
         modifier = Modifier
             .height(250.dp)
             .fillMaxWidth(0.5f)
+            .clip(shape = RoundedCornerShape(16.dp))
             .border(2.dp, Black1, RoundedCornerShape(16.dp))
             .clickable {
                 nonAlcoholicCocktail.id?.let { nonAlcoholicCocktailClick(it) }
