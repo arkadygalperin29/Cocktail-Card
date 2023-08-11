@@ -26,7 +26,7 @@ object CoctailDestinations {
     const val COCKTAIL_DETAIL_ROUTE: CocktailRoute = "lookup.php/{id}"
     const val INGREDIENT_DETAIL_ROUTE: CocktailRoute = "search.php/{iid}"
     const val GLASS_DETAIL_ROUTE: CocktailRoute = "list.php/g=list"
-    const val NON_ALCOHOLIC_ROUTE = "non_alcoholic_route"
+    const val FAVORITES_SCREEN = "favorites_screen"
     const val ALCOHOLIC_ROUTE = "alcoholic_route"
     const val CATEGORY_ROUTE = "category_route"
     const val INGREDIENTS_ROUTE = "ingredients_route"
@@ -121,6 +121,17 @@ class CocktailNavActions(private val navController: NavController) : KoinCompone
     }
     val navigateToIngredients: () -> Unit = {
         navController.navigate(CoctailDestinations.INGREDIENTS_ROUTE) {
+            val primaryRoute: Int? = navController.currentBackStackEntry?.destination?.id
+            val fallbackRoute: Int = navController.graph.findStartDestination().id
+            popUpTo(primaryRoute ?: fallbackRoute) {
+                saveState = true
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
+    val navigateToFavorites: () -> Unit = {
+        navController.navigate(CoctailDestinations.FAVORITES_SCREEN) {
             val primaryRoute: Int? = navController.currentBackStackEntry?.destination?.id
             val fallbackRoute: Int = navController.graph.findStartDestination().id
             popUpTo(primaryRoute ?: fallbackRoute) {

@@ -32,7 +32,7 @@ sealed class BottomNavItem(
             "Coctails",
             R.drawable.cocktail,
             CoctailDestinations.CATEGORY_ROUTE,
-            { })
+            { navigateToFavorites()})
 
     object SortByDegree :
         BottomNavItem(
