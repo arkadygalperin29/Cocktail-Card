@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -28,6 +29,7 @@ import coil.compose.AsyncImage
 import com.example.coctailcard.R
 import com.example.coctailcard.data.network.models.IngredientDetailed
 import com.example.coctailcard.navigation.rememberCocktailNavActions
+import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
 import com.example.coctailcard.ui.theme.Black1
@@ -47,7 +49,8 @@ fun IngredientDetailScreen(
     viewModel: IngredientDetailViewModel = koinViewModel()
 ) {
     val actions = rememberCocktailNavActions(navController = navController)
-    val ingredient = viewModel.ingredient.collectAsState()
+    val ingredient by viewModel.ingredient.collectAsState()
+    val state by viewModel.state.collectAsState()
     val scrollState = rememberScrollState()
 
     LaunchedEffect(true) {
@@ -61,6 +64,8 @@ fun IngredientDetailScreen(
     LaunchedEffect(true) {
         viewModel.fetchIngredientByName(name.dropLast(1))
     }
+
+    if (state.isLoading) AppLoader()
 
     CoctailScaffold(
         modifier = modifier,
@@ -76,7 +81,7 @@ fun IngredientDetailScreen(
                 .background(Pink40)
                 .paddingWithScroll(paddingValues, scrollState),
         ) {
-            ingredient.value?.let { IngredientDetail(ingredientDetailed = it) }
+            ingredient?.let { IngredientDetail(ingredientDetailed = it) }
         }
     }
 }

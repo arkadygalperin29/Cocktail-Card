@@ -11,10 +11,15 @@ import com.example.coctailcard.data.repositories.ingredients.GetIngredientsRepos
 import com.example.coctailcard.util.UiEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+data class CocktailDetailState(
+    val isLoading: Boolean = false
+)
 
 class CocktailDetailViewModel(
     private val getCocktailsRepository: GetCocktailsRepository,
@@ -29,10 +34,14 @@ class CocktailDetailViewModel(
 
     private var _ingredient = MutableStateFlow<List<IngredientDetailed>>(emptyList())
     val ingredient = _ingredient.asStateFlow()
+
+    private val _state = MutableStateFlow(CocktailDetailState(isLoading = false))
+    val state = _state.asStateFlow()
     
 
     fun getCocktailById(id: String) {
         viewModelScope.launch(Dispatchers.IO) {
+            _state.update { it.copy(isLoading = true) }
             when (val response = getCocktailsRepository.getCocktailById(id)) {
                 is RequestResult.Success -> {
                     runCatching {
@@ -46,6 +55,7 @@ class CocktailDetailViewModel(
                     //  do empty screen if can't load the data || sendUiEvent(UiEvent.NavigateTo { navigateToCategory(CategoriesSelection.NON_ALCOHOLIC) })
                 }
             }
+            _state.update { it.copy(isLoading = false) }
         }
     }
 

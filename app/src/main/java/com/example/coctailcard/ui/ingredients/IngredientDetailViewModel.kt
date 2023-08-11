@@ -8,10 +8,16 @@ import com.example.coctailcard.data.repositories.ingredients.GetIngredientsRepos
 import com.example.coctailcard.util.UiEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+
+data class IngredientDetailState(
+    val isLoading: Boolean = false
+)
 
 class IngredientDetailViewModel(
     private val ingredientsRepository: GetIngredientsRepository
@@ -23,8 +29,16 @@ class IngredientDetailViewModel(
     private var _ingredient = MutableStateFlow<IngredientDetailed?>(null)
     val ingredient = _ingredient.asStateFlow()
 
+    private val _state = MutableStateFlow(
+        IngredientDetailState(
+            isLoading = false
+        )
+    )
+    val state = _state.asStateFlow()
+
     fun fetchIngredientByName(name: String) {
         viewModelScope.launch(Dispatchers.IO) {
+            _state.update { it.copy(isLoading = true) }
             when (val result = ingredientsRepository.getIngredientByName(name)) {
                 is RequestResult.Success -> {
                     runCatching {
@@ -36,6 +50,7 @@ class IngredientDetailViewModel(
 
                 else -> {}
             }
+            _state.update { it.copy(isLoading = false) }
         }
     }
 }
