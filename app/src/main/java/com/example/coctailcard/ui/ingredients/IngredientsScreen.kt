@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.R
+import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Pink40
@@ -32,11 +33,13 @@ fun IngredientsScreen(
 ) {
     val context = LocalContext.current
     val ingredients by viewModel.ingredients.collectAsState()
+    val state by viewModel.state.collectAsState()
     val lazyColumnState = rememberLazyListState()
     CoctailScaffold(
         modifier = modifier,
         navController = navController,
     ) { paddingValues ->
+        if (state.isLoading) AppLoader()
         Column(
             modifier = Modifier
                 .fillMaxSize()
