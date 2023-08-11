@@ -47,7 +47,7 @@ fun SearchBar(onSearch: (String) -> Unit) {
         color = MaterialTheme.colors.onSecondary,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(top = 8.dp, bottom = 4.dp, end = 16.dp, start = 16.dp),
         shape = RoundedCornerShape(16.dp)
     ) {
         Row(
