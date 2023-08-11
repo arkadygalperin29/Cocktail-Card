@@ -26,6 +26,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.R
 import com.example.coctailcard.navigation.CocktailNavActions
+import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CategoryTabs
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.theme.Pink40
@@ -42,6 +43,7 @@ fun CategoryScreen(
         modifier = modifier,
         navController = navController
     ) { paddingValues ->
+        if (state.isLoading) AppLoader()
         Column(
             modifier = Modifier
                 .background(Pink40)

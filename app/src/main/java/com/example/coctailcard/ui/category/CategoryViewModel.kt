@@ -1,6 +1,5 @@
 package com.example.coctailcard.ui.category
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coctailcard.data.network.RequestResult
@@ -8,6 +7,7 @@ import com.example.coctailcard.data.network.models.Cocktail
 import com.example.coctailcard.data.repositories.alcoholic.AlcoholicCocktailsRepository
 import com.example.coctailcard.data.repositories.nonalcoholic.NonAlcoholicCocktailsRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 data class CategoryState(
     val selectedButton: Int = 0,
-    val isError: Boolean = false
+    val isLoading: Boolean = false
 )
 
 class CategoryViewModel(
@@ -25,7 +25,8 @@ class CategoryViewModel(
 
     private val _state = MutableStateFlow(
         CategoryState(
-            selectedButton = 1
+            selectedButton = 1,
+            isLoading = false
         )
     )
     val state = _state.asStateFlow()
@@ -46,15 +47,15 @@ class CategoryViewModel(
 
     private fun fetchBothRequests() {
         viewModelScope.launch(Dispatchers.IO) {
+            _state.update { it.copy(isLoading = true) }
             fetchAlcoholicDrinks()
             fetchNonAlcoholicDrinks()
+            _state.update { it.copy(isLoading = false) }
         }
     }
 
 
-
     suspend fun fetchAlcoholicDrinks() {
-        Log.d("Response", "msg: ${_alcoholicDrinks.value.toString()}")
         when (val response = alcoholicCocktailsRepository.getAlcoholicCoctails()) {
             is RequestResult.Success -> {
                 runCatching {
