@@ -1,20 +1,13 @@
 package com.example.coctailcard.ui.glassscreen
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.itemsIndexed
-import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -26,11 +19,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.R
-import com.example.coctailcard.navigation.rememberCocktailNavActions
+import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.theme.Black1
-import com.example.coctailcard.ui.theme.Grey50
-import com.example.coctailcard.ui.theme.Pink40
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -42,10 +33,12 @@ fun GlassScreen(
     val context = LocalContext.current
     val glasses by viewModel.glasses.collectAsState()
     val lazyColumnState = rememberLazyListState()
+    val state by viewModel.glassState.collectAsState()
     CoctailScaffold(
         modifier = modifier,
         navController = navController,
     ) { paddingValues ->
+        if (state.isLoading) AppLoader()
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -66,7 +59,7 @@ fun GlassScreen(
                     val drawableResId = getDrawableResIdForItem(index)
                     GlassSingleCard(
                         glass = glass,
-                        onGlassClicked = {  },
+                        onGlassClicked = { },
                         drawableResId = drawableResId,
                         description = context.getString(stringResId)
                     )
