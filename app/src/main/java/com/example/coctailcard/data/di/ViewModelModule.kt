@@ -14,7 +14,7 @@ import org.koin.dsl.module
 fun KoinApplication.viewModelModule() = module {
     viewModel { CategoryViewModel(get(), get()) }
     viewModel { MenuScreenViewModel(get()) }
-    viewModel { CocktailDetailViewModel(get(), get()) }
+    viewModel { CocktailDetailViewModel(get()) }
     viewModel { GlassViewModel(get()) }
     viewModel { IngredientsViewModel(get()) }
     viewModel { IngredientDetailViewModel(get()) }

@@ -37,7 +37,7 @@ fun MenuScreen(
     val lazyGridState = rememberLazyGridState()
 
     LaunchedEffect(state.searchQuery) {
-        viewModel.fetchCocktails(state.searchQuery)
+        state.searchQuery?.let { viewModel.fetchCocktails(it) }
     }
 
     CoctailScaffold(

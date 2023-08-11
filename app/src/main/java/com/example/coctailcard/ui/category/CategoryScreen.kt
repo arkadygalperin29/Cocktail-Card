@@ -11,6 +11,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
@@ -100,16 +104,17 @@ fun NonAlcoholicListScreen(
 ) {
     val actions = CocktailNavActions(navController)
     val state by viewModel.state.collectAsState()
-    val lazyColumnState = rememberLazyListState()
+    val lazyGridState = rememberLazyGridState()
     Column(
         modifier = Modifier
             .padding(top = 16.dp, start = 16.dp, end = 16.dp)
             .fillMaxSize()
     ) {
-        LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            state = lazyColumnState,
-            horizontalAlignment = Alignment.CenterHorizontally
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            verticalArrangement = Arrangement.spacedBy(15.dp),
+            horizontalArrangement = Arrangement.spacedBy(17.dp),
+            state = lazyGridState
         ) {
             items(state.nonAlcoholicCocktails) { nonAlcoholicCocktail ->
                 NonAlcoholicDrink(
@@ -129,15 +134,18 @@ fun AlcoholicListScreen(
 ) {
     val actions = CocktailNavActions(navController)
     val state by viewModel.state.collectAsState()
-    val lazyColumnState = rememberLazyListState()
+    val lazyGridState = rememberLazyGridState()
+
     Column(
         modifier = Modifier
             .padding(top = 16.dp, start = 16.dp, end = 16.dp)
             .fillMaxSize()
     ) {
-        LazyColumn(
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
             verticalArrangement = Arrangement.spacedBy(15.dp),
-            state = lazyColumnState
+            horizontalArrangement = Arrangement.spacedBy(17.dp),
+            state = lazyGridState
         ) {
             items(state.alcoholicCocktails) { alcoholicCocktail ->
                 AlcoholicDrink(

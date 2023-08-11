@@ -7,7 +7,7 @@ import com.example.coctailcard.data.network.models.IngredientDetailed
 
 data class ApplicationState(
     val isLoading: Boolean = false,
-    val searchQuery: String = "a",
+    val searchQuery: String? = null,
     val cocktails: List<Cocktail> = emptyList(),
     val cocktail: Cocktail? = null,
     val glasses: List<Glass> = emptyList(),
