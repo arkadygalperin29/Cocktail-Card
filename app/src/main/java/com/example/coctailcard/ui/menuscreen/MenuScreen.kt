@@ -24,9 +24,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.navigation.rememberCocktailNavActions
+import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.SearchBar
 import com.example.coctailcard.ui.theme.Pink40
+import kotlinx.coroutines.delay
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -38,6 +40,7 @@ fun MenuScreen(
     val searchQuery by viewModel.searchQuery.collectAsState()
     val actions = rememberCocktailNavActions(navController = navController)
     val cocktails by viewModel.cocktails.collectAsState()
+    val state by viewModel.state.collectAsState()
     val lazyGridState = rememberLazyGridState()
 
     LaunchedEffect(searchQuery) {
@@ -48,6 +51,7 @@ fun MenuScreen(
         modifier = modifier,
         navController = navController,
     ) { paddingValues ->
+        if (state.isLoading) AppLoader()
         Column(
             modifier = Modifier
                 .fillMaxSize()
