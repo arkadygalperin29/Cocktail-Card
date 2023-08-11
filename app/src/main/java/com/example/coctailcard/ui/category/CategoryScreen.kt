@@ -122,6 +122,7 @@ fun NonAlcoholicListScreen(
                     nonAlcoholicCocktailClick = { actions.navigateToCocktailDetails(it) }
                 )
             }
+            item { Spacer(modifier = Modifier.height(paddingValues.calculateBottomPadding())) }
         }
     }
 }
