@@ -47,12 +47,12 @@ fun SearchBar(onSearch: (String) -> Unit) {
         color = MaterialTheme.colors.onSecondary,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 8.dp, bottom = 4.dp, end = 16.dp, start = 16.dp),
+            .padding(top = 8.dp, end = 16.dp, start = 16.dp),
         shape = RoundedCornerShape(16.dp)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(8.dp)
+            modifier = Modifier.padding(top = 8.dp, end = 8.dp, start = 8.dp)
         ) {
             Icon(
                 imageVector = Icons.Default.Search,

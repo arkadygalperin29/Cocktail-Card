@@ -50,7 +50,7 @@ fun GlassScreen(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(top = 8.dp),
+                    .offset(y = (16.dp)),
                 state = lazyColumnState,
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
