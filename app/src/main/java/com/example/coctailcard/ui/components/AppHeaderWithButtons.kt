@@ -77,18 +77,6 @@ fun AppHeaderWithButtons(
                     color = Grey00,
                 )
             }
-            Box(
-                modifier = Modifier
-                    .size(24.dp)
-            ) {
-                Icon(
-                    modifier = Modifier
-                        .size(24.dp),
-                    imageVector = Icons.Outlined.Notifications,
-                    contentDescription = null,
-                    tint = Grey00
-                )
-            }
         }
         Divider(
             thickness = 2.dp,

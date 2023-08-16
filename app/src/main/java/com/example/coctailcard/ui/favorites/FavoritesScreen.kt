@@ -28,6 +28,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.R
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.CoctailScaffold
+import com.example.coctailcard.ui.components.scaffold.AppHeaderType
 import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Grey100
 import com.example.coctailcard.ui.theme.Pink40
@@ -47,6 +48,9 @@ fun FavoritesScreen(
     CoctailScaffold(
         modifier = modifier,
         navController = navController,
+        topBarType = AppHeaderType.WithButtons(
+            onRetrunClick = { navController.popBackStack() }
+        )
     ) { paddingValues ->
         Column(
             modifier = Modifier

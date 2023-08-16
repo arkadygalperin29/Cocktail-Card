@@ -14,7 +14,7 @@ sealed class AppHeaderType {
     ) : AppHeaderType()
 
     data class WithButtons(
-        val title: String,
+        val title: String? = null,
         val onRetrunClick: () -> Unit,
         @DrawableRes val returnIconResId: Int = R.drawable.baseline_chevron_left_24
     ) : AppHeaderType()

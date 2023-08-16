@@ -40,7 +40,6 @@ fun GlassScreen(
         modifier = modifier,
         navController = navController,
         topBarType = AppHeaderType.WithButtons(
-            title = "",
             onRetrunClick = { navController.popBackStack() }
         )
     ) { paddingValues ->

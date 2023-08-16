@@ -53,7 +53,7 @@ fun CoctailScaffold(
 
                     is AppHeaderType.WithButtons -> {
                         AppHeaderWithButtons(
-                            name = topBarType.title,
+                            name = topBarType.title ?: "",
                             onReturnClick = topBarType.onRetrunClick,
                             returnIcon = painterResource(id = topBarType.returnIconResId),
                             navController = navController
