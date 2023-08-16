@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface FavoriteRepository {
 
-    fun getAllFavoriteDrinks(): Flow<List<Cocktail>>
+    fun getAllFavoriteDrinks(): List<Cocktail>
 
     suspend fun saveFavoriteDrink(cocktailMain: Cocktail)
 

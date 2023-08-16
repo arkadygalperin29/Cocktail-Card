@@ -74,7 +74,11 @@ fun CoctailHeaderWithLogo(
                     .size(24.dp)
                     .clickable {
                         viewModel.insertFavorite(favoriteCocktail = state.cocktail ?: Cocktail())
-                        Log.d("Element is recorded", "23123 ${state.cocktail?.id} ")
+                        Log.d("Element is recorded", "cocktail id: ${state.cocktail?.id} ")
+                        if (!state.cocktail?.id.isNullOrEmpty()) {
+                            Log.d("Element is recorded", "navigation is successful")
+                            actions.navigateToFavorites()
+                        }
                         //                      actions.navigateToHome()
                     }
             ) {

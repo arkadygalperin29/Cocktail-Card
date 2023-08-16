@@ -16,7 +16,7 @@ abstract class CocktailDao: BaseDao<Cocktail>() {
         get() = "CocktailMain"
 
     @Query("SELECT * FROM cocktail WHERE id is not null")
-    abstract fun getAllCocktails(): Flow<List<Cocktail>>
+    abstract fun getAllCocktails(): List<Cocktail>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract suspend fun addFavoriteCocktail(cocktailMain: Cocktail)

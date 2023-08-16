@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.coctailcard.domain.models.Cocktail
 import com.example.coctailcard.domain.models.CocktailMain
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.CoctailScaffold
@@ -55,7 +56,7 @@ fun FavoritesScreen(
                     FavoriteCocktail(
                         favoriteCocktail = favoriteCocktail,
                         favoriteCocktailClick = { actions.navigateToCocktailDetails(it) },
-                        deleteFavoriteCocktailClick = { viewModel.deleteFavorite(CocktailMain()) })
+                        deleteFavoriteCocktailClick = { viewModel.deleteFavorite(favoriteCocktail = favoriteCocktail) })
                 }
             }
         }

@@ -6,7 +6,7 @@ import com.example.coctailcard.domain.models.CocktailMain
 import kotlinx.coroutines.flow.Flow
 
 class FavoriteRepositoryImpl(private val cocktailDao: CocktailDao) : FavoriteRepository {
-    override fun getAllFavoriteDrinks(): Flow<List<Cocktail>> {
+    override fun getAllFavoriteDrinks(): List<Cocktail> {
         return cocktailDao.getAllCocktails()
     }
 
