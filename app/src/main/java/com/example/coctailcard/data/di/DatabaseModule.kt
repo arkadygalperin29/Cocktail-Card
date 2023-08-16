@@ -5,6 +5,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.coctailcard.data.db.dao.CocktailDao
 import com.example.coctailcard.data.db.dao.SampleDataDao
+import com.example.coctailcard.domain.models.Cocktail
 import com.example.coctailcard.domain.models.CocktailMain
 import com.example.coctailcard.domain.models.SampleData
 import org.koin.core.KoinApplication
@@ -25,7 +26,7 @@ fun KoinApplication.databaseModule() = module {
 @Database(
     entities = [
         SampleData::class,
-        CocktailMain::class
+        Cocktail::class
     ],
     version = 1,
     exportSchema = true,

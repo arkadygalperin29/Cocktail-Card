@@ -1,5 +1,6 @@
 package com.example.coctailcard.ui.components
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -14,6 +15,8 @@ import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -21,17 +24,24 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.coctailcard.R
+import com.example.coctailcard.domain.models.Cocktail
+import com.example.coctailcard.domain.models.CocktailMain
 import com.example.coctailcard.navigation.rememberCocktailNavActions
+import com.example.coctailcard.ui.detailscreens.CocktailDetailViewModel
 import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Grey00
 import com.example.coctailcard.ui.theme.Yellow1
+import org.koin.androidx.compose.koinViewModel
+import kotlin.math.absoluteValue
 
 @Composable
 fun CoctailHeaderWithLogo(
     logoAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
     navController: NavController,
-    showFavoritesIcon: Boolean = true
+    showFavoritesIcon: Boolean = true,
+    viewModel: CocktailDetailViewModel = koinViewModel()
 ) {
+    val state by viewModel.state.collectAsState()
     val actions = rememberCocktailNavActions(navController = navController)
 
     Box(
@@ -63,7 +73,9 @@ fun CoctailHeaderWithLogo(
                     .padding(end = 16.dp, bottom = 8.dp)
                     .size(24.dp)
                     .clickable {
-                        actions.navigateToHome()
+                        viewModel.insertFavorite(favoriteCocktail = state.cocktail ?: Cocktail())
+                        Log.d("Element is recorded", "23123 ${state.cocktail?.id} ")
+                        //                      actions.navigateToHome()
                     }
             ) {
                 Icon(

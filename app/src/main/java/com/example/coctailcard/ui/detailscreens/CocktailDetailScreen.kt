@@ -86,10 +86,6 @@ fun CocktailDetailScreen(
     CoctailScaffold(
         modifier = modifier,
         navController = navController,
-        topBarType = AppHeaderType.WithButtons(
-            title = "Description",
-            onRetrunClick = { navController.popBackStack() }
-        ),
     ) { paddingValues ->
         Column(
             modifier = Modifier

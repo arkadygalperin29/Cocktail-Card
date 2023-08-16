@@ -11,7 +11,7 @@ class CocktailMain : Cocktail()
 open class Cocktail(
     @PrimaryKey
     @SerializedName("idDrink")
-    var id: String = "1",
+    var id: String = "-1",
     @SerializedName("strDrink")
     var name: String? = null,
     @SerializedName("strCategory")

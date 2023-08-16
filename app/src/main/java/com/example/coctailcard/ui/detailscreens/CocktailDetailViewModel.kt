@@ -2,9 +2,12 @@ package com.example.coctailcard.ui.detailscreens
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.coctailcard.data.db.dao.CocktailDao
 import com.example.coctailcard.data.network.RequestResult
 import com.example.coctailcard.domain.models.Cocktail
 import com.example.coctailcard.data.repositories.GetCocktailsRepository
+import com.example.coctailcard.data.repositories.favorites.FavoriteRepository
+import com.example.coctailcard.domain.models.CocktailMain
 import com.example.coctailcard.domain.state.ApplicationState
 import com.example.coctailcard.util.UiEvent
 import kotlinx.coroutines.Dispatchers
@@ -16,7 +19,9 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class CocktailDetailViewModel(
-    private val getCocktailsRepository: GetCocktailsRepository
+    private val getCocktailsRepository: GetCocktailsRepository,
+    private val favoritesRepository: FavoriteRepository,
+    private val cocktailDao: CocktailDao
 ) : ViewModel() {
 
     private val _uiEvent = Channel<UiEvent>()
@@ -46,6 +51,18 @@ class CocktailDetailViewModel(
                 }
             }
             _state.update { it.copy(isLoading = false) }
+        }
+    }
+
+    fun deleteFavorite(favoriteCocktail: Cocktail) {
+        viewModelScope.launch {
+            favoritesRepository.deleteFavoriteDrink(favoriteCocktail)
+        }
+    }
+
+    fun insertFavorite(favoriteCocktail: Cocktail) {
+        viewModelScope.launch {
+            cocktailDao.addFavoriteCocktail(favoriteCocktail)
         }
     }
 
