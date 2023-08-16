@@ -18,6 +18,9 @@ abstract class CocktailDao: BaseDao<Cocktail>() {
     @Query("SELECT * FROM cocktail WHERE id is not null")
     abstract fun getAllCocktails(): List<Cocktail>
 
+    @Query("SELECT EXISTS (SELECT 1 FROM cocktail WHERE id = :cocktailId)")
+    abstract suspend fun isCocktailIdInDatabase(cocktailId: String): Boolean
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract suspend fun addFavoriteCocktail(cocktailMain: Cocktail)
 

@@ -16,5 +16,6 @@ data class ApplicationState(
     val alcoholicCocktails: List<Cocktail> = emptyList(),
     val nonAlcoholicCocktails: List<Cocktail> = emptyList(),
     val selectedButton: Int = 0,
-    val favoriteCocktails: List<Cocktail> = emptyList()
+    val favoriteCocktails: List<Cocktail> = emptyList(),
+    val itemAlreadyExistsInDatabase: Boolean = false
 )

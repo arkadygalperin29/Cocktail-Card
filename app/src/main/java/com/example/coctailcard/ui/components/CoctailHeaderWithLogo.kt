@@ -1,6 +1,7 @@
 package com.example.coctailcard.ui.components
 
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -20,19 +21,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.coctailcard.R
 import com.example.coctailcard.domain.models.Cocktail
-import com.example.coctailcard.domain.models.CocktailMain
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.detailscreens.CocktailDetailViewModel
 import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Grey00
 import com.example.coctailcard.ui.theme.Yellow1
 import org.koin.androidx.compose.koinViewModel
-import kotlin.math.absoluteValue
 
 @Composable
 fun CoctailHeaderWithLogo(
@@ -43,6 +43,7 @@ fun CoctailHeaderWithLogo(
 ) {
     val state by viewModel.state.collectAsState()
     val actions = rememberCocktailNavActions(navController = navController)
+    val context = LocalContext.current
 
     Box(
         modifier = Modifier
@@ -75,9 +76,24 @@ fun CoctailHeaderWithLogo(
                     .clickable {
                         viewModel.insertFavorite(favoriteCocktail = state.cocktail ?: Cocktail())
                         Log.d("Element is recorded", "cocktail id: ${state.cocktail?.id} ")
-                        if (!state.cocktail?.id.isNullOrEmpty()) {
+                        if (!state.cocktail?.id.isNullOrEmpty() && (state.cocktail?.id?.isNotEmpty() == true)) {
                             Log.d("Element is recorded", "navigation is successful")
+                            Toast
+                                .makeText(
+                                    context,
+                                    "Cocktail was saved successfully",
+                                    Toast.LENGTH_LONG
+                                )
+                                .show()
                             actions.navigateToFavorites()
+                        } else {
+                            Toast
+                                .makeText(
+                                    context,
+                                    "Cocktail is already saved, select another one",
+                                    Toast.LENGTH_LONG
+                                )
+                                .show()
                         }
                         //                      actions.navigateToHome()
                     }
