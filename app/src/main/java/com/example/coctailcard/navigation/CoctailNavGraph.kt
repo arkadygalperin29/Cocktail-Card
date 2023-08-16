@@ -13,6 +13,7 @@ import com.example.coctailcard.ui.category.CategoryViewModel
 import com.example.coctailcard.ui.detailscreens.CocktailDetailScreen
 import com.example.coctailcard.ui.detailscreens.CocktailDetailViewModel
 import com.example.coctailcard.ui.favorites.FavoritesScreen
+import com.example.coctailcard.ui.favorites.FavoritesViewModel
 import com.example.coctailcard.ui.glassscreen.GlassScreen
 import com.example.coctailcard.ui.glassscreen.GlassViewModel
 import com.example.coctailcard.ui.ingredients.IngredientDetailScreen
@@ -106,8 +107,10 @@ fun NavGraphBuilder.mainGraph(navController: NavHostController) {
             )
         }
         composable(CoctailDestinations.FAVORITES_SCREEN) {
+            val viewModel: FavoritesViewModel = koinViewModel()
             FavoritesScreen(
-                navController = navController
+                navController = navController,
+                viewModel = viewModel
             )
         }
     }

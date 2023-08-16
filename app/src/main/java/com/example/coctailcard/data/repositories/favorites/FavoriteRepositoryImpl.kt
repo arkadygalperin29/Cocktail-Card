@@ -14,6 +14,6 @@ class FavoriteRepositoryImpl(private val cocktailDao: CocktailDao) : FavoriteRep
     }
 
     override suspend fun deleteFavoriteDrink(cocktailMain: CocktailMain) {
-        cocktailDao.deleteFavoriteCocktail(cocktailMain = cocktailMain)
+        cocktailDao.deleteFavoriteCocktail(cocktailMain)
     }
 }
