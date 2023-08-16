@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,7 +30,8 @@ import coil.compose.AsyncImage
 import com.example.coctailcard.R
 import com.example.coctailcard.domain.models.Cocktail
 import com.example.coctailcard.ui.theme.Black1
-import com.example.coctailcard.ui.theme.Grey100
+import com.example.coctailcard.ui.theme.SoftBlueGray
+import com.example.coctailcard.ui.theme.TerraCotta
 import com.example.coctailcard.ui.theme.Text12
 
 @Composable
@@ -40,35 +43,56 @@ fun FavoriteCocktail(
     Row(
         modifier = Modifier
             .height(150.dp)
-            .fillMaxWidth(0.7f)
+            .fillMaxWidth(0.8f)
             .background(color = Black1)
             .clip(shape = RoundedCornerShape(16.dp))
             .border(2.dp, Black1, RoundedCornerShape(16.dp))
     ) {
         Column {
-            if (!favoriteCocktail.name.isNullOrEmpty()) {
-                favoriteCocktail.name?.let {
-                    Text(
-                        text = it,
-                        modifier = Modifier
-                            .padding(start = 8.dp, top = 16.dp, end = 16.dp),
-                        maxLines = 4,
-                        textAlign = TextAlign.Center,
-                        overflow = TextOverflow.Ellipsis,
-                        style = Text12,
-                        color = Grey100,
-                    )
+            Box(
+                modifier = Modifier
+                    .padding(start = 16.dp, top = 16.dp)
+                    .border
+                        (2.dp, color = Black1, RoundedCornerShape(8.dp))
+                    .wrapContentSize()
+                    .background(color = SoftBlueGray, shape = RoundedCornerShape(8.dp))
+            ) {
+                if (!favoriteCocktail.name.isNullOrEmpty()) {
+                    favoriteCocktail.name?.let {
+                        Text(
+                            text = it,
+                            modifier = Modifier
+                                .padding(start = 8.dp, top = 16.dp, end = 16.dp, bottom = 16.dp)
+                                .clickable {
+                                    favoriteCocktailClick(favoriteCocktail.id)
+                                },
+                            maxLines = 4,
+                            textAlign = TextAlign.Center,
+                            overflow = TextOverflow.Ellipsis,
+                            style = Text12,
+                            color = Black1,
+                        )
+                    }
                 }
             }
-            Image(
-                painter = painterResource(id = R.drawable.delete_favorite),
+            Box(
                 modifier = Modifier
-                    .size(36.dp)
+                    .padding(start = 16.dp, top = 16.dp)
+                    .border
+                        (2.dp, color = Black1, RoundedCornerShape(8.dp))
+                    .wrapContentSize()
                     .clickable { deleteFavoriteCocktailClick(favoriteCocktail.id) }
-                    .align(Alignment.Start)
-                ,
-                contentDescription = "delete favorite cocktail from database"
-            )
+                    .background(color = TerraCotta, shape = RoundedCornerShape(8.dp))
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.delete_favorite),
+                    modifier = Modifier
+                        .size(64.dp)
+                        .padding(start = 8.dp, top = 16.dp, end = 16.dp)
+                        .align(Alignment.Center),
+                    contentDescription = "delete favorite cocktail from database"
+                )
+            }
         }
         AsyncImage(
             modifier = Modifier
