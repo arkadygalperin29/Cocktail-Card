@@ -27,6 +27,7 @@ import com.example.coctailcard.navigation.CocktailNavActions
 import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CategoryTabs
 import com.example.coctailcard.ui.components.CoctailScaffold
+import com.example.coctailcard.ui.components.scaffold.AppHeaderType
 import com.example.coctailcard.ui.theme.Pink40
 import org.koin.androidx.compose.koinViewModel
 
@@ -39,7 +40,11 @@ fun CategoryScreen(
     val state by viewModel.state.collectAsState()
     CoctailScaffold(
         modifier = modifier,
-        navController = navController
+        navController = navController,
+        topBarType = AppHeaderType.WithButtons(
+            title = "",
+            onRetrunClick = { navController.popBackStack() }
+        )
     ) { paddingValues ->
         if (state.isLoading) AppLoader()
         Column(

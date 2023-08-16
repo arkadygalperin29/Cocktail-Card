@@ -21,7 +21,7 @@ import com.example.coctailcard.ui.theme.Grey1000
 fun CoctailScaffold(
     modifier: Modifier = Modifier,
     navController: NavController,
-    topBarType: AppHeaderType = AppHeaderType.WithLogo(),
+    topBarType: AppHeaderType? = AppHeaderType.WithLogo(),
     bottomBarType: AppBottomBarType = AppBottomBarType.Normal,
     contentColor: Color = LocalContentColor.current,
     containerColor: Color = Color.Transparent,
@@ -63,6 +63,8 @@ fun CoctailScaffold(
                     is AppHeaderType.None -> {
                         Box {}
                     }
+
+                    else -> {}
                 }
             }
         },

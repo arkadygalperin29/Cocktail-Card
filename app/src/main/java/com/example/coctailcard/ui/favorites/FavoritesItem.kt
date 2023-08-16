@@ -44,6 +44,7 @@ fun FavoriteCocktail(
         modifier = Modifier
             .height(150.dp)
             .fillMaxWidth(0.8f)
+            .clip(shape = RoundedCornerShape(16.dp))
             .background(color = Black1)
             .clip(shape = RoundedCornerShape(16.dp))
             .border(2.dp, Black1, RoundedCornerShape(16.dp))

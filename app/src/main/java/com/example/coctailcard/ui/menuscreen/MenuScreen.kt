@@ -19,14 +19,17 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.coctailcard.R
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.SearchBar
+import com.example.coctailcard.ui.components.scaffold.AppHeaderType
 import com.example.coctailcard.ui.theme.Pink40
 import com.example.coctailcard.util.paddingWithScroll
 import org.koin.androidx.compose.koinViewModel
@@ -48,6 +51,10 @@ fun MenuScreen(
     CoctailScaffold(
         modifier = modifier,
         navController = navController,
+        topBarType = AppHeaderType.WithButtons(
+            title = "",
+            onRetrunClick = { navController.popBackStack() }
+        )
     ) { paddingValues ->
         if (state.isLoading) AppLoader()
         Column(

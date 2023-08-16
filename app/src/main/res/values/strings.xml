@@ -145,6 +145,9 @@
     <string name="is_alcoholic">Alcohol: %1$s</string>
     <string name="coil_image_url_ingredients">https://www.thecocktaildb.com/images/ingredients/%1$s.png</string>
     <string name="alcohol_volume">Alcohol volume: %1$s%</string>
+    <string name="your_favorite_cocktails">"Your favorite cocktails: "</string>
+    <string name="totally_saved">"Totally saved: %1$s"</string>
+    <string name="description">Description</string>
 
 
 </resources>

@@ -1,28 +1,37 @@
 package com.example.coctailcard.ui.favorites
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.coctailcard.domain.models.Cocktail
-import com.example.coctailcard.domain.models.CocktailMain
+import com.example.coctailcard.R
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.CoctailScaffold
+import com.example.coctailcard.ui.theme.Black1
+import com.example.coctailcard.ui.theme.Grey100
 import com.example.coctailcard.ui.theme.Pink40
+import com.example.coctailcard.ui.theme.Text14
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -47,8 +56,30 @@ fun FavoritesScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            Text(
+                text = stringResource(R.string.your_favorite_cocktails),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 8.dp),
+                color = Grey100,
+                style = Text14,
+                textAlign = TextAlign.Center
+            )
+            Text(
+                text = stringResource(
+                    id = R.string.totally_saved,
+                    state.favoriteCocktails.size.toString()
+                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 8.dp),
+                color = Grey100,
+                style = Text14,
+                textAlign = TextAlign.Center
+            )
             LazyColumn(
-                modifier = Modifier.offset(y = (16.dp)),
+                modifier = Modifier
+                    .offset(y = (16.dp)),
                 verticalArrangement = Arrangement.spacedBy(15.dp),
                 state = lazyColumnState
             ) {
@@ -56,7 +87,11 @@ fun FavoritesScreen(
                     FavoriteCocktail(
                         favoriteCocktail = favoriteCocktail,
                         favoriteCocktailClick = { actions.navigateToCocktailDetails(it) },
-                        deleteFavoriteCocktailClick = { viewModel.deleteFavorite(favoriteCocktail = favoriteCocktail) })
+                        deleteFavoriteCocktailClick = {
+                            viewModel.deleteFavorite(
+                                favoriteCocktail = favoriteCocktail
+                            )
+                        })
                 }
             }
         }
