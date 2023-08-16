@@ -2,6 +2,7 @@ package com.example.coctailcard.data.di
 
 import com.example.coctailcard.ui.category.CategoryViewModel
 import com.example.coctailcard.ui.detailscreens.CocktailDetailViewModel
+import com.example.coctailcard.ui.favorites.FavoritesViewModel
 import com.example.coctailcard.ui.glassscreen.GlassViewModel
 import com.example.coctailcard.ui.ingredients.IngredientDetailViewModel
 import com.example.coctailcard.ui.ingredients.IngredientsViewModel
@@ -18,4 +19,5 @@ fun KoinApplication.viewModelModule() = module {
     viewModel { GlassViewModel(get()) }
     viewModel { IngredientsViewModel(get()) }
     viewModel { IngredientDetailViewModel(get()) }
+    viewModel { FavoritesViewModel(get()) }
 }

@@ -1,10 +1,17 @@
 package com.example.coctailcard.domain.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
+class CocktailMain : Cocktail()
+
+@Entity
 open class Cocktail(
+    @PrimaryKey
     @SerializedName("idDrink")
-    var id: String? = null,
+    var id: String = "1",
     @SerializedName("strDrink")
     var name: String? = null,
     @SerializedName("strCategory")

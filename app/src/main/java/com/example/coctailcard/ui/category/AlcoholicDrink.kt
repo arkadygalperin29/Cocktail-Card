@@ -37,7 +37,7 @@ fun AlcoholicDrink(
             .clip(shape = RoundedCornerShape(16.dp))
             .border(2.dp, Black1, RoundedCornerShape(16.dp))
             .clickable {
-                alcoholicCocktail.id?.let { alcoholicCocktailClick(it) }
+                alcoholicCocktailClick(alcoholicCocktail.id)
             }
     ) {
         if (!alcoholicCocktail.name.isNullOrEmpty()) {

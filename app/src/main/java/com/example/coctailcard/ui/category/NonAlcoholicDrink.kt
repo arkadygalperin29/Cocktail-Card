@@ -38,7 +38,7 @@ fun NonAlcoholicDrink(
             .clip(shape = RoundedCornerShape(16.dp))
             .border(2.dp, Black1, RoundedCornerShape(16.dp))
             .clickable {
-                nonAlcoholicCocktail.id?.let { nonAlcoholicCocktailClick(it) }
+                nonAlcoholicCocktailClick(nonAlcoholicCocktail.id)
             }
     ) {
         if (!nonAlcoholicCocktail.name.isNullOrEmpty()) {
