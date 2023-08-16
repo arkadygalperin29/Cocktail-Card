@@ -3,7 +3,7 @@ package com.example.coctailcard.ui.menuscreen
 import androidx.lifecycle.ViewModel
 import com.example.coctailcard.data.network.RequestResult
 import com.example.coctailcard.data.repositories.GetCocktailsRepository
-import com.example.coctailcard.domain.ApplicationState
+import com.example.coctailcard.domain.state.ApplicationState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update

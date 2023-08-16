@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.coctailcard.data.db.dao.SampleDataDao
-import com.example.coctailcard.data.network.models.SampleData
+import com.example.coctailcard.domain.models.SampleData
 import org.koin.core.KoinApplication
 import org.koin.dsl.module
 

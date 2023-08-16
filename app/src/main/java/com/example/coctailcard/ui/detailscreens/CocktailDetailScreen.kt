@@ -29,7 +29,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.example.coctailcard.R
-import com.example.coctailcard.data.network.models.Cocktail
+import com.example.coctailcard.domain.models.Cocktail
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold

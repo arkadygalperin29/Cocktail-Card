@@ -1,4 +1,4 @@
-package com.example.coctailcard.data.network.models
+package com.example.coctailcard.domain.models
 
 import com.google.gson.annotations.SerializedName
 

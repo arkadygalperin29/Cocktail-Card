@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.coctailcard.data.network.RequestResult
 import com.example.coctailcard.data.repositories.alcoholic.AlcoholicCocktailsRepository
 import com.example.coctailcard.data.repositories.nonalcoholic.NonAlcoholicCocktailsRepository
-import com.example.coctailcard.domain.ApplicationState
+import com.example.coctailcard.domain.state.ApplicationState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coctailcard.data.network.RequestResult
 import com.example.coctailcard.data.repositories.ingredients.GetIngredientsRepository
-import com.example.coctailcard.domain.ApplicationState
+import com.example.coctailcard.domain.state.ApplicationState
 import com.example.coctailcard.util.UiEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel

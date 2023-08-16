@@ -22,7 +22,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.coctailcard.R
-import com.example.coctailcard.data.network.models.Ingredient
+import com.example.coctailcard.domain.models.Ingredient
 import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Brown1
 import com.example.coctailcard.ui.theme.Grey50

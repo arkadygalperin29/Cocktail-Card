@@ -1,7 +1,7 @@
 package com.example.coctailcard.data.repositories
 
 import com.example.coctailcard.data.network.RequestResult
-import com.example.coctailcard.data.network.models.Cocktail
+import com.example.coctailcard.domain.models.Cocktail
 
 interface GetCocktailsRepository {
     suspend fun getCocktailsByFirstLetter(letterSearch: String): RequestResult<List<Cocktail>>

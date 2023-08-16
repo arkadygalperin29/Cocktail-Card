@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coctailcard.data.network.RequestResult
 import com.example.coctailcard.data.repositories.glasses.GetGlassesRepository
-import com.example.coctailcard.domain.ApplicationState
+import com.example.coctailcard.domain.state.ApplicationState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

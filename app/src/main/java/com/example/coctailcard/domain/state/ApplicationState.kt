@@ -1,9 +1,9 @@
-package com.example.coctailcard.domain
+package com.example.coctailcard.domain.state
 
-import com.example.coctailcard.data.network.models.Cocktail
-import com.example.coctailcard.data.network.models.Glass
-import com.example.coctailcard.data.network.models.Ingredient
-import com.example.coctailcard.data.network.models.IngredientDetailed
+import com.example.coctailcard.domain.models.Cocktail
+import com.example.coctailcard.domain.models.Glass
+import com.example.coctailcard.domain.models.Ingredient
+import com.example.coctailcard.domain.models.IngredientDetailed
 
 data class ApplicationState(
     val isLoading: Boolean = false,

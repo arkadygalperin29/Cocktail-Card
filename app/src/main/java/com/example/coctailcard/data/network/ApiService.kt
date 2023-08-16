@@ -1,10 +1,10 @@
 package com.example.coctailcard.data.network
 
-import com.example.coctailcard.data.network.models.Cocktail
-import com.example.coctailcard.data.network.models.Glass
-import com.example.coctailcard.data.network.models.Ingredient
-import com.example.coctailcard.data.network.models.IngredientDetailed
-import com.example.coctailcard.data.network.models.SampleData
+import com.example.coctailcard.domain.models.Cocktail
+import com.example.coctailcard.domain.models.Glass
+import com.example.coctailcard.domain.models.Ingredient
+import com.example.coctailcard.domain.models.IngredientDetailed
+import com.example.coctailcard.domain.models.SampleData
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
