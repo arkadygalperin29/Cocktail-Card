@@ -18,6 +18,10 @@ open class Cocktail(
     var category: String? = null,
     @SerializedName("strAlcoholic")
     var alcoholic: String? = null,
+    @SerializedName("strVideo")
+    var videoLink: String? = null,
+    @SerializedName("strTags")
+    var tags: String? = null,
     @SerializedName("strGlass")
     var glass: String? = null,
     @SerializedName("strInstructions")

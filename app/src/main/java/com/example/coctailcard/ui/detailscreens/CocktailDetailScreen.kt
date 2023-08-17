@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -23,8 +24,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.ExperimentalTextApi
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withAnnotation
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -47,6 +55,7 @@ import com.example.coctailcard.ui.theme.PaleGray
 import com.example.coctailcard.ui.theme.Peach
 import com.example.coctailcard.ui.theme.PeriWinkle1
 import com.example.coctailcard.ui.theme.Pink40
+import com.example.coctailcard.ui.theme.Red1
 import com.example.coctailcard.ui.theme.RoseGold1
 import com.example.coctailcard.ui.theme.SealBrown
 import com.example.coctailcard.ui.theme.SkyBlue
@@ -112,6 +121,7 @@ fun CocktailDetailScreen(
     }
 }
 
+@OptIn(ExperimentalTextApi::class)
 @Composable
 fun CocktailDetail(
     cocktail: Cocktail,
@@ -199,6 +209,48 @@ fun CocktailDetail(
                         .padding(start = 16.dp, top = 16.dp, end = 16.dp),
                     style = Text14,
                     color = Grey50
+                )
+            }
+        }
+        if (!cocktail.tags.isNullOrEmpty()) {
+            cocktail.tags?.let {
+                Text(
+                    text = stringResource(R.string.tags, it),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
+                    color = Grey50
+                )
+            }
+        }
+        if (!cocktail.videoLink.isNullOrEmpty()) {
+            cocktail.videoLink?.let {
+                val link = stringResource(id = R.string.watch_video)
+                val videoLinkAnnotated = buildAnnotatedString {
+                    withAnnotation(
+                        tag = "URL",
+                        annotation = cocktail.videoLink!!
+                    ) {
+                        withStyle(
+                            style = SpanStyle(
+                                color = Red1,
+                                textDecoration = TextDecoration.Underline
+                            )
+                        ) {
+                            append(link)
+                        }
+                    }
+                }
+                val uriHandler = LocalUriHandler.current
+                ClickableText(
+                    text = videoLinkAnnotated,
+                    onClick = {
+                        videoLinkAnnotated.getStringAnnotations(tag = "URL", it, it)
+                            .firstOrNull()?.let { stringAnnotation ->
+                                uriHandler.openUri(stringAnnotation.item)
+                            }
+                    }
                 )
             }
         }
