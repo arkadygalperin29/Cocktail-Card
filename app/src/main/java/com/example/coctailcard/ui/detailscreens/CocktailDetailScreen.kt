@@ -1,5 +1,6 @@
 package com.example.coctailcard.ui.detailscreens
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -74,11 +75,17 @@ fun CocktailDetailScreen(
         viewModel.uiEvent.collect { event ->
             when (event) {
                 is UiEvent.NavigateTo -> event.navAction(actions)
-
                 is UiEvent.ShowToast -> {
                     when (event.toastType) {
                         IsCocktailSavedInDatabase.COCKTAIL_IS_NOT_SAVED -> context.getString(R.string.cocktail_is_remembered_successfully)
                         IsCocktailSavedInDatabase.COCKTAIL_IS_ALREADY_SAVED -> context.getString(R.string.cocktail_is_already_saved_as_favorite)
+                        else -> null
+                    }?.let { text ->
+                        Toast.makeText(
+                            context,
+                            text,
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }

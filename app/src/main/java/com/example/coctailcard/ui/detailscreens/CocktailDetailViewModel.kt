@@ -66,8 +66,10 @@ class CocktailDetailViewModel(
             val cocktailFromDb = cocktailDao.getCoctailById(favoriteCocktail.id)
             if (cocktailFromDb == null) {
                 cocktailDao.addFavoriteCocktail(favoriteCocktail)
+                sendUiEvent(
+                    UiEvent.ShowToast(IsCocktailSavedInDatabase.COCKTAIL_IS_NOT_SAVED)
+                )
                 sendUiEvent(UiEvent.NavigateTo(navAction = { navigateToFavorites() }))
-                sendUiEvent(UiEvent.ShowToast(IsCocktailSavedInDatabase.COCKTAIL_IS_NOT_SAVED))
             } else {
                 sendUiEvent(UiEvent.ShowToast(IsCocktailSavedInDatabase.COCKTAIL_IS_ALREADY_SAVED))
             }
