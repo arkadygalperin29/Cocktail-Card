@@ -1,4 +1,4 @@
-package com.example.coctailcard.data.network
+package com.example.network
 
 sealed class RequestResult<out T : Any> {
     data class Success<out T : Any>(val data: T) : RequestResult<T>()

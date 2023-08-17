@@ -11,7 +11,7 @@ import androidx.room.Upsert
 import androidx.sqlite.db.SimpleSQLiteQuery
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.coctailcard.data.models.TableUpdateTimestamp
-import com.example.coctailcard.data.network.RequestResult
+import com.example.network.RequestResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import org.koin.mp.KoinPlatformTools

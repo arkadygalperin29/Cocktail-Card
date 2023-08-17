@@ -39,7 +39,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.example.coctailcard.R
-import com.example.coctailcard.domain.models.Cocktail
+import com.example.domain.Cocktail
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
@@ -124,7 +124,7 @@ fun CocktailDetailScreen(
 @OptIn(ExperimentalTextApi::class)
 @Composable
 fun CocktailDetail(
-    cocktail: Cocktail,
+    cocktail: com.example.domain.Cocktail,
     navController: NavController = rememberNavController()
 ) {
     val actions = rememberCocktailNavActions(navController = navController)
@@ -565,7 +565,7 @@ fun CocktailDetail(
 @Composable
 fun CocktailDetailPreview() {
     CocktailDetail(
-        cocktail = Cocktail(
+        cocktail = com.example.domain.Cocktail(
             id = "1",
             name = "Margarita",
             category = "Alcoholic",

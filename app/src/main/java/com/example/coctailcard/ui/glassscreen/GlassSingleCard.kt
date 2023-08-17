@@ -22,20 +22,17 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.coctailcard.R
-import com.example.coctailcard.domain.models.Glass
+import com.example.domain.Glass
 import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Brown1
-import com.example.coctailcard.ui.theme.Grey1000
 import com.example.coctailcard.ui.theme.Grey50
 import com.example.coctailcard.ui.theme.Header1
-import com.example.coctailcard.ui.theme.Pink40
 import com.example.coctailcard.ui.theme.Teal1
 import com.example.coctailcard.ui.theme.Text14
-import com.example.coctailcard.ui.theme.Yellow1
 
 @Composable
 fun GlassSingleCard(
-    glass: Glass,
+    glass: com.example.domain.Glass,
     onGlassClicked: (String) -> Unit,
     drawableResId: Int,
     description: String
@@ -97,7 +94,7 @@ fun GlassSingleCard(
 @Composable
 fun GlassSingleCardPreview() {
     GlassSingleCard(
-        glass = Glass(
+        glass = com.example.domain.Glass(
             "Baloon glass",
             imageRes = R.drawable.balloon_glass,
             description = "Glass for some drinks"

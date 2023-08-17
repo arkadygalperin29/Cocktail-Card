@@ -1,9 +1,9 @@
 package com.example.coctailcard.ui.menuscreen
 
 import androidx.lifecycle.ViewModel
-import com.example.coctailcard.data.network.RequestResult
+import com.example.network.RequestResult
 import com.example.coctailcard.data.repositories.GetCocktailsRepository
-import com.example.coctailcard.domain.state.ApplicationState
+import com.example.domain.state.ApplicationState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -14,7 +14,7 @@ class MenuScreenViewModel(
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(
-        ApplicationState(
+        com.example.domain.state.ApplicationState(
             isLoading = false, searchQuery = "a", cocktails = emptyList()
         )
     )

@@ -1,8 +1,6 @@
 package com.example.coctailcard.data.repositories.favorites
 
-import com.example.coctailcard.domain.models.Cocktail
-import com.example.coctailcard.domain.models.CocktailMain
-import kotlinx.coroutines.flow.Flow
+import com.example.domain.Cocktail
 
 interface FavoriteRepository {
 

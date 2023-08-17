@@ -2,9 +2,9 @@ package com.example.coctailcard.ui.glassscreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.coctailcard.data.network.RequestResult
+import com.example.network.RequestResult
 import com.example.coctailcard.data.repositories.glasses.GetGlassesRepository
-import com.example.coctailcard.domain.state.ApplicationState
+import com.example.domain.state.ApplicationState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,7 +16,12 @@ class GlassViewModel(private val glassesRepository: GetGlassesRepository) : View
 
 
     private val _glassState =
-        MutableStateFlow(ApplicationState(isLoading = false, glasses = emptyList()))
+        MutableStateFlow(
+            com.example.domain.state.ApplicationState(
+                isLoading = false,
+                glasses = emptyList()
+            )
+        )
     val glassState = _glassState.asStateFlow()
 
     init {

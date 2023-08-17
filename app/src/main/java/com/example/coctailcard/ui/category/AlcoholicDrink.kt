@@ -20,14 +20,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.coctailcard.domain.models.Cocktail
+import com.example.domain.Cocktail
 import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Grey100
 import com.example.coctailcard.ui.theme.Text12
 
 @Composable
 fun AlcoholicDrink(
-    alcoholicCocktail: Cocktail,
+    alcoholicCocktail: com.example.domain.Cocktail,
     alcoholicCocktailClick: (String) -> Unit
 ) {
     Column(
@@ -69,5 +69,5 @@ fun AlcoholicDrink(
 @Preview
 @Composable
 fun AlcoholicDrinkPreview() {
-    AlcoholicDrink(Cocktail("Margharita", "", ""), { })
+    AlcoholicDrink(com.example.domain.Cocktail("Margharita", "", ""), { })
 }

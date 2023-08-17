@@ -1,7 +1,7 @@
 package com.example.coctailcard.data.repositories.favorites
 
 import com.example.coctailcard.data.db.dao.CocktailDao
-import com.example.coctailcard.domain.models.Cocktail
+import com.example.domain.Cocktail
 
 class FavoriteRepositoryImpl(private val cocktailDao: CocktailDao) : FavoriteRepository {
     override fun getAllFavoriteDrinks(): List<Cocktail> {

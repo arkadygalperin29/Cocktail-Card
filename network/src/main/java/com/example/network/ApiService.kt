@@ -1,12 +1,11 @@
-package com.example.coctailcard.data.network
+package com.example.network
 
-import com.example.coctailcard.domain.models.Cocktail
-import com.example.coctailcard.domain.models.Glass
-import com.example.coctailcard.domain.models.Ingredient
-import com.example.coctailcard.domain.models.IngredientDetailed
-import com.example.coctailcard.domain.models.SampleData
+import com.example.domain.Cocktail
+import com.example.domain.Glass
+import com.example.domain.Ingredient
+import com.example.domain.IngredientDetailed
+import com.example.domain.SampleData
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {

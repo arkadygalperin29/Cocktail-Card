@@ -1,8 +1,8 @@
 package com.example.coctailcard.data.repositories.ingredients
 
-import com.example.coctailcard.data.network.RequestResult
-import com.example.coctailcard.domain.models.Ingredient
-import com.example.coctailcard.domain.models.IngredientDetailed
+import com.example.network.RequestResult
+import com.example.domain.Ingredient
+import com.example.domain.IngredientDetailed
 
 interface GetIngredientsRepository {
     suspend fun getIngredientsList(): RequestResult<List<Ingredient>>

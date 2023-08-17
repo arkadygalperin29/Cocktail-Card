@@ -1,4 +1,4 @@
-package com.example.coctailcard.domain.models
+package com.example.domain
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -2,10 +2,10 @@ package com.example.coctailcard.ui.category
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.coctailcard.data.network.RequestResult
+import com.example.network.RequestResult
 import com.example.coctailcard.data.repositories.alcoholic.AlcoholicCocktailsRepository
 import com.example.coctailcard.data.repositories.nonalcoholic.NonAlcoholicCocktailsRepository
-import com.example.coctailcard.domain.state.ApplicationState
+import com.example.domain.state.ApplicationState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -19,7 +19,7 @@ class CategoryViewModel(
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(
-        ApplicationState(
+        com.example.domain.state.ApplicationState(
             selectedButton = 1,
             isLoading = false,
             alcoholicCocktails = emptyList(),
@@ -28,7 +28,7 @@ class CategoryViewModel(
     )
     val state = _state.asStateFlow()
 
-    fun updateState(state: ApplicationState) {
+    fun updateState(state: com.example.domain.state.ApplicationState) {
         _state.update { state }
     }
 

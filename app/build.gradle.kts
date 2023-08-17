@@ -72,6 +72,9 @@ dependencies {
     implementation(libs.bundles.coil.all)
     implementation(libs.koin.core)
 
+    implementation(project(":network"))
+    implementation(project(":domain"))
+
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)

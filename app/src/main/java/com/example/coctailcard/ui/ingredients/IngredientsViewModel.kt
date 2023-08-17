@@ -2,9 +2,9 @@ package com.example.coctailcard.ui.ingredients
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.coctailcard.data.network.RequestResult
+import com.example.network.RequestResult
 import com.example.coctailcard.data.repositories.ingredients.GetIngredientsRepository
-import com.example.coctailcard.domain.state.ApplicationState
+import com.example.domain.state.ApplicationState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,7 +17,7 @@ class IngredientsViewModel(
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(
-        ApplicationState(
+        com.example.domain.state.ApplicationState(
             isLoading = false, ingredients = emptyList()
         )
     )

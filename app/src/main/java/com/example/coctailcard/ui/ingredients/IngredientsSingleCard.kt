@@ -22,7 +22,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.coctailcard.R
-import com.example.coctailcard.domain.models.Ingredient
+import com.example.domain.Ingredient
 import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.Brown1
 import com.example.coctailcard.ui.theme.Grey50
@@ -32,7 +32,7 @@ import com.example.coctailcard.ui.theme.Text14
 
 @Composable
 fun IngredientSingleCard(
-    ingredient: Ingredient,
+    ingredient: com.example.domain.Ingredient,
     drawableResId: Int,
     description: String
 ) {
@@ -97,7 +97,7 @@ fun IngredientSingleCard(
 @Composable
 fun IngredientSingleCardPreview() {
     IngredientSingleCard(
-        ingredient = Ingredient("Vodka", R.drawable.vodka, "Strong ruski vodka"),
+        ingredient = com.example.domain.Ingredient("Vodka", R.drawable.vodka, "Strong ruski vodka"),
         drawableResId = R.drawable.vodka,
         description = "some info"
     )

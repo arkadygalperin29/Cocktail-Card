@@ -1,6 +1,6 @@
 package com.example.coctailcard.data.di
 
-import com.example.coctailcard.data.network.ApiService
+import com.example.network.ApiService
 import com.example.coctailcard.util.Cfg
 import com.google.gson.Gson
 import okhttp3.ConnectionPool

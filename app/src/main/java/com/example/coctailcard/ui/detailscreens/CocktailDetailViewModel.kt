@@ -1,14 +1,13 @@
 package com.example.coctailcard.ui.detailscreens
 
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coctailcard.data.db.dao.CocktailDao
-import com.example.coctailcard.data.network.RequestResult
+import com.example.network.RequestResult
 import com.example.coctailcard.data.repositories.GetCocktailsRepository
 import com.example.coctailcard.data.repositories.favorites.FavoriteRepository
-import com.example.coctailcard.domain.models.Cocktail
-import com.example.coctailcard.domain.state.ApplicationState
+import com.example.domain.Cocktail
+import com.example.domain.state.ApplicationState
 import com.example.coctailcard.util.ToastType
 import com.example.coctailcard.util.UiEvent
 import kotlinx.coroutines.Dispatchers
@@ -29,7 +28,12 @@ class CocktailDetailViewModel(
     val uiEvent = _uiEvent.receiveAsFlow()
 
     private val _state =
-        MutableStateFlow(ApplicationState(isLoading = false, cocktail = Cocktail()))
+        MutableStateFlow(
+            com.example.domain.state.ApplicationState(
+                isLoading = false,
+                cocktail = com.example.domain.Cocktail()
+            )
+        )
     val state = _state.asStateFlow()
 
 
@@ -55,13 +59,13 @@ class CocktailDetailViewModel(
         }
     }
 
-    fun deleteFavorite(favoriteCocktail: Cocktail) {
+    fun deleteFavorite(favoriteCocktail: com.example.domain.Cocktail) {
         viewModelScope.launch {
             favoritesRepository.deleteFavoriteDrink(favoriteCocktail)
         }
     }
 
-    fun checkIfCocktailIsAdded(favoriteCocktail: Cocktail) {
+    fun checkIfCocktailIsAdded(favoriteCocktail: com.example.domain.Cocktail) {
         viewModelScope.launch {
             val cocktailFromDb = cocktailDao.getCoctailById(favoriteCocktail.id)
             if (cocktailFromDb == null) {
@@ -76,7 +80,7 @@ class CocktailDetailViewModel(
         }
     }
 
-    fun insertFavorite(favoriteCocktail: Cocktail) {
+    fun insertFavorite(favoriteCocktail: com.example.domain.Cocktail) {
         viewModelScope.launch(Dispatchers.IO) {
             cocktailDao.addFavoriteCocktail(favoriteCocktail)
         }

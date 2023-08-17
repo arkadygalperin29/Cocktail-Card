@@ -2,9 +2,9 @@ package com.example.coctailcard.ui.ingredients
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.coctailcard.data.network.RequestResult
+import com.example.network.RequestResult
 import com.example.coctailcard.data.repositories.ingredients.GetIngredientsRepository
-import com.example.coctailcard.domain.state.ApplicationState
+import com.example.domain.state.ApplicationState
 import com.example.coctailcard.util.UiEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -23,7 +23,7 @@ class IngredientDetailViewModel(
     val uiEvent = _uiEvent.receiveAsFlow()
 
     private val _state = MutableStateFlow(
-        ApplicationState(
+        com.example.domain.state.ApplicationState(
             isLoading = false,
             ingredient = null
         )

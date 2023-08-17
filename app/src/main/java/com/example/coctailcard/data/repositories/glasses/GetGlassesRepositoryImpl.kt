@@ -1,8 +1,8 @@
 package com.example.coctailcard.data.repositories.glasses
 
-import com.example.coctailcard.data.network.ApiService
-import com.example.coctailcard.data.network.RequestResult
-import com.example.coctailcard.domain.models.Glass
+import com.example.network.ApiService
+import com.example.network.RequestResult
+import com.example.domain.Glass
 
 class GetGlassesRepositoryImpl(private val apiService: ApiService) : GetGlassesRepository {
     override suspend fun getGlassesList(): RequestResult<List<Glass>> {

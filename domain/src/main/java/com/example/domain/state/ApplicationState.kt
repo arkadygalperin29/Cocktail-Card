@@ -1,9 +1,9 @@
-package com.example.coctailcard.domain.state
+package com.example.domain.state
 
-import com.example.coctailcard.domain.models.Cocktail
-import com.example.coctailcard.domain.models.Glass
-import com.example.coctailcard.domain.models.Ingredient
-import com.example.coctailcard.domain.models.IngredientDetailed
+import com.example.domain.Cocktail
+import com.example.domain.Glass
+import com.example.domain.Ingredient
+import com.example.domain.IngredientDetailed
 
 data class ApplicationState(
     val isLoading: Boolean = false,

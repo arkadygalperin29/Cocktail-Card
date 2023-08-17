@@ -27,7 +27,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.example.coctailcard.R
-import com.example.coctailcard.domain.models.IngredientDetailed
+import com.example.domain.IngredientDetailed
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
@@ -87,7 +87,7 @@ fun IngredientDetailScreen(
 
 @Composable
 fun IngredientDetail(
-    ingredientDetailed: IngredientDetailed
+    ingredientDetailed: com.example.domain.IngredientDetailed
 ) {
     Column(
         modifier = Modifier
@@ -188,7 +188,7 @@ fun IngredientDetail(
 @Composable
 fun IngredientDetailPreview() {
     IngredientDetail(
-        ingredientDetailed = IngredientDetailed(
+        ingredientDetailed = com.example.domain.IngredientDetailed(
             "123",
             "Vodka",
             "Pour this vodka in a glass and drink it",

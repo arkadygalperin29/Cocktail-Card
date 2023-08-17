@@ -3,9 +3,8 @@ package com.example.coctailcard.ui.favorites
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coctailcard.data.repositories.favorites.FavoriteRepository
-import com.example.coctailcard.domain.models.Cocktail
-import com.example.coctailcard.domain.models.CocktailMain
-import com.example.coctailcard.domain.state.ApplicationState
+import com.example.domain.Cocktail
+import com.example.domain.state.ApplicationState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,8 +13,8 @@ import kotlinx.coroutines.launch
 class FavoritesViewModel(private val favoritesRepository: FavoriteRepository) : ViewModel() {
 
     private val _state = MutableStateFlow(
-        ApplicationState(
-            cocktail = Cocktail(),
+        com.example.domain.state.ApplicationState(
+            cocktail = com.example.domain.Cocktail(),
             favoriteCocktails = emptyList()
         )
     )
@@ -34,7 +33,7 @@ class FavoritesViewModel(private val favoritesRepository: FavoriteRepository) : 
         }
     }
 
-    fun deleteFavorite(favoriteCocktail: Cocktail) {
+    fun deleteFavorite(favoriteCocktail: com.example.domain.Cocktail) {
         viewModelScope.launch(Dispatchers.IO) {
             favoritesRepository.deleteFavoriteDrink(favoriteCocktail)
             loadFavoriteCocktails()

@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "CoctailCard"
 include(":app")
- 
+include(":network")
+include(":domain")

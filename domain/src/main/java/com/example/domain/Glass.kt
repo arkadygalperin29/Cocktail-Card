@@ -1,4 +1,4 @@
-package com.example.coctailcard.domain.models
+package com.example.domain
 
 import androidx.annotation.DrawableRes
 import com.google.gson.annotations.SerializedName

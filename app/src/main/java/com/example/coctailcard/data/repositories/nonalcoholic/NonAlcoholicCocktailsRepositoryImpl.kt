@@ -1,8 +1,8 @@
 package com.example.coctailcard.data.repositories.nonalcoholic
 
-import com.example.coctailcard.data.network.ApiService
-import com.example.coctailcard.data.network.RequestResult
-import com.example.coctailcard.domain.models.Cocktail
+import com.example.network.ApiService
+import com.example.network.RequestResult
+import com.example.domain.Cocktail
 
 class NonAlcoholicCocktailsRepositoryImpl(private val apiService: ApiService) :
     NonAlcoholicCocktailsRepository {
