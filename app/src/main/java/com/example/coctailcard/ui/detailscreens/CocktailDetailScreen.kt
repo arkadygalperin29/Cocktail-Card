@@ -230,7 +230,7 @@ fun CocktailDetail(
                 val videoLinkAnnotated = buildAnnotatedString {
                     withAnnotation(
                         tag = "URL",
-                        annotation = cocktail.videoLink!!
+                        annotation = cocktail.videoLink ?: ""
                     ) {
                         withStyle(
                             style = SpanStyle(
