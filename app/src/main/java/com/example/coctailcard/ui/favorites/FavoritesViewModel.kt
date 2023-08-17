@@ -40,11 +40,4 @@ class FavoritesViewModel(private val favoritesRepository: FavoriteRepository) : 
             loadFavoriteCocktails()
         }
     }
-
-    fun insertFavorite(favoriteCocktail: CocktailMain) {
-        viewModelScope.launch {
-            favoritesRepository.saveFavoriteDrink(favoriteCocktail)
-            loadFavoriteCocktails()
-        }
-    }
 }

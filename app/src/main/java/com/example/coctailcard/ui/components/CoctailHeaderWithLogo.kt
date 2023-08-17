@@ -16,6 +16,7 @@ import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -76,7 +77,7 @@ fun CoctailHeaderWithLogo(
                     .clickable {
                         viewModel.insertFavorite(favoriteCocktail = state.cocktail ?: Cocktail())
                         Log.d("Element is recorded", "cocktail id: ${state.cocktail?.id} ")
-                        if (!state.cocktail?.id.isNullOrEmpty() && (state.cocktail?.id?.isNotEmpty() == true)) {
+                        if (!state.cocktail?.id.isNullOrEmpty()) {
                             Log.d("Element is recorded", "navigation is successful")
                             Toast
                                 .makeText(
@@ -95,7 +96,6 @@ fun CoctailHeaderWithLogo(
                                 )
                                 .show()
                         }
-                        //                      actions.navigateToHome()
                     }
             ) {
                 Icon(

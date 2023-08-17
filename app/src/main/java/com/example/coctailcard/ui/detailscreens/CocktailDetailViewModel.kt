@@ -61,7 +61,7 @@ class CocktailDetailViewModel(
     }
 
     fun insertFavorite(favoriteCocktail: Cocktail) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             cocktailDao.addFavoriteCocktail(favoriteCocktail)
         }
     }
