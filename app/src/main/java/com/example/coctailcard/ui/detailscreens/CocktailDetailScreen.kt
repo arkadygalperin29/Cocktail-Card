@@ -245,6 +245,10 @@ fun CocktailDetail(
                 val uriHandler = LocalUriHandler.current
                 ClickableText(
                     text = videoLinkAnnotated,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    style = Text14,
                     onClick = {
                         videoLinkAnnotated.getStringAnnotations(tag = "URL", it, it)
                             .firstOrNull()?.let { stringAnnotation ->
