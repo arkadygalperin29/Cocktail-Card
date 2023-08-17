@@ -11,4 +11,6 @@ interface FavoriteRepository {
     suspend fun saveFavoriteDrink(cocktailMain: Cocktail)
 
     suspend fun deleteFavoriteDrink(cocktailMain: Cocktail)
+
+    suspend fun getCocktailById(id: String): Cocktail?
 }

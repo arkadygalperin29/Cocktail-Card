@@ -1,7 +1,5 @@
 package com.example.coctailcard.ui.components
 
-import android.util.Log
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,7 +14,6 @@ import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -27,7 +24,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.coctailcard.R
-import com.example.coctailcard.domain.models.Cocktail
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.detailscreens.CocktailDetailViewModel
 import com.example.coctailcard.ui.theme.Black1
@@ -75,27 +71,34 @@ fun CoctailHeaderWithLogo(
                     .padding(end = 16.dp, bottom = 8.dp)
                     .size(24.dp)
                     .clickable {
-                        viewModel.insertFavorite(favoriteCocktail = state.cocktail ?: Cocktail())
-                        Log.d("Element is recorded", "cocktail id: ${state.cocktail?.id} ")
-                        if (!state.cocktail?.id.isNullOrEmpty()) {
-                            Log.d("Element is recorded", "navigation is successful")
-                            Toast
-                                .makeText(
-                                    context,
-                                    "Cocktail was saved successfully",
-                                    Toast.LENGTH_LONG
-                                )
-                                .show()
-                            actions.navigateToFavorites()
-                        } else {
-                            Toast
-                                .makeText(
-                                    context,
-                                    "Cocktail is already saved, select another one",
-                                    Toast.LENGTH_LONG
-                                )
-                                .show()
-                        }
+                        viewModel.checkIfCocktailIsAdded(state.cocktail ?: return@clickable)
+
+
+                        /*               val cocktailId = state.cocktail?.id
+                                       if (!cocktailId.isNullOrEmpty()) {
+                                           viewModel.insertFavorite(
+                                               favoriteCocktail = state.cocktail ?: Cocktail()
+                                           )
+                                           Log.d("Element is recorded", "cocktail id: ${state.cocktail?.id} ")
+
+                                           Log.d("Element is recorded", "navigation is successful")
+                                           Toast
+                                               .makeText(
+                                                   context,
+                                                   "Cocktail was saved successfully",
+                                                   Toast.LENGTH_LONG
+                                               )
+                                               .show()
+                                           actions.navigateToFavorites()
+                                       } else {
+                                           Toast
+                                               .makeText(
+                                                   context,
+                                                   "Cocktail is already saved, select another one",
+                                                   Toast.LENGTH_LONG
+                                               )
+                                               .show()
+                                       }*/
                     }
             ) {
                 Icon(

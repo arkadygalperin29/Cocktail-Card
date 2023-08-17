@@ -1,14 +1,15 @@
 package com.example.coctailcard.ui.detailscreens
 
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coctailcard.data.db.dao.CocktailDao
 import com.example.coctailcard.data.network.RequestResult
-import com.example.coctailcard.domain.models.Cocktail
 import com.example.coctailcard.data.repositories.GetCocktailsRepository
 import com.example.coctailcard.data.repositories.favorites.FavoriteRepository
-import com.example.coctailcard.domain.models.CocktailMain
+import com.example.coctailcard.domain.models.Cocktail
 import com.example.coctailcard.domain.state.ApplicationState
+import com.example.coctailcard.util.ToastType
 import com.example.coctailcard.util.UiEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -60,6 +61,19 @@ class CocktailDetailViewModel(
         }
     }
 
+    fun checkIfCocktailIsAdded(favoriteCocktail: Cocktail) {
+        viewModelScope.launch {
+            val cocktailFromDb = cocktailDao.getCoctailById(favoriteCocktail.id)
+            if (cocktailFromDb == null) {
+                cocktailDao.addFavoriteCocktail(favoriteCocktail)
+                sendUiEvent(UiEvent.NavigateTo(navAction = { navigateToFavorites() }))
+                sendUiEvent(UiEvent.ShowToast(IsCocktailSavedInDatabase.COCKTAIL_IS_NOT_SAVED))
+            } else {
+                sendUiEvent(UiEvent.ShowToast(IsCocktailSavedInDatabase.COCKTAIL_IS_ALREADY_SAVED))
+            }
+        }
+    }
+
     fun insertFavorite(favoriteCocktail: Cocktail) {
         viewModelScope.launch(Dispatchers.IO) {
             cocktailDao.addFavoriteCocktail(favoriteCocktail)
@@ -69,4 +83,9 @@ class CocktailDetailViewModel(
     private suspend fun sendUiEvent(event: UiEvent) {
         _uiEvent.send(event)
     }
+}
+
+enum class IsCocktailSavedInDatabase : ToastType {
+    COCKTAIL_IS_NOT_SAVED,
+    COCKTAIL_IS_ALREADY_SAVED
 }

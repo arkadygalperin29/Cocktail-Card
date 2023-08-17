@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,7 +34,6 @@ import com.example.coctailcard.domain.models.Cocktail
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
-import com.example.coctailcard.ui.components.scaffold.AppHeaderType
 import com.example.coctailcard.ui.theme.Aubergine
 import com.example.coctailcard.ui.theme.Black1
 import com.example.coctailcard.ui.theme.CoolWhite
@@ -68,12 +68,19 @@ fun CocktailDetailScreen(
     val actions = rememberCocktailNavActions(navController = navController)
     val scrollState = rememberScrollState()
     val state by viewModel.state.collectAsState()
+    val context = LocalContext.current
 
     LaunchedEffect(true) {
         viewModel.uiEvent.collect { event ->
             when (event) {
                 is UiEvent.NavigateTo -> event.navAction(actions)
-                else -> {}
+
+                is UiEvent.ShowToast -> {
+                    when (event.toastType) {
+                        IsCocktailSavedInDatabase.COCKTAIL_IS_NOT_SAVED -> context.getString(R.string.cocktail_is_remembered_successfully)
+                        IsCocktailSavedInDatabase.COCKTAIL_IS_ALREADY_SAVED -> context.getString(R.string.cocktail_is_already_saved_as_favorite)
+                    }
+                }
             }
         }
     }

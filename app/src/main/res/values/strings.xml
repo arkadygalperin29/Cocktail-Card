@@ -148,6 +148,8 @@
     <string name="your_favorite_cocktails">"Your favorite cocktails: "</string>
     <string name="totally_saved">"Totally saved: %1$s"</string>
     <string name="description">Description</string>
+    <string name="cocktail_is_already_saved_as_favorite">Cocktail is already saved as favorite!</string>
+    <string name="cocktail_is_remembered_successfully">Cocktail is remembered successfully!</string>
 
 
 </resources>
