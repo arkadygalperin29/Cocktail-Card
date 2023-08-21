@@ -1,4 +1,4 @@
-package com.example.coctailcard.ui.components
+package com.example.ui.appcomponents
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.coctailcard.R
+import com.example.ui.R
 
 @Preview
 @Composable

@@ -24,8 +24,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.R
 import com.example.coctailcard.navigation.CocktailNavActions
-import com.example.coctailcard.ui.components.AppLoader
-import com.example.coctailcard.ui.components.CategoryTabs
+import com.example.ui.appcomponents.AppLoader
+import com.example.ui.appcomponents.CategoryTabs
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
 import com.example.ui.category.AlcoholicDrink

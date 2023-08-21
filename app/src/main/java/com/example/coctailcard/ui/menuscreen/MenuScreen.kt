@@ -23,9 +23,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.navigation.rememberCocktailNavActions
-import com.example.coctailcard.ui.components.AppLoader
+import com.example.ui.appcomponents.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
-import com.example.coctailcard.ui.components.SearchBar
+import com.example.ui.appcomponents.SearchBar
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
 import com.example.ui.menu.CocktailSingleCard
 import org.koin.androidx.compose.koinViewModel

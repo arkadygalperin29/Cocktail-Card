@@ -27,16 +27,10 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.example.coctailcard.R
-import com.example.domain.IngredientDetailed
 import com.example.coctailcard.navigation.rememberCocktailNavActions
-import com.example.coctailcard.ui.components.AppLoader
+import com.example.ui.appcomponents.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
-import com.example.ui.theme.Black1
-import com.example.ui.theme.Grey50
-import com.example.ui.theme.Header1
-import com.example.ui.theme.Pink40
-import com.example.ui.theme.Text14
 import com.example.coctailcard.util.UiEvent
 import com.example.coctailcard.util.paddingWithScroll
 import org.koin.androidx.compose.koinViewModel

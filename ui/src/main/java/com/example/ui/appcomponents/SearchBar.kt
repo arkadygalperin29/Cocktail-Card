@@ -1,4 +1,4 @@
-package com.example.coctailcard.ui.components
+package com.example.ui.appcomponents
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -34,8 +34,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.ui.theme.Grey50
-import com.example.ui.theme.Header1
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable

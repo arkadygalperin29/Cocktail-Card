@@ -20,10 +20,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.R
-import com.example.coctailcard.ui.components.AppLoader
+import com.example.ui.appcomponents.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
-import com.example.ui.theme.Black1
+import com.example.ui.appcomponents.GlassSingleCard
 import org.koin.androidx.compose.koinViewModel
 
 @Composable

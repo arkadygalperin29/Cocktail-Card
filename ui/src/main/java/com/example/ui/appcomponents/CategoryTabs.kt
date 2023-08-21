@@ -1,4 +1,4 @@
-package com.example.coctailcard.ui.components
+package com.example.ui.appcomponents
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
@@ -23,8 +23,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.ui.theme.Blue1
 import com.example.ui.theme.Grey100
-import com.example.ui.theme.Grey900
-import com.example.ui.theme.Header2
 
 @Composable
 fun CategoryTabs(
@@ -32,12 +30,12 @@ fun CategoryTabs(
     options: List<String>,
     selected: Int,
     selectedColor: ButtonColors = ButtonDefaults.buttonColors(
-        containerColor = com.example.ui.theme.Blue1,
-        contentColor = com.example.ui.theme.Grey100,
+        containerColor = Blue1,
+        contentColor = Grey100,
     ),
     unselectedColor: ButtonColors = ButtonDefaults.buttonColors(
         containerColor = Color.Transparent,
-        contentColor = com.example.ui.theme.Grey100,
+        contentColor = Grey100,
     ),
     onItemSelected: (Int) -> Unit
 ) {

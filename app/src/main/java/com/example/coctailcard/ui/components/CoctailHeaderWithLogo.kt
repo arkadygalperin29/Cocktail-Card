@@ -21,13 +21,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.coctailcard.R
 import com.example.coctailcard.ui.detailscreens.CocktailDetailViewModel
+import com.example.ui.theme.Black1
+import com.example.ui.theme.Grey00
+import com.example.ui.theme.Yellow1
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CoctailHeaderWithLogo(
     logoAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
+    navController: NavController,
     showFavoritesIcon: Boolean = true,
     viewModel: CocktailDetailViewModel = koinViewModel()
 ) {
@@ -37,7 +42,7 @@ fun CoctailHeaderWithLogo(
         modifier = Modifier
             .height(44.dp)
             .fillMaxWidth()
-            .background(com.example.ui.theme.Black1),
+            .background(Black1),
     ) {
         Image(
             modifier = Modifier
@@ -70,14 +75,14 @@ fun CoctailHeaderWithLogo(
                         .size(24.dp),
                     imageVector = Icons.Outlined.Favorite,
                     contentDescription = null,
-                    tint = com.example.ui.theme.Grey00
+                    tint = Grey00
                 )
             }
         }
         Divider(
             modifier = Modifier.align(Alignment.BottomCenter),
             thickness = 2.dp,
-            color = com.example.ui.theme.Yellow1
+            color = Yellow1
         )
     }
 }

@@ -1,4 +1,4 @@
-package com.example.coctailcard.ui.glassscreen
+package com.example.ui.appcomponents
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -21,14 +21,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.coctailcard.R
 import com.example.domain.Glass
-import com.example.ui.theme.Black1
-import com.example.ui.theme.Brown1
-import com.example.ui.theme.Grey50
-import com.example.ui.theme.Header1
-import com.example.ui.theme.Teal1
-import com.example.ui.theme.Text14
+import com.example.ui.R
 
 @Composable
 fun GlassSingleCard(
@@ -68,11 +62,12 @@ fun GlassSingleCard(
                 contentDescription = "Cocktail detail card",
                 contentScale = ContentScale.Crop
             )
-            Box(modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp)
-                .border(3.dp, com.example.ui.theme.Grey50)
-                .background(com.example.ui.theme.Brown1)
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+                    .border(3.dp, com.example.ui.theme.Grey50)
+                    .background(com.example.ui.theme.Brown1)
             ) {
                 Text(
                     modifier = Modifier

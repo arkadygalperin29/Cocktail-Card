@@ -40,7 +40,6 @@ fun AppHeaderWithButtons(
     returnIcon: Painter = painterResource(id = R.drawable.baseline_chevron_left_24),
     navController: NavController,
 ) {
-    val actions = rememberCocktailNavActions(navController = navController)
 
     Column(
         modifier = Modifier
