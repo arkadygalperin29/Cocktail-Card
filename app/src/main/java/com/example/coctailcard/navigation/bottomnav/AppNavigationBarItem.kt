@@ -19,9 +19,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.coctailcard.R
-import com.example.coctailcard.ui.theme.Grey400
-import com.example.coctailcard.ui.theme.Text12
-import com.example.coctailcard.ui.theme.Yellow1
+import com.example.ui.theme.Grey400
+import com.example.ui.theme.Text12
+import com.example.ui.theme.Yellow1
 
 @Composable
 fun AppNavigationBarItem(
@@ -57,8 +57,8 @@ fun AppNavigationBarItem(
             icon()
             Text(
                 text = label,
-                color = if (selected) selectedColor else Grey400,
-                style = Text12
+                color = if (selected) selectedColor else com.example.ui.theme.Grey400,
+                style = com.example.ui.theme.Text12
             )
         }
     }
@@ -77,7 +77,7 @@ private fun PreviewComponent() {
                     .size(24.dp),
                 painter = painterResource(id = R.drawable.alcoholic_percentage),
                 contentDescription = "icon desc",
-                tint = Grey400,
+                tint = com.example.ui.theme.Grey400,
             )
         },
         label = "Label",
@@ -97,7 +97,7 @@ private fun PreviewComponentSelected() {
                     .size(24.dp),
                 painter = painterResource(id = R.drawable.empty_glass_icon),
                 contentDescription = "icon desc",
-                tint = Yellow1,
+                tint = com.example.ui.theme.Yellow1,
             )
         },
         label = "Label",

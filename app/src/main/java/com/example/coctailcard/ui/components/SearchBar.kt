@@ -34,8 +34,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.coctailcard.ui.theme.Grey50
-import com.example.coctailcard.ui.theme.Header1
+import com.example.ui.theme.Grey50
+import com.example.ui.theme.Header1
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -78,7 +78,7 @@ fun SearchBar(onSearch: (String) -> Unit) {
                         keyboardController?.hide() // Hide the keyboard when search is triggered
                     }
                 ),
-                textStyle = LocalTextStyle.current.copy(color = Grey50),
+                textStyle = LocalTextStyle.current.copy(color = com.example.ui.theme.Grey50),
                 modifier = Modifier
                     .weight(1f)
                     .padding(vertical = 8.dp)
@@ -88,14 +88,14 @@ fun SearchBar(onSearch: (String) -> Unit) {
                 modifier = Modifier
                     .padding(start = 8.dp),
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Grey50,
+                    backgroundColor = com.example.ui.theme.Grey50,
                     contentColor = Color.Black
                 ),
                 shape = RoundedCornerShape(8.dp)
             ) {
                 Text(
                     "Search", color = Color.Black,
-                    style = Header1, fontSize = 12.sp
+                    style = com.example.ui.theme.Header1, fontSize = 12.sp
                 )
             }
         }

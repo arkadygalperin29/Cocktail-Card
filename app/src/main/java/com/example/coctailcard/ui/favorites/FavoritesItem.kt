@@ -29,10 +29,10 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.coctailcard.R
 import com.example.domain.Cocktail
-import com.example.coctailcard.ui.theme.Black1
-import com.example.coctailcard.ui.theme.SoftBlueGray
-import com.example.coctailcard.ui.theme.TerraCotta
-import com.example.coctailcard.ui.theme.Text12
+import com.example.ui.theme.Black1
+import com.example.ui.theme.SoftBlueGray
+import com.example.ui.theme.TerraCotta
+import com.example.ui.theme.Text12
 
 @Composable
 fun FavoriteCocktail(
@@ -45,18 +45,18 @@ fun FavoriteCocktail(
             .height(150.dp)
             .fillMaxWidth(0.8f)
             .clip(shape = RoundedCornerShape(16.dp))
-            .background(color = Black1)
+            .background(color = com.example.ui.theme.Black1)
             .clip(shape = RoundedCornerShape(16.dp))
-            .border(2.dp, Black1, RoundedCornerShape(16.dp))
+            .border(2.dp, com.example.ui.theme.Black1, RoundedCornerShape(16.dp))
     ) {
         Column {
             Box(
                 modifier = Modifier
                     .padding(start = 16.dp, top = 16.dp)
                     .border
-                        (2.dp, color = Black1, RoundedCornerShape(8.dp))
+                        (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
                     .wrapContentSize()
-                    .background(color = SoftBlueGray, shape = RoundedCornerShape(8.dp))
+                    .background(color = com.example.ui.theme.SoftBlueGray, shape = RoundedCornerShape(8.dp))
             ) {
                 if (!favoriteCocktail.name.isNullOrEmpty()) {
                     favoriteCocktail.name?.let {
@@ -70,8 +70,8 @@ fun FavoriteCocktail(
                             maxLines = 4,
                             textAlign = TextAlign.Center,
                             overflow = TextOverflow.Ellipsis,
-                            style = Text12,
-                            color = Black1,
+                            style = com.example.ui.theme.Text12,
+                            color = com.example.ui.theme.Black1,
                         )
                     }
                 }
@@ -80,10 +80,10 @@ fun FavoriteCocktail(
                 modifier = Modifier
                     .padding(start = 16.dp, top = 16.dp)
                     .border
-                        (2.dp, color = Black1, RoundedCornerShape(8.dp))
+                        (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
                     .wrapContentSize()
                     .clickable { deleteFavoriteCocktailClick(favoriteCocktail.id) }
-                    .background(color = TerraCotta, shape = RoundedCornerShape(8.dp))
+                    .background(color = com.example.ui.theme.TerraCotta, shape = RoundedCornerShape(8.dp))
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.delete_favorite),

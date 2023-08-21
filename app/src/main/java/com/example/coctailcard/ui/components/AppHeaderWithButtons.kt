@@ -29,9 +29,9 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.coctailcard.R
 import com.example.coctailcard.navigation.rememberCocktailNavActions
-import com.example.coctailcard.ui.theme.Black1
-import com.example.coctailcard.ui.theme.Grey00
-import com.example.coctailcard.ui.theme.Header1
+import com.example.ui.theme.Black1
+import com.example.ui.theme.Grey00
+import com.example.ui.theme.Header1
 
 @Composable
 fun AppHeaderWithButtons(
@@ -46,7 +46,7 @@ fun AppHeaderWithButtons(
         modifier = Modifier
             .fillMaxWidth()
             .height(44.dp)
-            .background(Black1),
+            .background(com.example.ui.theme.Black1),
         verticalArrangement = Arrangement.Bottom,
     ) {
         Row(
@@ -68,13 +68,13 @@ fun AppHeaderWithButtons(
                         .padding(end = 10.dp),
                     painter = returnIcon,
                     contentDescription = stringResource(R.string.label_return),
-                    tint = Grey00
+                    tint = com.example.ui.theme.Grey00
                 )
                 Text(
                     modifier = Modifier.padding(bottom = 3.dp),
                     text = name,
-                    style = Header1,
-                    color = Grey00,
+                    style = com.example.ui.theme.Header1,
+                    color = com.example.ui.theme.Grey00,
                 )
             }
         }

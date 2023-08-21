@@ -30,7 +30,7 @@ import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.SearchBar
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
-import com.example.coctailcard.ui.theme.Pink40
+import com.example.ui.theme.Pink40
 import com.example.coctailcard.util.paddingWithScroll
 import org.koin.androidx.compose.koinViewModel
 
@@ -59,7 +59,7 @@ fun MenuScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Pink40)
+                .background(com.example.ui.theme.Pink40)
                 .padding(paddingValues),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center

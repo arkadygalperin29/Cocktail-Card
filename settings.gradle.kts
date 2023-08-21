@@ -17,3 +17,4 @@ rootProject.name = "CoctailCard"
 include(":app")
 include(":network")
 include(":domain")
+include(":ui")

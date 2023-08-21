@@ -21,10 +21,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.coctailcard.ui.theme.Blue1
-import com.example.coctailcard.ui.theme.Grey100
-import com.example.coctailcard.ui.theme.Grey900
-import com.example.coctailcard.ui.theme.Header2
+import com.example.ui.theme.Blue1
+import com.example.ui.theme.Grey100
+import com.example.ui.theme.Grey900
+import com.example.ui.theme.Header2
 
 @Composable
 fun CategoryTabs(
@@ -32,12 +32,12 @@ fun CategoryTabs(
     options: List<String>,
     selected: Int,
     selectedColor: ButtonColors = ButtonDefaults.buttonColors(
-        containerColor = Blue1,
-        contentColor = Grey100,
+        containerColor = com.example.ui.theme.Blue1,
+        contentColor = com.example.ui.theme.Grey100,
     ),
     unselectedColor: ButtonColors = ButtonDefaults.buttonColors(
         containerColor = Color.Transparent,
-        contentColor = Grey100,
+        contentColor = com.example.ui.theme.Grey100,
     ),
     onItemSelected: (Int) -> Unit
 ) {
@@ -46,7 +46,7 @@ fun CategoryTabs(
             .fillMaxWidth()
             .height(58.dp)
             .clip(RoundedCornerShape(8.dp))
-            .background(Grey900)
+            .background(com.example.ui.theme.Grey900)
             .padding(8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -67,7 +67,7 @@ fun CategoryTabs(
                         .align(Alignment.CenterVertically),
                     text = option,
                     textAlign = TextAlign.Center,
-                    style = Header2,
+                    style = com.example.ui.theme.Header2,
                     maxLines = 1,
                 )
             }

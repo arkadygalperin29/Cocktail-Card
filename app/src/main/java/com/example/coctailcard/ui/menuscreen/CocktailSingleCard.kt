@@ -22,9 +22,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.domain.Cocktail
-import com.example.coctailcard.ui.theme.Black1
-import com.example.coctailcard.ui.theme.Grey100
-import com.example.coctailcard.ui.theme.Text12
+import com.example.ui.theme.Black1
+import com.example.ui.theme.Grey100
+import com.example.ui.theme.Text12
 
 @Composable
 fun CocktailSingleCard(
@@ -36,7 +36,7 @@ fun CocktailSingleCard(
             .fillMaxWidth()
             .height(150.dp)
             .clip(shape = RoundedCornerShape(16.dp))
-            .border(2.dp, Black1, RoundedCornerShape(16.dp))
+            .border(2.dp, com.example.ui.theme.Black1, RoundedCornerShape(16.dp))
             .clickable {
                 onCocktailClicked(cocktail.id.toString())
             }
@@ -65,8 +65,8 @@ fun CocktailSingleCard(
                             .padding(top = 16.dp),
                         maxLines = 4,
                         overflow = TextOverflow.Ellipsis,
-                        style = Text12,
-                        color = Grey100
+                        style = com.example.ui.theme.Text12,
+                        color = com.example.ui.theme.Grey100
                     )
                 }
             }
@@ -79,8 +79,8 @@ fun CocktailSingleCard(
                             .padding(top = 16.dp),
                         maxLines = 4,
                         overflow = TextOverflow.Ellipsis,
-                        style = Text12,
-                        color = Grey100
+                        style = com.example.ui.theme.Text12,
+                        color = com.example.ui.theme.Grey100
                     )
                 }
             }
@@ -93,8 +93,8 @@ fun CocktailSingleCard(
                             .padding(top = 16.dp),
                         maxLines = 4,
                         overflow = TextOverflow.Ellipsis,
-                        style = Text12,
-                        color = Grey100
+                        style = com.example.ui.theme.Text12,
+                        color = com.example.ui.theme.Grey100
                     )
                 }
             }
@@ -107,8 +107,8 @@ fun CocktailSingleCard(
                             .padding(top = 16.dp),
                         maxLines = 4,
                         overflow = TextOverflow.Ellipsis,
-                        style = Text12,
-                        color = Grey100
+                        style = com.example.ui.theme.Text12,
+                        color = com.example.ui.theme.Grey100
                     )
                 }
             }

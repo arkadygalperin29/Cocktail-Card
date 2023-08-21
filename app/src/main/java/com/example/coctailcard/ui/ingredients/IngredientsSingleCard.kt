@@ -23,12 +23,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.coctailcard.R
 import com.example.domain.Ingredient
-import com.example.coctailcard.ui.theme.Black1
-import com.example.coctailcard.ui.theme.Brown1
-import com.example.coctailcard.ui.theme.Grey50
-import com.example.coctailcard.ui.theme.Header1
-import com.example.coctailcard.ui.theme.Teal1
-import com.example.coctailcard.ui.theme.Text14
+import com.example.ui.theme.Black1
+import com.example.ui.theme.Brown1
+import com.example.ui.theme.Grey50
+import com.example.ui.theme.Header1
+import com.example.ui.theme.Teal1
+import com.example.ui.theme.Text14
 
 @Composable
 fun IngredientSingleCard(
@@ -39,9 +39,9 @@ fun IngredientSingleCard(
     Card(
         modifier = Modifier
             .fillMaxSize()
-            .border(4.dp, Black1, RoundedCornerShape(16.dp)),
+            .border(4.dp, com.example.ui.theme.Black1, RoundedCornerShape(16.dp)),
         colors = CardDefaults.cardColors(
-            containerColor = Teal1
+            containerColor = com.example.ui.theme.Teal1
         )
 
     ) {
@@ -57,15 +57,15 @@ fun IngredientSingleCard(
                         .padding(start = 8.dp)
                         .align(Alignment.CenterHorizontally),
                     overflow = TextOverflow.Ellipsis,
-                    style = Header1,
-                    color = Grey50,
+                    style = com.example.ui.theme.Header1,
+                    color = com.example.ui.theme.Grey50,
                 )
                 Image(
                     modifier = Modifier
                         .fillMaxHeight(0.5f)
                         .fillMaxWidth(0.5f)
                         .align(Alignment.CenterHorizontally)
-                        .border(4.dp, Black1),
+                        .border(4.dp, com.example.ui.theme.Black1),
                     painter = painterResource(id = drawableResId ?: R.drawable.balloon_glass),
                     contentDescription = "Cocktail detail card",
                     contentScale = ContentScale.Crop
@@ -74,16 +74,16 @@ fun IngredientSingleCard(
                     modifier = Modifier
                         .padding(8.dp)
                         .fillMaxWidth()
-                        .border(3.dp, Grey50)
-                        .background(Brown1)
+                        .border(3.dp, com.example.ui.theme.Grey50)
+                        .background(com.example.ui.theme.Brown1)
                 ) {
                     Text(
                         modifier = Modifier
                             .padding(8.dp),
                         text = description ?: "empty filler",
                         overflow = TextOverflow.Ellipsis,
-                        style = Text14,
-                        color = Grey50,
+                        style = com.example.ui.theme.Text14,
+                        color = com.example.ui.theme.Grey50,
                         maxLines = 20
                     )
                 }

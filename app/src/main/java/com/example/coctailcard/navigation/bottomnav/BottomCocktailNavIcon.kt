@@ -18,10 +18,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.coctailcard.ui.theme.Black1
-import com.example.coctailcard.ui.theme.Blue1
-import com.example.coctailcard.ui.theme.Pink40
-import com.example.coctailcard.ui.theme.Yellow1
+import com.example.ui.theme.Black1
+import com.example.ui.theme.Blue1
+import com.example.ui.theme.Pink40
+import com.example.ui.theme.Yellow1
 
 @Composable
 fun CocktailCenteredBottomButton(
@@ -31,7 +31,7 @@ fun CocktailCenteredBottomButton(
         modifier = Modifier
             .size(width = 49.dp, height = 46.dp)
             .clip(RoundedCornerShape(topStartPercent = 50, topEndPercent = 50))
-            .background(Black1),
+            .background(com.example.ui.theme.Black1),
         contentAlignment = Alignment.BottomCenter,
     ) {
         Card(
@@ -40,13 +40,13 @@ fun CocktailCenteredBottomButton(
                 .size(40.dp)
                 .shadow(
                     elevation = 5.dp,
-                    ambientColor = Yellow1,
-                    spotColor = Yellow1,
+                    ambientColor = com.example.ui.theme.Yellow1,
+                    spotColor = com.example.ui.theme.Yellow1,
                     shape = CircleShape,
                 ),
             colors = CardDefaults.cardColors(
                 containerColor = Color.White,
-                contentColor = Black1
+                contentColor = com.example.ui.theme.Black1
             ),
             shape = CircleShape,
         ) {

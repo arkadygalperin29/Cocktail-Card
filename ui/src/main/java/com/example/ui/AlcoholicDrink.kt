@@ -1,4 +1,4 @@
-package com.example.coctailcard.ui.category
+package com.example.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -21,13 +21,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.domain.Cocktail
-import com.example.coctailcard.ui.theme.Black1
-import com.example.coctailcard.ui.theme.Grey100
-import com.example.coctailcard.ui.theme.Text12
+import com.example.ui.theme.Black1
+import com.example.ui.theme.Grey100
+import com.example.ui.theme.Text12
 
 @Composable
 fun AlcoholicDrink(
-    alcoholicCocktail: com.example.domain.Cocktail,
+    alcoholicCocktail: Cocktail,
     alcoholicCocktailClick: (String) -> Unit
 ) {
     Column(
@@ -69,5 +69,5 @@ fun AlcoholicDrink(
 @Preview
 @Composable
 fun AlcoholicDrinkPreview() {
-    AlcoholicDrink(com.example.domain.Cocktail("Margharita", "", ""), { })
+    AlcoholicDrink(Cocktail("Margharita", "", ""), { })
 }

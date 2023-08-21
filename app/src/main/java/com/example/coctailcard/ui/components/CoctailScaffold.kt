@@ -15,7 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import com.example.coctailcard.ui.components.scaffold.AppBottomBarType
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
-import com.example.coctailcard.ui.theme.Grey1000
+import com.example.ui.theme.Grey1000
 
 @Composable
 fun CoctailScaffold(
@@ -34,7 +34,7 @@ fun CoctailScaffold(
                 .imePadding()
         ),
         topBar = {
-            CompositionLocalProvider(LocalContentColor provides Grey1000) {
+            CompositionLocalProvider(LocalContentColor provides com.example.ui.theme.Grey1000) {
                 when (topBarType) {
                     is AppHeaderType.WithLogo -> {
                         CoctailHeaderWithLogo(

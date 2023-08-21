@@ -25,8 +25,8 @@ import com.example.coctailcard.navigation.bottomnav.AppNavigationBarItem
 import com.example.coctailcard.navigation.bottomnav.BottomNavItem
 import com.example.coctailcard.navigation.bottomnav.CocktailCenteredBottomButton
 import com.example.coctailcard.navigation.rememberCocktailNavActions
-import com.example.coctailcard.ui.theme.Black1
-import com.example.coctailcard.ui.theme.Grey400
+import com.example.ui.theme.Black1
+import com.example.ui.theme.Grey400
 import com.example.coctailcard.util.customShadow
 
 @Composable
@@ -75,7 +75,7 @@ fun CoctailBottomNavigation(
                     .fillMaxWidth()
                     .height(83.dp)
                     .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
-                    .background(Black1)
+                    .background(com.example.ui.theme.Black1)
             )
             Row(
                 modifier = Modifier
@@ -102,7 +102,7 @@ fun CoctailBottomNavigation(
                                         modifier = Modifier.padding(bottom = 6.dp),
                                         painter = painterResource(id = item.icon),
                                         contentDescription = item.title,
-                                        tint = if (currentRoute == item.screenRoute) Color.White else Grey400
+                                        tint = if (currentRoute == item.screenRoute) Color.White else com.example.ui.theme.Grey400
                                     )
                                 }
                             }

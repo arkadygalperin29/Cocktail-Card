@@ -1,4 +1,4 @@
-package com.example.coctailcard.ui.theme
+package com.example.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -14,8 +14,6 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
-import com.example.coctailcard.data.di.configureKoin
-import org.koin.core.context.stopKoin
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -62,7 +60,8 @@ fun CocktailCardTheme(
             window.statusBarColor = Black1.toArgb()
             window.navigationBarColor = Black1.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
-            WindowCompat.getInsetsController(window, view).isAppearanceLightNavigationBars = darkTheme
+            WindowCompat.getInsetsController(window, view).isAppearanceLightNavigationBars =
+                darkTheme
         }
     }
 
@@ -73,6 +72,7 @@ fun CocktailCardTheme(
     )
 }
 
+/*
 @Composable
 fun CocktailCardThemePreview(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -85,4 +85,4 @@ fun CocktailCardThemePreview(
     CocktailCardTheme(darkTheme, dynamicColor) {
         content()
     }
-}
+}*/

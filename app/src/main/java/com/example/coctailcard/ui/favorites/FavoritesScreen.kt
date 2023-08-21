@@ -29,10 +29,10 @@ import com.example.coctailcard.R
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
-import com.example.coctailcard.ui.theme.Black1
-import com.example.coctailcard.ui.theme.Grey100
-import com.example.coctailcard.ui.theme.Pink40
-import com.example.coctailcard.ui.theme.Text14
+import com.example.ui.theme.Black1
+import com.example.ui.theme.Grey100
+import com.example.ui.theme.Pink40
+import com.example.ui.theme.Text14
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -55,7 +55,7 @@ fun FavoritesScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Pink40)
+                .background(com.example.ui.theme.Pink40)
                 .padding(paddingValues),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
@@ -65,8 +65,8 @@ fun FavoritesScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 8.dp),
-                color = Grey100,
-                style = Text14,
+                color = com.example.ui.theme.Grey100,
+                style = com.example.ui.theme.Text14,
                 textAlign = TextAlign.Center
             )
             Text(
@@ -77,8 +77,8 @@ fun FavoritesScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 8.dp),
-                color = Grey100,
-                style = Text14,
+                color = com.example.ui.theme.Grey100,
+                style = com.example.ui.theme.Text14,
                 textAlign = TextAlign.Center
             )
             LazyColumn(

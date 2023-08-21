@@ -32,11 +32,11 @@ import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
-import com.example.coctailcard.ui.theme.Black1
-import com.example.coctailcard.ui.theme.Grey50
-import com.example.coctailcard.ui.theme.Header1
-import com.example.coctailcard.ui.theme.Pink40
-import com.example.coctailcard.ui.theme.Text14
+import com.example.ui.theme.Black1
+import com.example.ui.theme.Grey50
+import com.example.ui.theme.Header1
+import com.example.ui.theme.Pink40
+import com.example.ui.theme.Text14
 import com.example.coctailcard.util.UiEvent
 import com.example.coctailcard.util.paddingWithScroll
 import org.koin.androidx.compose.koinViewModel
@@ -77,7 +77,7 @@ fun IngredientDetailScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Pink40)
+                .background(com.example.ui.theme.Pink40)
                 .paddingWithScroll(paddingValues, scrollState),
         ) {
             state.ingredient?.let { IngredientDetail(ingredientDetailed = it) }
@@ -92,14 +92,14 @@ fun IngredientDetail(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Pink40)
+            .background(color = com.example.ui.theme.Pink40)
             .padding(16.dp)
     ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 8.dp, start = 16.dp, end = 16.dp, bottom = 16.dp)
-                .background(color = Pink40)
+                .background(color = com.example.ui.theme.Pink40)
         ) {
             AsyncImage(
                 modifier = Modifier
@@ -107,7 +107,7 @@ fun IngredientDetail(
                     .height(350.dp)
                     .clip(shape = RoundedCornerShape(16.dp))
                     .background(color = Color.Black)
-                    .border(2.dp, Black1, shape = RoundedCornerShape(16.dp)),
+                    .border(2.dp, com.example.ui.theme.Black1, shape = RoundedCornerShape(16.dp)),
                 model = stringResource(
                     R.string.coil_image_url_ingredients,
                     ingredientDetailed.name.toString()
@@ -124,8 +124,8 @@ fun IngredientDetail(
                         .fillMaxWidth()
                         .padding(start = 16.dp),
                     textAlign = TextAlign.Center,
-                    style = Header1,
-                    color = Grey50
+                    style = com.example.ui.theme.Header1,
+                    color = com.example.ui.theme.Grey50
                 )
             }
         }
@@ -137,8 +137,8 @@ fun IngredientDetail(
                         .fillMaxWidth()
                         .padding(start = 16.dp, top = 16.dp),
                     textAlign = TextAlign.Start,
-                    style = Text14,
-                    color = Grey50
+                    style = com.example.ui.theme.Text14,
+                    color = com.example.ui.theme.Grey50
                 )
             }
         }
@@ -150,8 +150,8 @@ fun IngredientDetail(
                         .fillMaxWidth()
                         .padding(start = 16.dp, top = 16.dp),
                     textAlign = TextAlign.Start,
-                    style = Text14,
-                    color = Grey50
+                    style = com.example.ui.theme.Text14,
+                    color = com.example.ui.theme.Grey50
                 )
             }
         }
@@ -163,8 +163,8 @@ fun IngredientDetail(
                         .fillMaxWidth()
                         .padding(start = 16.dp, top = 16.dp),
                     textAlign = TextAlign.Start,
-                    style = Text14,
-                    color = Grey50
+                    style = com.example.ui.theme.Text14,
+                    color = com.example.ui.theme.Grey50
                 )
             }
         }
@@ -176,8 +176,8 @@ fun IngredientDetail(
                         .fillMaxWidth()
                         .padding(start = 16.dp, top = 16.dp),
                     textAlign = TextAlign.Start,
-                    style = Text14,
-                    color = Grey50
+                    style = com.example.ui.theme.Text14,
+                    color = com.example.ui.theme.Grey50
                 )
             }
         }

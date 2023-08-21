@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.coctailcard.navigation.CoctailApp
-import com.example.coctailcard.ui.theme.CocktailCardTheme
+import com.example.ui.theme.CocktailCardTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +33,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    CocktailCardTheme {
+    com.example.ui.theme.CocktailCardTheme {
         Greeting("Android")
     }
 }

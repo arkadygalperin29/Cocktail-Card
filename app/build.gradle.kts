@@ -74,6 +74,7 @@ dependencies {
 
     implementation(project(":network"))
     implementation(project(":domain"))
+    implementation(project(":ui"))
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)

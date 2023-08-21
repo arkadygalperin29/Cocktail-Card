@@ -24,7 +24,7 @@ import com.example.coctailcard.R
 import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
-import com.example.coctailcard.ui.theme.Black1
+import com.example.ui.theme.Black1
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -47,7 +47,7 @@ fun IngredientsScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Black1)
+                .background(com.example.ui.theme.Black1)
                 .padding(paddingValues),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center

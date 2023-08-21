@@ -28,7 +28,7 @@ import com.example.coctailcard.ui.components.AppLoader
 import com.example.coctailcard.ui.components.CategoryTabs
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
-import com.example.coctailcard.ui.theme.Pink40
+import com.example.ui.theme.Pink40
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -48,7 +48,7 @@ fun CategoryScreen(
         if (state.isLoading) AppLoader()
         Column(
             modifier = Modifier
-                .background(Pink40)
+                .background(com.example.ui.theme.Pink40)
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
@@ -112,7 +112,7 @@ fun NonAlcoholicListScreen(
             state = lazyGridState
         ) {
             items(state.nonAlcoholicCocktails) { nonAlcoholicCocktail ->
-                NonAlcoholicDrink(
+                com.example.ui.NonAlcoholicDrink(
                     nonAlcoholicCocktail = nonAlcoholicCocktail,
                     nonAlcoholicCocktailClick = { actions.navigateToCocktailDetails(it) }
                 )
@@ -145,7 +145,7 @@ fun AlcoholicListScreen(
             state = lazyGridState
         ) {
             items(state.alcoholicCocktails) { alcoholicCocktail ->
-                AlcoholicDrink(
+                com.example.ui.AlcoholicDrink(
                     alcoholicCocktail = alcoholicCocktail,
                     alcoholicCocktailClick = { actions.navigateToCocktailDetails(it) }
                 )
