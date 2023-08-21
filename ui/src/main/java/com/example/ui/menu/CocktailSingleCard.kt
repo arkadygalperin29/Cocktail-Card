@@ -1,4 +1,4 @@
-package com.example.coctailcard.ui.menuscreen
+package com.example.ui.menu
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -22,9 +22,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.domain.Cocktail
-import com.example.ui.theme.Black1
-import com.example.ui.theme.Grey100
-import com.example.ui.theme.Text12
 
 @Composable
 fun CocktailSingleCard(
@@ -120,7 +117,7 @@ fun CocktailSingleCard(
 @Composable
 fun CocktailSingleCardPreview() {
     CocktailSingleCard(
-        com.example.domain.Cocktail(
+        Cocktail(
             "1", "Daiquiry", "Alcoholic", "16%", "Margarita", "", "", "", "", "",
             "", "", "", "", "", "", "", "", "", "",
             ""

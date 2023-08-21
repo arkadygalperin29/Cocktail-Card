@@ -1,4 +1,4 @@
-package com.example.coctailcard.ui.favorites
+package com.example.ui.favorites
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -27,12 +27,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.coctailcard.R
 import com.example.domain.Cocktail
-import com.example.ui.theme.Black1
-import com.example.ui.theme.SoftBlueGray
-import com.example.ui.theme.TerraCotta
-import com.example.ui.theme.Text12
+import com.example.ui.R
 
 @Composable
 fun FavoriteCocktail(
@@ -56,7 +52,10 @@ fun FavoriteCocktail(
                     .border
                         (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
                     .wrapContentSize()
-                    .background(color = com.example.ui.theme.SoftBlueGray, shape = RoundedCornerShape(8.dp))
+                    .background(
+                        color = com.example.ui.theme.SoftBlueGray,
+                        shape = RoundedCornerShape(8.dp)
+                    )
             ) {
                 if (!favoriteCocktail.name.isNullOrEmpty()) {
                     favoriteCocktail.name?.let {
@@ -83,7 +82,10 @@ fun FavoriteCocktail(
                         (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
                     .wrapContentSize()
                     .clickable { deleteFavoriteCocktailClick(favoriteCocktail.id) }
-                    .background(color = com.example.ui.theme.TerraCotta, shape = RoundedCornerShape(8.dp))
+                    .background(
+                        color = com.example.ui.theme.TerraCotta,
+                        shape = RoundedCornerShape(8.dp)
+                    )
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.delete_favorite),
@@ -115,7 +117,7 @@ fun FavoriteCocktailPreview(
 
 ) {
     FavoriteCocktail(
-        favoriteCocktail = com.example.domain.Cocktail(
+        favoriteCocktail = Cocktail(
             "", "Margarita", "", "", "", "",
             "", "", "", ""
         ), favoriteCocktailClick = { }, deleteFavoriteCocktailClick = { }

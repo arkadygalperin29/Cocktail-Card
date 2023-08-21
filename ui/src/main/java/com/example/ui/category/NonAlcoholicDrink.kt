@@ -1,4 +1,4 @@
-package com.example.ui
+package com.example.ui.category
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -26,9 +27,9 @@ import com.example.ui.theme.Grey100
 import com.example.ui.theme.Text12
 
 @Composable
-fun AlcoholicDrink(
-    alcoholicCocktail: Cocktail,
-    alcoholicCocktailClick: (String) -> Unit
+fun NonAlcoholicDrink(
+    nonAlcoholicCocktail: Cocktail,
+    nonAlcoholicCocktailClick: (String) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -37,16 +38,17 @@ fun AlcoholicDrink(
             .clip(shape = RoundedCornerShape(16.dp))
             .border(2.dp, Black1, RoundedCornerShape(16.dp))
             .clickable {
-                alcoholicCocktailClick(alcoholicCocktail.id)
+                nonAlcoholicCocktailClick(nonAlcoholicCocktail.id)
             }
     ) {
-        if (!alcoholicCocktail.name.isNullOrEmpty()) {
-            alcoholicCocktail.name?.let {
+        if (!nonAlcoholicCocktail.name.isNullOrEmpty()) {
+            nonAlcoholicCocktail.name?.let {
                 Text(
                     text = it,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 8.dp, top = 16.dp),
+                        .padding(start = 8.dp, top = 16.dp)
+                        .align(Alignment.CenterHorizontally),
                     maxLines = 4,
                     textAlign = TextAlign.Center,
                     overflow = TextOverflow.Ellipsis,
@@ -54,20 +56,23 @@ fun AlcoholicDrink(
                     color = Grey100,
                 )
             }
-            AsyncImage(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(color = Color.Black),
-                model = alcoholicCocktail.drinkImage,
-                contentDescription = "Cocktail detail card",
-                contentScale = ContentScale.Crop
-            )
         }
+        AsyncImage(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = Color.Black)
+                .align(Alignment.CenterHorizontally),
+            model = nonAlcoholicCocktail.drinkImage,
+            contentDescription = "Cocktail detail card",
+            contentScale = ContentScale.Crop
+        )
+
     }
 }
 
+
 @Preview
 @Composable
-fun AlcoholicDrinkPreview() {
-    AlcoholicDrink(Cocktail("Margharita", "", ""), { })
+fun NonAlcoholicDrinkPreview() {
+    NonAlcoholicDrink(Cocktail("Daiquiry", "", ""), { })
 }

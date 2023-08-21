@@ -1,4 +1,4 @@
-package com.example.coctailcard.ui.ingredients
+package com.example.ui.ingredients
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -21,14 +21,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.coctailcard.R
 import com.example.domain.Ingredient
-import com.example.ui.theme.Black1
-import com.example.ui.theme.Brown1
-import com.example.ui.theme.Grey50
-import com.example.ui.theme.Header1
-import com.example.ui.theme.Teal1
-import com.example.ui.theme.Text14
+import com.example.ui.R
 
 @Composable
 fun IngredientSingleCard(
@@ -97,7 +91,7 @@ fun IngredientSingleCard(
 @Composable
 fun IngredientSingleCardPreview() {
     IngredientSingleCard(
-        ingredient = com.example.domain.Ingredient("Vodka", R.drawable.vodka, "Strong ruski vodka"),
+        ingredient = Ingredient("Vodka", R.drawable.vodka, "Strong ruski vodka"),
         drawableResId = R.drawable.vodka,
         description = "some info"
     )

@@ -19,28 +19,19 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.example.coctailcard.R
-import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.coctailcard.ui.detailscreens.CocktailDetailViewModel
-import com.example.ui.theme.Black1
-import com.example.ui.theme.Grey00
-import com.example.ui.theme.Yellow1
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CoctailHeaderWithLogo(
     logoAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
-    navController: NavController,
     showFavoritesIcon: Boolean = true,
     viewModel: CocktailDetailViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsState()
-    val actions = rememberCocktailNavActions(navController = navController)
-    val context = LocalContext.current
 
     Box(
         modifier = Modifier
@@ -72,33 +63,6 @@ fun CoctailHeaderWithLogo(
                     .size(24.dp)
                     .clickable {
                         viewModel.checkIfCocktailIsAdded(state.cocktail ?: return@clickable)
-
-
-                        /*               val cocktailId = state.cocktail?.id
-                                       if (!cocktailId.isNullOrEmpty()) {
-                                           viewModel.insertFavorite(
-                                               favoriteCocktail = state.cocktail ?: Cocktail()
-                                           )
-                                           Log.d("Element is recorded", "cocktail id: ${state.cocktail?.id} ")
-
-                                           Log.d("Element is recorded", "navigation is successful")
-                                           Toast
-                                               .makeText(
-                                                   context,
-                                                   "Cocktail was saved successfully",
-                                                   Toast.LENGTH_LONG
-                                               )
-                                               .show()
-                                           actions.navigateToFavorites()
-                                       } else {
-                                           Toast
-                                               .makeText(
-                                                   context,
-                                                   "Cocktail is already saved, select another one",
-                                                   Toast.LENGTH_LONG
-                                               )
-                                               .show()
-                                       }*/
                     }
             ) {
                 Icon(
