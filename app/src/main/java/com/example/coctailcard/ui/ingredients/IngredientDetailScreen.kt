@@ -34,6 +34,7 @@ import com.example.coctailcard.ui.components.scaffold.AppHeaderType
 import com.example.coctailcard.util.UiEvent
 import com.example.coctailcard.util.paddingWithScroll
 import com.example.domain.IngredientDetailed
+import com.example.ui.appcomponents.ZoomDialog
 import com.example.ui.theme.Grey50
 import com.example.ui.theme.Header1
 import com.example.ui.theme.Pink40
@@ -86,7 +87,9 @@ fun IngredientDetailScreen(
 
 @Composable
 fun IngredientDetail(
-    ingredientDetailed: IngredientDetailed
+    ingredientDetailed: IngredientDetailed,
+    showZoomDialog: Boolean = false,
+    setShowZoomDialog: (Boolean) -> Unit = { },
 ) {
     Column(
         modifier = Modifier

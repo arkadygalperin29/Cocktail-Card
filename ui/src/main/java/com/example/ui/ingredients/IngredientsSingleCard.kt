@@ -49,7 +49,7 @@ fun IngredientSingleCard(
             onDismissRequest = { setShowZoomDialog(false) },
             ingredient = Ingredient(
                 ingredientName = ingredient.ingredientName,
-                image = drawableResId, description = description
+                image = drawableResId, description
             )
         )
     }

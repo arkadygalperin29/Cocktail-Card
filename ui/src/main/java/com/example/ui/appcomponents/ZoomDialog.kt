@@ -87,7 +87,7 @@ fun ZoomDialog(
                             translationY = offset.y
                         )
                         .transformable(state)
-                        .size(160.dp),
+                        .size(250.dp),
                     alignment = Alignment.Center,
                     painter = painterResource(id = ingredient.image ?: R.drawable.absolut_citron),
                     contentDescription = null,
