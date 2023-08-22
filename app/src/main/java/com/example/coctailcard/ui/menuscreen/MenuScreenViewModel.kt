@@ -14,7 +14,7 @@ class MenuScreenViewModel(
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(
-        com.example.domain.state.ApplicationState(
+        ApplicationState(
             isLoading = false, searchQuery = "a", cocktails = emptyList()
         )
     )

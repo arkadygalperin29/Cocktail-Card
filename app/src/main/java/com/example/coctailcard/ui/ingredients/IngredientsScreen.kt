@@ -25,6 +25,7 @@ import com.example.ui.appcomponents.AppLoader
 import com.example.ui.ingredients.IngredientSingleCard
 import com.example.ui.ingredients.getDrawableResIdForItem
 import com.example.ui.ingredients.getStringResourceId
+import com.example.ui.theme.Black1
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -47,7 +48,7 @@ fun IngredientsScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(com.example.ui.theme.Black1)
+                .background(Black1)
                 .padding(paddingValues),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center

@@ -28,6 +28,7 @@ import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.ui.appcomponents.SearchBar
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
 import com.example.ui.menu.CocktailSingleCard
+import com.example.ui.theme.Pink40
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -55,7 +56,7 @@ fun MenuScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(com.example.ui.theme.Pink40)
+                .background(Pink40)
                 .padding(paddingValues),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center

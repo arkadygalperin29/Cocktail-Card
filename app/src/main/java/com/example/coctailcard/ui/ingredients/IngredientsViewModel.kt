@@ -17,7 +17,7 @@ class IngredientsViewModel(
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(
-        com.example.domain.state.ApplicationState(
+        ApplicationState(
             isLoading = false, ingredients = emptyList()
         )
     )

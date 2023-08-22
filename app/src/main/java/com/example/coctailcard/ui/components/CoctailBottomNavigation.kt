@@ -75,7 +75,7 @@ fun CoctailBottomNavigation(
                     .fillMaxWidth()
                     .height(83.dp)
                     .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
-                    .background(com.example.ui.theme.Black1)
+                    .background(Black1)
             )
             Row(
                 modifier = Modifier

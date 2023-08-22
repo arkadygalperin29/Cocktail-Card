@@ -29,9 +29,9 @@ class CocktailDetailViewModel(
 
     private val _state =
         MutableStateFlow(
-            com.example.domain.state.ApplicationState(
+            ApplicationState(
                 isLoading = false,
-                cocktail = com.example.domain.Cocktail()
+                cocktail = Cocktail()
             )
         )
     val state = _state.asStateFlow()
@@ -59,13 +59,7 @@ class CocktailDetailViewModel(
         }
     }
 
-    fun deleteFavorite(favoriteCocktail: com.example.domain.Cocktail) {
-        viewModelScope.launch {
-            favoritesRepository.deleteFavoriteDrink(favoriteCocktail)
-        }
-    }
-
-    fun checkIfCocktailIsAdded(favoriteCocktail: com.example.domain.Cocktail) {
+    fun checkIfCocktailIsAdded(favoriteCocktail: Cocktail) {
         viewModelScope.launch {
             val cocktailFromDb = cocktailDao.getCoctailById(favoriteCocktail.id)
             if (cocktailFromDb == null) {
@@ -77,12 +71,6 @@ class CocktailDetailViewModel(
             } else {
                 sendUiEvent(UiEvent.ShowToast(IsCocktailSavedInDatabase.COCKTAIL_IS_ALREADY_SAVED))
             }
-        }
-    }
-
-    fun insertFavorite(favoriteCocktail: com.example.domain.Cocktail) {
-        viewModelScope.launch(Dispatchers.IO) {
-            cocktailDao.addFavoriteCocktail(favoriteCocktail)
         }
     }
 

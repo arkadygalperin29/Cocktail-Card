@@ -13,8 +13,8 @@ import kotlinx.coroutines.launch
 class FavoritesViewModel(private val favoritesRepository: FavoriteRepository) : ViewModel() {
 
     private val _state = MutableStateFlow(
-        com.example.domain.state.ApplicationState(
-            cocktail = com.example.domain.Cocktail(),
+        ApplicationState(
+            cocktail = Cocktail(),
             favoriteCocktails = emptyList()
         )
     )
@@ -33,7 +33,7 @@ class FavoritesViewModel(private val favoritesRepository: FavoriteRepository) : 
         }
     }
 
-    fun deleteFavorite(favoriteCocktail: com.example.domain.Cocktail) {
+    fun deleteFavorite(favoriteCocktail: Cocktail) {
         viewModelScope.launch(Dispatchers.IO) {
             favoritesRepository.deleteFavoriteDrink(favoriteCocktail)
             loadFavoriteCocktails()

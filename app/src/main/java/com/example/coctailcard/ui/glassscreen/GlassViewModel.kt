@@ -17,7 +17,7 @@ class GlassViewModel(private val glassesRepository: GetGlassesRepository) : View
 
     private val _glassState =
         MutableStateFlow(
-            com.example.domain.state.ApplicationState(
+            ApplicationState(
                 isLoading = false,
                 glasses = emptyList()
             )

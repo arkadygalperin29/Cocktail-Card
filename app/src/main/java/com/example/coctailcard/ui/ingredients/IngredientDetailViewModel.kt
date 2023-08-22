@@ -23,7 +23,7 @@ class IngredientDetailViewModel(
     val uiEvent = _uiEvent.receiveAsFlow()
 
     private val _state = MutableStateFlow(
-        com.example.domain.state.ApplicationState(
+        ApplicationState(
             isLoading = false,
             ingredient = null
         )

@@ -44,6 +44,26 @@ import com.example.ui.appcomponents.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.util.UiEvent
 import com.example.coctailcard.util.paddingWithScroll
+import com.example.domain.Cocktail
+import com.example.ui.theme.Aubergine
+import com.example.ui.theme.Black1
+import com.example.ui.theme.CoolWhite
+import com.example.ui.theme.Cream
+import com.example.ui.theme.Grey50
+import com.example.ui.theme.MiddleGreen
+import com.example.ui.theme.MintGreen
+import com.example.ui.theme.PaleGray
+import com.example.ui.theme.Peach
+import com.example.ui.theme.PeriWinkle1
+import com.example.ui.theme.Pink40
+import com.example.ui.theme.Red1
+import com.example.ui.theme.RoseGold1
+import com.example.ui.theme.SealBrown
+import com.example.ui.theme.SkyBlue
+import com.example.ui.theme.SoftBlueGray
+import com.example.ui.theme.Teal1
+import com.example.ui.theme.TerraCotta
+import com.example.ui.theme.Text14
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -92,7 +112,7 @@ fun CocktailDetailScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(com.example.ui.theme.Pink40)
+                .background(Pink40)
                 .paddingWithScroll(paddingValues, scrollState),
         ) {
             state.cocktail?.let { CocktailDetail(cocktail = it, navController = navController) }
@@ -103,20 +123,20 @@ fun CocktailDetailScreen(
 @OptIn(ExperimentalTextApi::class)
 @Composable
 fun CocktailDetail(
-    cocktail: com.example.domain.Cocktail,
+    cocktail: Cocktail,
     navController: NavController = rememberNavController()
 ) {
     val actions = rememberCocktailNavActions(navController = navController)
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = com.example.ui.theme.Pink40)
+            .background(color = Pink40)
     ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 8.dp, start = 16.dp, end = 16.dp, bottom = 16.dp)
-                .background(color = com.example.ui.theme.Pink40)
+                .background(color = Pink40)
         ) {
             AsyncImage(
                 modifier = Modifier
@@ -124,7 +144,7 @@ fun CocktailDetail(
                     .height(350.dp)
                     .clip(shape = RoundedCornerShape(16.dp))
                     .background(color = Color.Black)
-                    .border(2.dp, com.example.ui.theme.Black1, shape = RoundedCornerShape(16.dp)),
+                    .border(2.dp, Black1, shape = RoundedCornerShape(16.dp)),
                 model = cocktail.drinkImage,
                 contentDescription = null,
                 contentScale = ContentScale.Crop
@@ -139,7 +159,7 @@ fun CocktailDetail(
                         .padding(start = 16.dp),
                     textAlign = TextAlign.Center,
                     style = com.example.ui.theme.Header1,
-                    color = com.example.ui.theme.Grey50
+                    color = Grey50
                 )
             }
         }
@@ -150,8 +170,8 @@ fun CocktailDetail(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                    style = com.example.ui.theme.Text14,
-                    color = com.example.ui.theme.Grey50
+                    style = Text14,
+                    color = Grey50
                 )
             }
         }
@@ -162,8 +182,8 @@ fun CocktailDetail(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                    style = com.example.ui.theme.Text14,
-                    color = com.example.ui.theme.Grey50
+                    style = Text14,
+                    color = Grey50
                 )
             }
         }
@@ -174,8 +194,8 @@ fun CocktailDetail(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                    style = com.example.ui.theme.Text14,
-                    color = com.example.ui.theme.Grey50
+                    style = Text14,
+                    color = Grey50
                 )
             }
         }
@@ -186,8 +206,8 @@ fun CocktailDetail(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                    style = com.example.ui.theme.Text14,
-                    color = com.example.ui.theme.Grey50
+                    style = Text14,
+                    color = Grey50
                 )
             }
         }
@@ -198,8 +218,8 @@ fun CocktailDetail(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                    style = com.example.ui.theme.Text14,
-                    color = com.example.ui.theme.Grey50
+                    style = Text14,
+                    color = Grey50
                 )
             }
         }
@@ -213,7 +233,7 @@ fun CocktailDetail(
                     ) {
                         withStyle(
                             style = SpanStyle(
-                                color = com.example.ui.theme.Red1,
+                                color = Red1,
                                 textDecoration = TextDecoration.Underline
                             )
                         ) {
@@ -227,7 +247,7 @@ fun CocktailDetail(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-                    style = com.example.ui.theme.Text14,
+                    style = Text14,
                     onClick = {
                         videoLinkAnnotated.getStringAnnotations(tag = "URL", it, it)
                             .firstOrNull()?.let { stringAnnotation ->
@@ -240,8 +260,8 @@ fun CocktailDetail(
         Text(
             text = stringResource(R.string.ingredients),
             modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp),
-            style = com.example.ui.theme.Text14,
-            color = com.example.ui.theme.Grey50
+            style = Text14,
+            color = Grey50
         )
         if (!cocktail.strIngredient1.isNullOrEmpty()) {
             cocktail.strIngredient1?.let { name ->
@@ -249,16 +269,16 @@ fun CocktailDetail(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
                         .border
-                            (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
+                            (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
-                        .background(color = com.example.ui.theme.Cream, shape = RoundedCornerShape(8.dp))
+                        .background(color = Cream, shape = RoundedCornerShape(8.dp))
                         .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
                         text = name,
                         modifier = Modifier.padding(8.dp),
-                        style = com.example.ui.theme.Text14,
-                        color = com.example.ui.theme.Black1
+                        style = Text14,
+                        color = Black1
                     )
                 }
             }
@@ -269,17 +289,17 @@ fun CocktailDetail(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
                         .border
-                            (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
+                            (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
-                        .background(color = com.example.ui.theme.RoseGold1, shape = RoundedCornerShape(8.dp))
+                        .background(color = RoseGold1, shape = RoundedCornerShape(8.dp))
                         .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
                         text = name,
                         modifier = Modifier
                             .padding(8.dp),
-                        style = com.example.ui.theme.Text14,
-                        color = com.example.ui.theme.Grey50
+                        style = Text14,
+                        color = Grey50
                     )
                 }
             }
@@ -290,17 +310,17 @@ fun CocktailDetail(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
                         .border
-                            (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
+                            (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
-                        .background(color = com.example.ui.theme.Peach, shape = RoundedCornerShape(8.dp))
+                        .background(color = Peach, shape = RoundedCornerShape(8.dp))
                         .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
                         text = name,
                         modifier = Modifier
                             .padding(8.dp),
-                        style = com.example.ui.theme.Text14,
-                        color = com.example.ui.theme.Black1
+                        style = Text14,
+                        color = Black1
                     )
                 }
             }
@@ -311,17 +331,17 @@ fun CocktailDetail(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
                         .border
-                            (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
+                            (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
-                        .background(color = com.example.ui.theme.MintGreen, shape = RoundedCornerShape(8.dp))
+                        .background(color = MintGreen, shape = RoundedCornerShape(8.dp))
                         .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
                         text = name,
                         modifier = Modifier
                             .padding(8.dp),
-                        style = com.example.ui.theme.Text14,
-                        color = com.example.ui.theme.Black1
+                        style = Text14,
+                        color = Black1
                     )
                 }
             }
@@ -332,17 +352,17 @@ fun CocktailDetail(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
                         .border
-                            (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
+                            (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
-                        .background(color = com.example.ui.theme.PaleGray, shape = RoundedCornerShape(8.dp))
+                        .background(color = PaleGray, shape = RoundedCornerShape(8.dp))
                         .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
                         text = name,
                         modifier = Modifier
                             .padding(8.dp),
-                        style = com.example.ui.theme.Text14,
-                        color = com.example.ui.theme.Grey50
+                        style = Text14,
+                        color = Grey50
                     )
                 }
             }
@@ -353,17 +373,17 @@ fun CocktailDetail(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
                         .border
-                            (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
+                            (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
-                        .background(color = com.example.ui.theme.SealBrown, shape = RoundedCornerShape(8.dp))
+                        .background(color = SealBrown, shape = RoundedCornerShape(8.dp))
                         .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
                         text = name,
                         modifier = Modifier
                             .padding(8.dp),
-                        style = com.example.ui.theme.Text14,
-                        color = com.example.ui.theme.Grey50
+                        style = Text14,
+                        color = Grey50
                     )
                 }
             }
@@ -374,17 +394,17 @@ fun CocktailDetail(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
                         .border
-                            (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
+                            (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
-                        .background(color = com.example.ui.theme.Teal1, shape = RoundedCornerShape(8.dp))
+                        .background(color = Teal1, shape = RoundedCornerShape(8.dp))
                         .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
                         text = name,
                         modifier = Modifier
                             .padding(8.dp),
-                        style = com.example.ui.theme.Text14,
-                        color = com.example.ui.theme.Grey50
+                        style = Text14,
+                        color = Grey50
                     )
                 }
             }
@@ -395,17 +415,17 @@ fun CocktailDetail(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
                         .border
-                            (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
+                            (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
-                        .background(color = com.example.ui.theme.CoolWhite, shape = RoundedCornerShape(8.dp))
+                        .background(color = CoolWhite, shape = RoundedCornerShape(8.dp))
                         .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
                         text = name,
                         modifier = Modifier
                             .padding(8.dp),
-                        style = com.example.ui.theme.Text14,
-                        color = com.example.ui.theme.Black1
+                        style = Text14,
+                        color = Black1
                     )
                 }
             }
@@ -416,17 +436,17 @@ fun CocktailDetail(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
                         .border
-                            (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
+                            (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
-                        .background(color = com.example.ui.theme.Aubergine, shape = RoundedCornerShape(8.dp))
+                        .background(color = Aubergine, shape = RoundedCornerShape(8.dp))
                         .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
                         text = name,
                         modifier = Modifier
                             .padding(8.dp),
-                        style = com.example.ui.theme.Text14,
-                        color = com.example.ui.theme.Grey50
+                        style = Text14,
+                        color = Grey50
                     )
                 }
             }
@@ -437,17 +457,17 @@ fun CocktailDetail(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
                         .border
-                            (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
+                            (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
-                        .background(color = com.example.ui.theme.MiddleGreen, shape = RoundedCornerShape(8.dp))
+                        .background(color = MiddleGreen, shape = RoundedCornerShape(8.dp))
                         .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
                         text = name,
                         modifier = Modifier
                             .padding(8.dp),
-                        style = com.example.ui.theme.Text14,
-                        color = com.example.ui.theme.Black1
+                        style = Text14,
+                        color = Black1
                     )
                 }
             }
@@ -458,17 +478,17 @@ fun CocktailDetail(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
                         .border
-                            (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
+                            (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
-                        .background(color = com.example.ui.theme.TerraCotta, shape = RoundedCornerShape(8.dp))
+                        .background(color = TerraCotta, shape = RoundedCornerShape(8.dp))
                         .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
                         text = name,
                         modifier = Modifier
                             .padding(8.dp),
-                        style = com.example.ui.theme.Text14,
-                        color = com.example.ui.theme.Grey50
+                        style = Text14,
+                        color = Grey50
                     )
                 }
             }
@@ -479,17 +499,17 @@ fun CocktailDetail(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
                         .border
-                            (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
+                            (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
-                        .background(color = com.example.ui.theme.SoftBlueGray, shape = RoundedCornerShape(8.dp))
+                        .background(color = SoftBlueGray, shape = RoundedCornerShape(8.dp))
                         .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
                         text = name,
                         modifier = Modifier
                             .padding(8.dp),
-                        style = com.example.ui.theme.Text14,
-                        color = com.example.ui.theme.Black1
+                        style = Text14,
+                        color = Black1
                     )
                 }
             }
@@ -500,17 +520,17 @@ fun CocktailDetail(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
                         .border
-                            (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
+                            (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
-                        .background(color = com.example.ui.theme.PeriWinkle1, shape = RoundedCornerShape(8.dp))
+                        .background(color = PeriWinkle1, shape = RoundedCornerShape(8.dp))
                         .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
                         text = name,
                         modifier = Modifier
                             .padding(8.dp),
-                        style = com.example.ui.theme.Text14,
-                        color = com.example.ui.theme.Black1
+                        style = Text14,
+                        color = Black1
                     )
                 }
             }
@@ -521,17 +541,17 @@ fun CocktailDetail(
                     modifier = Modifier
                         .padding(start = 16.dp, top = 16.dp)
                         .border
-                            (2.dp, color = com.example.ui.theme.Black1, RoundedCornerShape(8.dp))
+                            (2.dp, color = Black1, RoundedCornerShape(8.dp))
                         .wrapContentSize()
-                        .background(color = com.example.ui.theme.SkyBlue, shape = RoundedCornerShape(8.dp))
+                        .background(color = SkyBlue, shape = RoundedCornerShape(8.dp))
                         .clickable { actions.navigateToIngredientDetails(name) }
                 ) {
                     Text(
                         text = name,
                         modifier = Modifier
                             .padding(8.dp),
-                        style = com.example.ui.theme.Text14,
-                        color = com.example.ui.theme.Black1
+                        style = Text14,
+                        color = Black1
                     )
                 }
             }
@@ -544,7 +564,7 @@ fun CocktailDetail(
 @Composable
 fun CocktailDetailPreview() {
     CocktailDetail(
-        cocktail = com.example.domain.Cocktail(
+        cocktail = Cocktail(
             id = "1",
             name = "Margarita",
             category = "Alcoholic",

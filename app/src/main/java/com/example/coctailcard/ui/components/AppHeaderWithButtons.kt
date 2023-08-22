@@ -45,7 +45,7 @@ fun AppHeaderWithButtons(
         modifier = Modifier
             .fillMaxWidth()
             .height(44.dp)
-            .background(com.example.ui.theme.Black1),
+            .background(Black1),
         verticalArrangement = Arrangement.Bottom,
     ) {
         Row(
@@ -67,13 +67,13 @@ fun AppHeaderWithButtons(
                         .padding(end = 10.dp),
                     painter = returnIcon,
                     contentDescription = stringResource(R.string.label_return),
-                    tint = com.example.ui.theme.Grey00
+                    tint = Grey00
                 )
                 Text(
                     modifier = Modifier.padding(bottom = 3.dp),
                     text = name,
-                    style = com.example.ui.theme.Header1,
-                    color = com.example.ui.theme.Grey00,
+                    style = Header1,
+                    color = Grey00,
                 )
             }
         }

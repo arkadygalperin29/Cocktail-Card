@@ -57,8 +57,8 @@ fun AppNavigationBarItem(
             icon()
             Text(
                 text = label,
-                color = if (selected) selectedColor else com.example.ui.theme.Grey400,
-                style = com.example.ui.theme.Text12
+                color = if (selected) selectedColor else Grey400,
+                style = Text12
             )
         }
     }
@@ -77,7 +77,7 @@ private fun PreviewComponent() {
                     .size(24.dp),
                 painter = painterResource(id = R.drawable.alcoholic_percentage),
                 contentDescription = "icon desc",
-                tint = com.example.ui.theme.Grey400,
+                tint = Grey400,
             )
         },
         label = "Label",
@@ -97,7 +97,7 @@ private fun PreviewComponentSelected() {
                     .size(24.dp),
                 painter = painterResource(id = R.drawable.empty_glass_icon),
                 contentDescription = "icon desc",
-                tint = com.example.ui.theme.Yellow1,
+                tint = Yellow1,
             )
         },
         label = "Label",

@@ -30,6 +30,7 @@ import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
 import com.example.ui.category.AlcoholicDrink
 import com.example.ui.category.NonAlcoholicDrink
+import com.example.ui.theme.Pink40
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -49,7 +50,7 @@ fun CategoryScreen(
         if (state.isLoading) AppLoader()
         Column(
             modifier = Modifier
-                .background(com.example.ui.theme.Pink40)
+                .background(Pink40)
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {

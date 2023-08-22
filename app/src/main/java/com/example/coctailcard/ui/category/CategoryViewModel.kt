@@ -19,7 +19,7 @@ class CategoryViewModel(
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(
-        com.example.domain.state.ApplicationState(
+        ApplicationState(
             selectedButton = 1,
             isLoading = false,
             alcoholicCocktails = emptyList(),
@@ -28,7 +28,7 @@ class CategoryViewModel(
     )
     val state = _state.asStateFlow()
 
-    fun updateState(state: com.example.domain.state.ApplicationState) {
+    fun updateState(state: ApplicationState) {
         _state.update { state }
     }
 

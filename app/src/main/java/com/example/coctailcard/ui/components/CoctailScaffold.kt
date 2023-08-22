@@ -34,7 +34,7 @@ fun CoctailScaffold(
                 .imePadding()
         ),
         topBar = {
-            CompositionLocalProvider(LocalContentColor provides com.example.ui.theme.Grey1000) {
+            CompositionLocalProvider(LocalContentColor provides Grey1000) {
                 when (topBarType) {
                     is AppHeaderType.WithLogo -> {
                         CoctailHeaderWithLogo(

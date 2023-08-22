@@ -31,7 +31,7 @@ fun CocktailCenteredBottomButton(
         modifier = Modifier
             .size(width = 49.dp, height = 46.dp)
             .clip(RoundedCornerShape(topStartPercent = 50, topEndPercent = 50))
-            .background(com.example.ui.theme.Black1),
+            .background(Black1),
         contentAlignment = Alignment.BottomCenter,
     ) {
         Card(
@@ -40,13 +40,13 @@ fun CocktailCenteredBottomButton(
                 .size(40.dp)
                 .shadow(
                     elevation = 5.dp,
-                    ambientColor = com.example.ui.theme.Yellow1,
-                    spotColor = com.example.ui.theme.Yellow1,
+                    ambientColor = Yellow1,
+                    spotColor = Yellow1,
                     shape = CircleShape,
                 ),
             colors = CardDefaults.cardColors(
                 containerColor = Color.White,
-                contentColor = com.example.ui.theme.Black1
+                contentColor = Black1
             ),
             shape = CircleShape,
         ) {
