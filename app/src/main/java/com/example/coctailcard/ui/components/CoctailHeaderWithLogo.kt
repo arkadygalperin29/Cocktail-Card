@@ -3,29 +3,37 @@ package com.example.coctailcard.ui.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.coctailcard.R
 import com.example.coctailcard.ui.detailscreens.CocktailDetailViewModel
 import com.example.ui.theme.Black1
 import com.example.ui.theme.Grey00
+import com.example.ui.theme.Header1
 import com.example.ui.theme.Yellow1
 import org.koin.androidx.compose.koinViewModel
 
@@ -33,6 +41,8 @@ import org.koin.androidx.compose.koinViewModel
 fun CoctailHeaderWithLogo(
     logoAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
     navController: NavController,
+    onReturnClick: () -> Unit,
+    returnIcon: Painter = painterResource(id = R.drawable.baseline_chevron_left_24),
     showFavoritesIcon: Boolean = true,
     viewModel: CocktailDetailViewModel = koinViewModel()
 ) {
@@ -44,6 +54,30 @@ fun CoctailHeaderWithLogo(
             .fillMaxWidth()
             .background(Black1),
     ) {
+        Row(
+            modifier = Modifier
+                .fillMaxHeight()
+                .wrapContentWidth()
+                .clickable { onReturnClick() }
+                .padding(start = 16.dp, end = 16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Start
+
+        ) {
+            Icon(
+                modifier = Modifier
+                    .padding(end = 10.dp),
+                painter = returnIcon,
+                contentDescription = stringResource(R.string.label_return),
+                tint = Grey00
+            )
+            Text(
+                modifier = Modifier.padding(bottom = 3.dp),
+                text = "Description",
+                style = Header1,
+                color = Grey00,
+            )
+        }
         Image(
             modifier = Modifier
                 .let {

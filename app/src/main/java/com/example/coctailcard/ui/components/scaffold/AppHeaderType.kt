@@ -6,7 +6,9 @@ import com.example.coctailcard.R
 
 sealed class AppHeaderType {
     data class WithLogo(
-        val logoAlignment: Alignment.Horizontal = Alignment.CenterHorizontally
+        val logoAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
+        val onRetrunClick: () -> Unit,
+        @DrawableRes val returnIconResId: Int = R.drawable.baseline_chevron_left_24
     ) : AppHeaderType()
 
     data class WithLogoWithoutFavorites(

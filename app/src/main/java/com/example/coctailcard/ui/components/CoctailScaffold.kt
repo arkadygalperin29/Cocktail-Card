@@ -21,7 +21,7 @@ import com.example.ui.theme.Grey1000
 fun CoctailScaffold(
     modifier: Modifier = Modifier,
     navController: NavController,
-    topBarType: AppHeaderType? = AppHeaderType.WithLogo(),
+    topBarType: AppHeaderType? = AppHeaderType.WithLogo(onRetrunClick = { }),
     bottomBarType: AppBottomBarType = AppBottomBarType.Normal,
     contentColor: Color = LocalContentColor.current,
     containerColor: Color = Color.Transparent,
@@ -39,7 +39,9 @@ fun CoctailScaffold(
                     is AppHeaderType.WithLogo -> {
                         CoctailHeaderWithLogo(
                             logoAlignment = topBarType.logoAlignment,
-                            navController = navController
+                            navController = navController,
+                            onReturnClick = topBarType.onRetrunClick,
+                            returnIcon = painterResource(id = topBarType.returnIconResId)
                         )
                     }
 
@@ -47,7 +49,8 @@ fun CoctailScaffold(
                         CoctailHeaderWithLogo(
                             logoAlignment = topBarType.logoAlignment,
                             navController = navController,
-                            showFavoritesIcon = false
+                            showFavoritesIcon = false,
+                            onReturnClick = {}
                         )
                     }
 

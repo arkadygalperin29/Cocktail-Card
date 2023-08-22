@@ -42,6 +42,7 @@ import com.example.coctailcard.R
 import com.example.coctailcard.navigation.rememberCocktailNavActions
 import com.example.ui.appcomponents.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
+import com.example.coctailcard.ui.components.scaffold.AppHeaderType
 import com.example.coctailcard.util.UiEvent
 import com.example.coctailcard.util.paddingWithScroll
 import com.example.domain.Cocktail
@@ -108,6 +109,9 @@ fun CocktailDetailScreen(
     CoctailScaffold(
         modifier = modifier,
         navController = navController,
+        topBarType = AppHeaderType.WithLogo(
+            onRetrunClick = { navController.popBackStack() }
+        )
     ) { paddingValues ->
         Column(
             modifier = Modifier
