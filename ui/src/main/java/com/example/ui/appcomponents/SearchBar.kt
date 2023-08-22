@@ -1,5 +1,6 @@
 package com.example.ui.appcomponents
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -34,6 +35,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.ui.theme.Grey50
+import com.example.ui.theme.Header1
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -45,8 +48,10 @@ fun SearchBar(onSearch: (String) -> Unit) {
         color = MaterialTheme.colors.onSecondary,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 8.dp, end = 16.dp, start = 16.dp),
-        shape = RoundedCornerShape(16.dp)
+            .padding(top = 8.dp, end = 16.dp, start = 16.dp)
+            .border(2.dp, Grey50, RoundedCornerShape(16.dp)),
+        shape = RoundedCornerShape(16.dp),
+
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -76,7 +81,7 @@ fun SearchBar(onSearch: (String) -> Unit) {
                         keyboardController?.hide() // Hide the keyboard when search is triggered
                     }
                 ),
-                textStyle = LocalTextStyle.current.copy(color = com.example.ui.theme.Grey50),
+                textStyle = LocalTextStyle.current.copy(color = Grey50),
                 modifier = Modifier
                     .weight(1f)
                     .padding(vertical = 8.dp)
@@ -84,16 +89,16 @@ fun SearchBar(onSearch: (String) -> Unit) {
             Button(
                 onClick = { onSearch(searchQuery) },
                 modifier = Modifier
-                    .padding(start = 8.dp),
+                    .padding(start = 8.dp, bottom = 6.dp),
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = com.example.ui.theme.Grey50,
+                    backgroundColor = Grey50,
                     contentColor = Color.Black
                 ),
                 shape = RoundedCornerShape(8.dp)
             ) {
                 Text(
                     "Search", color = Color.Black,
-                    style = com.example.ui.theme.Header1, fontSize = 12.sp
+                    style = Header1, fontSize = 12.sp
                 )
             }
         }
