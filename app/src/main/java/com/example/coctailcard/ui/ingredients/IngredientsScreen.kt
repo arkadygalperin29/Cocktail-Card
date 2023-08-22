@@ -65,8 +65,6 @@ fun IngredientsScreen(
                     val drawableResId = getDrawableResIdForItem(index)
                     IngredientSingleCard(
                         ingredient = ingredients,
-                        showZoomDialog = state.showDialog,
-                        setShowZoomDialog = { viewModel.updateState(state.copy(showDialog = it)) },
                         drawableResId = drawableResId,
                         description = context.getString(stringResId)
                     )

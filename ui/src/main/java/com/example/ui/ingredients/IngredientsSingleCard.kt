@@ -40,19 +40,9 @@ import com.example.ui.theme.Text14
 fun IngredientSingleCard(
     ingredient: Ingredient,
     drawableResId: Int,
-    showZoomDialog: Boolean = false,
-    setShowZoomDialog: (Boolean) -> Unit = { },
     description: String
 ) {
-    if (showZoomDialog) {
-        ZoomDialog(
-            onDismissRequest = { setShowZoomDialog(false) },
-            ingredient = Ingredient(
-                ingredientName = ingredient.ingredientName,
-                image = drawableResId, description
-            )
-        )
-    }
+
     Card(
         modifier = Modifier
             .fillMaxSize()
@@ -61,25 +51,6 @@ fun IngredientSingleCard(
             containerColor = Teal1
         )
     ) {
-        Box(modifier = Modifier
-            .width(60.dp)
-            .height(60.dp)
-            .align(Alignment.End)
-            .padding(top = 8.dp, end = 8.dp, bottom = 8.dp)
-            .clip(shape = RoundedCornerShape(4.dp))
-            .background(Color.Black.copy(alpha = 0.5f))
-            .clickable { setShowZoomDialog(true) }) {
-            Box(
-                modifier = Modifier.fillMaxSize()
-            ) {
-                Image(
-                    modifier = Modifier.align(Alignment.Center),
-                    painter = painterResource(id = R.drawable.baseline_zoom_in_24),
-                    contentDescription = "zoom icon",
-                    contentScale = ContentScale.Crop
-                )
-            }
-        }
         Box {
             Column(
                 modifier = Modifier
