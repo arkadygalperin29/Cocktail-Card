@@ -102,7 +102,7 @@ fun CoctailBottomNavigation(
                                         modifier = Modifier.padding(bottom = 6.dp),
                                         painter = painterResource(id = item.icon),
                                         contentDescription = item.title,
-                                        tint = if (currentRoute == item.screenRoute) Color.White else com.example.ui.theme.Grey400
+                                        tint = if (currentRoute == item.screenRoute) Color.White else Grey400
                                     )
                                 }
                             }
