@@ -23,6 +23,10 @@ class IngredientsViewModel(
     )
     val state = _state.asStateFlow()
 
+    fun updateState(state: ApplicationState) {
+        _state.update { state }
+    }
+
     init {
         fetchIngredients()
     }

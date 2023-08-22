@@ -32,7 +32,7 @@ import org.koin.androidx.compose.koinViewModel
 fun IngredientsScreen(
     modifier: Modifier = Modifier,
     navController: NavController = rememberNavController(),
-    viewModel: IngredientsViewModel = koinViewModel()
+    viewModel: IngredientsViewModel = koinViewModel(),
 ) {
     val context = LocalContext.current
     val state by viewModel.state.collectAsState()
@@ -65,6 +65,8 @@ fun IngredientsScreen(
                     val drawableResId = getDrawableResIdForItem(index)
                     IngredientSingleCard(
                         ingredient = ingredients,
+                        showZoomDialog = state.showDialog,
+                        setShowZoomDialog = { viewModel.updateState(state.copy(showDialog = it)) },
                         drawableResId = drawableResId,
                         description = context.getString(stringResId)
                     )
