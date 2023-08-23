@@ -40,12 +40,13 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.example.coctailcard.R
 import com.example.coctailcard.navigation.rememberCocktailNavActions
-import com.example.ui.appcomponents.AppLoader
 import com.example.coctailcard.ui.components.CoctailScaffold
 import com.example.coctailcard.ui.components.scaffold.AppHeaderType
 import com.example.coctailcard.util.UiEvent
 import com.example.coctailcard.util.paddingWithScroll
 import com.example.domain.Cocktail
+import com.example.ui.appcomponents.AppLoader
+import com.example.ui.offline.OfflineScreen
 import com.example.ui.theme.Aubergine
 import com.example.ui.theme.Black1
 import com.example.ui.theme.CoolWhite

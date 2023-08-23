@@ -18,5 +18,6 @@ data class ApplicationState(
     val selectedButton: Int = 0,
     val favoriteCocktails: List<Cocktail> = emptyList(),
     val itemAlreadyExistsInDatabase: Boolean = false,
-    val showDialog: Boolean = false
+    val showDialog: Boolean = false,
+    val noInternetConnection: Boolean = false
 )

@@ -22,10 +22,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.domain.Cocktail
+import com.example.ui.theme.Grey100
+import com.example.ui.theme.Text12
 
 @Composable
 fun CocktailSingleCard(
-    cocktail: com.example.domain.Cocktail,
+    cocktail: Cocktail,
     onCocktailClicked: (String) -> Unit,
 ) {
     Box(
@@ -62,8 +64,8 @@ fun CocktailSingleCard(
                             .padding(top = 16.dp),
                         maxLines = 4,
                         overflow = TextOverflow.Ellipsis,
-                        style = com.example.ui.theme.Text12,
-                        color = com.example.ui.theme.Grey100
+                        style = Text12,
+                        color = Grey100
                     )
                 }
             }
@@ -76,8 +78,8 @@ fun CocktailSingleCard(
                             .padding(top = 16.dp),
                         maxLines = 4,
                         overflow = TextOverflow.Ellipsis,
-                        style = com.example.ui.theme.Text12,
-                        color = com.example.ui.theme.Grey100
+                        style = Text12,
+                        color = Grey100
                     )
                 }
             }
@@ -90,8 +92,8 @@ fun CocktailSingleCard(
                             .padding(top = 16.dp),
                         maxLines = 4,
                         overflow = TextOverflow.Ellipsis,
-                        style = com.example.ui.theme.Text12,
-                        color = com.example.ui.theme.Grey100
+                        style = Text12,
+                        color = Grey100
                     )
                 }
             }
@@ -104,8 +106,8 @@ fun CocktailSingleCard(
                             .padding(top = 16.dp),
                         maxLines = 4,
                         overflow = TextOverflow.Ellipsis,
-                        style = com.example.ui.theme.Text12,
-                        color = com.example.ui.theme.Grey100
+                        style = Text12,
+                        color = Grey100
                     )
                 }
             }
