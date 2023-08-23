@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()  // Maven Central repository
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:3.4.3")
+        classpath("com.android.tools.build:gradle:8.2.0-alpha16")
     }
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
