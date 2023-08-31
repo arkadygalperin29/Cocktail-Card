@@ -53,5 +53,37 @@ open class Cocktail(
     @SerializedName("strIngredient13")
     var strIngredient13: String? = null,
     @SerializedName("strIngredient14")
-    var strIngredient14: String? = null
+    var strIngredient14: String? = null,
+    @SerializedName("strIngredient15")
+    var strIngredient15: String? = null,
+    @SerializedName("strMeasure1")
+    var strMeasure1: String? = null,
+    @SerializedName("strMeasure2")
+    var strMeasure2: String? = null,
+    @SerializedName("strMeasure3")
+    var strMeasure3: String? = null,
+    @SerializedName("strMeasure4")
+    var strMeasure4: String? = null,
+    @SerializedName("strMeasure5")
+    var strMeasure5: String? = null,
+    @SerializedName("strMeasure6")
+    var strMeasure6: String? = null,
+    @SerializedName("strMeasure7")
+    var strMeasure7: String? = null,
+    @SerializedName("strMeasure8")
+    var strMeasure8: String? = null,
+    @SerializedName("strMeasure9")
+    var strMeasure9: String? = null,
+    @SerializedName("strMeasure10")
+    var strMeasure10: String? = null,
+    @SerializedName("strMeasure11")
+    var strMeasure11: String? = null,
+    @SerializedName("strMeasure12")
+    var strMeasure12: String? = null,
+    @SerializedName("strMeasure13")
+    var strMeasure13: String? = null,
+    @SerializedName("strMeasure14")
+    var strMeasure14: String? = null,
+    @SerializedName("strMeasure15")
+    var strMeasure15: String? = null,
 )
